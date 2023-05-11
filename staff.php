@@ -58,95 +58,6 @@
             </div>
                 </div>
 
-            <!-- <div class="row">
-			    <div class="input-group">
-				<div class="col-lg-3 form-group"> 
-				<div class="input-group-prepend">
-					<span class="input-group-text" id="inputGroupFileAddon01"> File Upload </span>
-			    </div>
-			    <div class="custom-file">
-			    	<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
-			    	<label class="custom-file-label" for="inputGroupFile01"> Choose File</label>
-				</div>
-			    </div>
-			    </div>
-			</div> -->
-		<!--  --><!-- <div class="row">
-					<label class="text-info">Renewal Date</label>
-					<input type="date" name="renewal_date" id="renewal_date" class="form-control">
-			</div>	
-			
-			<div class="row">	
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Permit</label>
-					<select class="form-control" name="permit" id="permit">
-            <option value="">--Select--</option>
-            <option value="date1">31-02-2045</option>
-            <option value="date2">19-08-2037</option>
-          </select>	
-                </div>
-            <div class="col-lg-3 form-group">    
-                    <label class="text-info">FC Date</label>
-					<input type="date" name="fc_date" id="fc_date" class="form-control">
-			</div>
-			</div>
-			<div class="row">	
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Insurance Company Name</label>
-					<input type="text" class="form-control" name="insurance_company_name" id="insurance_company_name">
-				</div>
-			</div>
-			<div class="row">	
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Sum Insurance</label>
-					<input type="text" class="form-control" name="sum_insurance" id="sum_insurance">
-				</div>
-			</div>	
-			<div class="row">	
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Premium Amount</label>
-					<input type="text" class="form-control" name="premium_amount" id="premium_amount">
-				</div>	
-				<div class="col-lg-3 form-group">	
-                	<label class="text-info">Policy Number</label>
-					<input type="text" class="form-control" name="policy_number" id="policy_number">
-				</div>
-			</div>	
-			<div class="row">
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Insurance Validity Date</label>
-					<input type="date" name="insurance_validity_date" id="insurance_validity_date" class="form-control">
-				</div>
-			</div>	 -->
-		<!-- <div class="border-top border-warning">&nbsp;</div>
-		<form method="post"> 
-			<div class="row">
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Employee Type</label>
-					<input type="text" class="form-control" name="">
-				</div>
-				<div class="col-lg-3 form-group">
-					<label for="Department" class="text-info">Department</label>
-        	<input type="date" name="" class="form-control">
-				</div>
-				<div class="col-lg-3 form-group">
-					<label>&nbsp;</label>
-					<button type="button" class="form-control btn btn-secondary" onclick="fn_gen_empid()">Generate</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 form-group">
-					<label class="text-info">Employee Type</label>
-					<select class="form-control" name="emptype">
-            <option value="">Type</option>
-            <option value="F">Teaching Staff</option>
-            <option value="A">Non-Teaching Staff</option>
-          </select>
-				</div>
-				<div class="col-lg-3 form-group">
-					<label for="Department" class="text-info">Department</label>
-        	<select class="form-control selectjs" name="dept" id="dept">
-        		<option value="">Department</option>
             <?php
             foreach ($row_dept as $row) {
               echo '<option value="'.$row['staff_name'].'">'.$row['staff_id'].'</option>';
@@ -169,7 +80,7 @@
 <div class="row" id="staff_list">
 	</div>
 </div>
-
+<!-- 
 <script type="text/javascript">
 	fn_list_staff();
 	function fn_get_data(){
@@ -259,8 +170,5 @@
 	 		$("#staff_list").html(data);
 	 	});
 	}
-</script>
-	<!-- <function fn_gen_staff(){
-
-	}
-</script>  -->
+</script> -->
+	
