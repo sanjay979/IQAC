@@ -14,7 +14,7 @@
     <div class="card">
         <h1 style="margin-top: -30%;">St.joseph's college</h1>
         <h2>Login page</h2>
-        <form class="form">
+        <form class="form"action="database_connect.php">
             <input type="username" placeholder="username">
             <input type="password" placeholder="Password">
             <button type="submit">SIGN UP</button>
