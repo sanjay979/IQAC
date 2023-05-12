@@ -7,15 +7,29 @@
         body {
             display: flex;
             flex-wrap: wrap;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
         }
 
         .form-container {
             flex: 0 0 350px;
             margin: 10px;
             padding: 10px;
-            border: 1px solid black;
+            border: 2px solid black;
             box-sizing: border-box;
+            background-color: #f9f9f9;
         }
+
+        hr {
+            border: none;
+            /* Remove default border */
+            border-top: 1px solid #CCCCCC;
+            /* Set a solid line with light gray color */
+            margin: 20px 0;
+            /* Add some margin for spacing */
+        }
+
 
         fieldset {
             border: none;
@@ -25,22 +39,10 @@
 
         label {
             display: inline-block;
-            width: 110px; 
+            width: 110px;
             font-weight: bold;
             margin-bottom: 5px;
-        }
-
-        input {
-            display: inline-block;
-            width: calc(100% - 110px);
-            margin-bottom: 10px;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid black;
-        }
-
-        input:disabled {
-            background-color: #f7f7f7;
+            color: #800020;
         }
 
         button {
@@ -54,13 +56,88 @@
         }
 
         .btn-primary {
-            background-color: blue;
+            background-color: #A4D0A4;
             color: white;
         }
 
         .btn-secondary {
-            background-color: gray;
+            background-color: #E06469;
             color: white;
+        }
+
+        .box-container {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 10px;
+
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .form-container {
+                flex: 1 0 100%;
+            }
+
+            .box-container,
+            .button-container {
+                display: block;
+            }
+        }
+
+        .od-border {
+            border-color: #006400;
+        }
+
+        .cl-border {
+            border-color: #800080;
+        }
+
+        .form-heading {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        textarea {
+            padding: 5px;
+            /* Add padding for spacing within the textarea */
+            font-family: Arial, sans-serif;
+            /* Set the font family */
+            font-size: 14px;
+            /* Set the font size */
+            border: 1px solid #CCCCCC;
+            /* Add a border */
+            border-radius: 5px;
+            /* Add border radius for rounded corners */
+            resize: vertical;
+            /* Allow vertical resizing of the textarea */
+        }
+
+        textarea:focus {
+            outline: none;
+            /* Remove the default focus outline */
+            border-color: #0000FF;
+            /* Change the border color on focus */
+        }
+
+        .sp{
+            font-family: Arial, sans-serif;
+            /* Set the font family */
+            font-size: 14px;
+            /* Set the font size */
+            /*display: inline-block;
+            background-color: #FFFF00;*/
+            color: #333333;
+            font-weight: bold;
         }
     </style>
 
@@ -115,20 +192,45 @@
         while (true) {
             $row = mysqli_fetch_assoc($result);
             if ($row != null) {
-                echo '<div class="form-container">';
+                echo '<div class="form-container';
+
+                //to give different border color for od,cl
+                if (strcasecmp($row['LType'], 'OD') == 0) {
+                    echo ' od-border">';
+                    echo '<h2 class="form-heading" style="color:#006400">' . strtoupper($row['LType']) . '</h2>';
+                } elseif (strcasecmp($row['LType'], 'CL') == 0) {
+                    echo ' cl-border"> ';
+                    echo '<h2 class="form-heading" style="color:#800080">' . strtoupper($row['LType']) . '</h2>';
+                }
+                //heading to the form -(type of leave)
+                //echo '<h2 class="form-heading">'.strtoupper($row['LType']).'</h2>';
+
+                echo '<hr>';
+
+
+                echo '<div class="box-container">';
                 echo '<fieldset>';
-                $i=1;
+                //$i=1;
+                //echo '<legend>'.$row['LType'].'</legend>';
                 foreach ($form_fields as $field_name => $field_data) {
                     $value = $row[$field_name];
                     echo '<label>' . $field_data['label'] . '</label>';
-                    echo '<span>' . $value . '</span>';
-                    if($i%2==0) echo '<br>';
-                    $i++;
+                    echo '<span class="sp">' . $value . '<br></span>';
+                    //if($i%2==0) echo '<br>';
+                    //$i++;
                     //echo'<label></label><span></span>';
                 }
+
+                echo '</fieldset>';
+
+                echo '<div class="button-container">';
+                echo '<label>Remarks</label>';
+                echo '<textarea row=3 column=10 style="resize:none; color:#333333" ></textarea>';
                 echo '<br><button class="btn-primary">Approve</button>';
                 echo '<button class="btn-secoondary">Decline</button>';
-                echo '</fieldset>';
+
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
             } else break;
         }
