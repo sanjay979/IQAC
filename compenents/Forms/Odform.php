@@ -58,13 +58,13 @@
             </div>
                 </div>
 
-            <?php
+            <!-- <?php
             foreach ($row_dept as $row) {
               echo '<option value="'.$row['staff_name'].'">'.$row['staff_id'].'</option>';
             }
-            ?>
+            ?> -->
            </select>
-				</div> -->
+				</div> 
 			<div class="row">	
 				<div class="col-lg-3 form-group">
 					<label>&nbsp;</label>
