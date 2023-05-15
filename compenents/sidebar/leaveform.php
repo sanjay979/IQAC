@@ -22,9 +22,11 @@
 body{
     min-height: 100vh;
     display: flex;
+    margin-top: 90px;
+    margin-left: 300px;
     align-items: center;
     justify-content: center;
-    background: #4070f4;
+    background: #f1f5f9;
 }
 .container{
     position: relative;
@@ -37,7 +39,7 @@ body{
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .container header{
-    position: relative;
+    position: static;
     font-size: 20px;
     font-weight: 600;
     color: #333;
@@ -55,7 +57,7 @@ body{
 .container form{
     position: relative;
     margin-top: 16px;
-    min-height: 490px;
+    min-height: 600px;
     background-color: #fff;
     overflow:auto;
 }
@@ -166,8 +168,11 @@ form button i{
 </head>
 
 <body>
+<?php include 'Sidebar.php';?>
+<?php include 'header.php';?>
+<div></div>
     <div class="container">
-        <header>STAFF FACULTY</header>
+        <header>Leave Form</header>
 
         <form action="#">
             <div class="form first">

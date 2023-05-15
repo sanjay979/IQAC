@@ -13,22 +13,19 @@
 <body>
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
-        <div class="sidebar-head">
+         <div class="sidebar-head">
             <h2><span>SJC Staff</span></h2>
         </div>
         <div class="sidebar-menu">
         <ul>
-            <li><a href="Sidebar.php" class="active"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
-            <li><a href=""><span class="las la-user"></span><span>Profile</span> </a></li>
-            <li><a href=""><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
+            <li><a href="index.php" class="active"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
+            <li><a href="profile.php"><span class="las la-user"></span><span>Profile</span> </a></li>
+            <li><a href="leaveform.php"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
             <li><a href=""><span class="las la-receipt"></span> <span>Pending</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
         </ul>
-        </div>
-        
-
+        </div> 
     </div>
-    <div class="main-content">
         <header><h2>
              <div class="header-list">
                 <label for="nav-toggle">
@@ -45,34 +42,8 @@
             </div>
            </div>
         </header>
-    <main>
-        <div class="cards">
-                <div class="card-single">
-                    <div>   
-                    <h1>54</h1>
-                    <span>No of days OD</span></div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div> 
-                <div class="card-single">
-                    <div>   
-                    <h1>54</h1>
-                    <span>No of days CL</span></div>
-                    <div>
-                        <span class="las la-shopping-bag"></span>
-                    </div>
-                </div> 
-                <div class="card-single">
-                    <div>   
-                    <h1>54</h1>
-                    <span>No of days ML</span></div>
-                    <div>
-                        <span class="las la-hospital"></span>
-                    </div>
-                </div> 
-        </div>
-    </main>
-    </div>
+
+   
+    
 </body>
 </html>
