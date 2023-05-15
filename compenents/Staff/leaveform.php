@@ -23,7 +23,7 @@ body{
     min-height: 100vh;
     display: flex;
     margin-top: 90px;
-    margin-left: 300px;
+   
     align-items: center;
     justify-content: center;
     background: #f1f5f9;
@@ -31,7 +31,7 @@ body{
 .container{
     position: relative;
     max-width: 900px;
-    width: 100%;
+    width: calc(100% - 350px);
     border-radius: 6px;
     padding: 30px;
     margin: 0 15px;
@@ -169,9 +169,10 @@ form button i{
 
 <body>
 <?php include 'Sidebar.php';?>
-<?php include 'header.php';?>
+<?php include 'header.php'?>
 <div></div>
-    <div class="container">
+    <div class="main-content container">
+        
         <header>Leave Form</header>
 
         <form action="#">

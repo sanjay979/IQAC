@@ -4,13 +4,16 @@
 <head>
     <title>Faculty Details</title>
     <link rel="stylesheet" href="ApproveForm.css">
+    <link rel="stylesheet" type="text/css" href="Hodsidebar.css">
 </head>
 
 <body>
-
-    <div class="container" style="margin-left: auto">
-
-        <?php
+    <?php include 'Hodsidebar.php'?>
+   
+    <div class="main-content" style="margin-left: auto"> 
+    <?php include 'header.php'?>
+    <main>
+    <?php
         // Connect to the database
         $servername = "localhost";
         $username = "root";
@@ -98,6 +101,8 @@
         // Close the database connection
         mysqli_close($conn);
         ?>
+    </main>
+        
     </div>
 
 </body>

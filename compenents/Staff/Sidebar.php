@@ -7,41 +7,31 @@
     <title>Staff Profile</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+<!--font2 -->
+<script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="sidebar.css">
 </head>
 <body>
     <input type="checkbox" id="nav-toggle">
+    <?php $page = substr($_SERVER['SCRIPT_NAME'],strrpos($_SERVER['SCRIPT_NAME'],"/")+1) ?>
     <div class="sidebar">
          <div class="sidebar-head">
             <h2><span>SJC Staff</span></h2>
         </div>
         <div class="sidebar-menu">
         <ul>
-            <li><a href="index.php" class="active"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
-            <li><a href="profile.php"><span class="las la-user"></span><span>Profile</span> </a></li>
-            <li><a href="leaveform.php"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
+            <li><a href="index.php"  class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
+            <li><a href="profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
+            <li><a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
             <li><a href=""><span class="las la-receipt"></span> <span>Pending</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
+            <li><a href=""><span class="las la-"></span> <span>Logout</span></a></li>
         </ul>
         </div> 
     </div>
-        <header><h2>
-             <div class="header-list">
-                <label for="nav-toggle">
-                    <span class="las la-bars"></span>
-                </label> Dashboard
-            </div>
-           
-        </h2>
-           <div class="user-wrapper">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
-            <div>
-                <h4>John</h4>
-                <small>Assistant professor</small>
-            </div>
-           </div>
-        </header>
+       
 
    
     

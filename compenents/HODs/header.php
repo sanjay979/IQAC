@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="sidebar.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -19,8 +19,8 @@
            <div class="user-wrapper">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
             <div>
-                <h4>John</h4>
-                <small>Assistant professor</small>
+                <h4>Mr.Charles</h4>
+                <small> HOD</small>
             </div>
            </div>
         </header>

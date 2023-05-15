@@ -13,10 +13,11 @@
 </head>
 <body>
 
-    <?php include 'Sidebar.php';?>
+    <?php include 'Hodsidebar.php';?>
    <div class="main-content">
+    <?php include 'header.php'?>
     <main>
-        <div class="cards">
+        <div >
         <ul >
         <li class="card-single">Name<span><?php $name='Ravindran'; echo $name?></span></li>
         <li class="card-single">Department<span><?php $deparment='Computer science'; echo $deparment?></span></li>
