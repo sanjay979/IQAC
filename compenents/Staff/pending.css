@@ -1,0 +1,160 @@
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  fieldset {
+    border: none; /* Remove the fieldset border */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .form-container label {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: brown;
+}
+  
+.box-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+  
+  .sp {
+    font-family: Arial, sans-serif;
+    /* Set the font family */
+    font-size: 14px;
+    /* Set the font size */
+    /*display: inline-block;
+    background-color: #FFFF00;*/
+    color:black;
+    font-weight: bold;
+  }
+
+  .form-heading {
+    text-align: center;
+  }
+ 
+  hr{
+    margin-bottom: 5px;;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form-container label {
+      width: 100%; /* Make the labels full width on smaller screens */
+      text-align: left;
+      margin-bottom: 5px; /* Add spacing between label and value */
+    }
+  }
+  
+
+  
+
+
+  /*css for the progress bar*/
+  .containerB{
+    width:100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.progressbar li{   /* css for listed item in class progressbar*/
+    
+    list-style-type: none;
+    float: left; 
+    width: 33.33%;
+    position: relative;
+    text-align: center;
+}
+
+.progressbar li::before{   /* css for circle*/      
+    content: '!';
+    width:30px;
+    height:30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+}
+
+
+.progressbar li:after{ /*css for the connecting line */
+    content: '';
+    position: absolute;
+    width: 100%;    /*the horizontal length of the line*/
+    height: 1px;
+    background-color: #ddd;
+    top:15px;
+    left: -50% ;
+    z-index: -1;
+}
+
+.progressbar li:first-child:after{ /*css to have no line b4 the hod circle*/
+    content:none;
+    left:0;
+}
+
+.progressbar li.pending{
+    color: #ddd;
+}
+
+.progressbar li.Approved{ /*csss for text with in and below the circle */
+    color:green;
+}
+.progressbar li.Approved:before{   /*css for the circle color*/
+    border-color: green;
+}
+.progressbar li.Approved + li:after{  /* css for the connecting line of active  circle*/
+    background-color: green;
+}
+
+
+.progressbar li.Declined{ /*csss for text with in and below the circle */
+    color:red;
+}
+.progressbar li.Declined:before{   /*css for the circle color*/
+    border-color: red;
+}
+
+.step-symbol {
+    font-size: 12px; /* Adjust the font size as desired */
+    display: block;
+    margin-top: 5px; /* Adjust the spacing as desired */
+    color: #999; /* Set the color for the step symbols */
+}
