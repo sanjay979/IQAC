@@ -1,3 +1,6 @@
+<?php
+include('alert.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +19,7 @@
     <div class="card">
         <h1 style="margin-top: -30%;">St.joseph's college</h1>
         <h2>Login page</h2>
-        <form class="form" action="database_connect.php" method="post">
+        <form class="form" action="insert.php" method="POST">
             <input type="text" placeholder="username" name="username" required>
             <input type="password" placeholder="Password" name="password" required>
             <button type="submit" name='submit'>SIGN UP</button>
