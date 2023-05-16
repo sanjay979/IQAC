@@ -1,0 +1,16 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+.card-single{
+    
+    padding-left: 1000px;
+}
+.cards{
+    width: calc(100% - 350px);
+    height: 100vh;
+   
+}
+
