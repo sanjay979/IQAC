@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,17 @@
     <link rel="stylesheet" href="style.css">
     <title>Sjc login page</title>
 </head>
+
 <body>
-    
+
     <div class="circle"></div>
     <div class="card">
         <h1 style="margin-top: -30%;">St.joseph's college</h1>
         <h2>Login page</h2>
-        <form class="form"action="database_connect.php">
-            <input type="username" placeholder="username">
-            <input type="password" placeholder="Password">
-            <button type="submit">SIGN UP</button>
+        <form class="form" action="database_connect.php" method="post">
+            <input type="text" placeholder="username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" name='submit'>SIGN UP</button>
         </form>
         <footer>
             forgot password
@@ -25,4 +27,5 @@
         </footer>
     </div>
 </body>
+
 </html>
