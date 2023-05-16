@@ -1,4 +1,2 @@
-
 <?php
-echo"helllo"
-?>
+$con = mysqli_connect("localhost", "root", "", "leave_management");
