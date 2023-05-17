@@ -175,7 +175,7 @@ form button i{
         
         <header>Leave Form</header>
 
-        <form action="#">
+        <form action="insert.php" method="POST" >
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Leave Details</span>
@@ -184,17 +184,17 @@ form button i{
 
                         <div class="input-field">
                             <label>Staff Name</label>
-                            <input type="text" placeholder="Enter your name" required>
+                            <input type="text" name="name" placeholder="Enter your name" required>
                         </div>
 
                         <div class="input-field">
                             <label>Staff Id</label>
-                            <input type="text" placeholder="Enter your Id" required>
+                            <input type="text" name="id" placeholder="Enter your Id" required>
                         </div>
                          
                         <div class="input-field">
                             <label>Department</label>
-                            <select required>
+                            <select name="department" required>
                                 <option disabled selected>Select Department</option>
                                 <option>Computer Science</option>
                                 <option>Physics</option>
@@ -204,7 +204,7 @@ form button i{
                          
                         <div class="input-field">
                             <label>Leave type</label>
-                            <select required>
+                            <select name="Ltype" required>
                                 <option disabled selected>--Select--</option>
                                 <option>OD</option>
                                 <option>CL</option>
@@ -214,34 +214,34 @@ form button i{
 
                         <div class="input-field">
                             <label>From date</label>
-                            <input type="date" placeholder="Enter from date" required>
+                            <input type="date" name="start" placeholder="Enter from date" required>
                         </div>
 
                         <div class="input-field">
                             <label>To date</label>
-                            <input type="date" placeholder="Enter to date" required>
+                            <input type="date" name="end" placeholder="Enter to date" required>
                         </div>
                         
                         <div class="input-field">
                             <label>No of Days</label>
-                            <input type="number" placeholder="Enter mobile number" required>
+                            <input type="number" name="days" placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="input-field">
                             <label>Reason</label>
-                            <input type="text" placeholder="Enter your reason" required>
+                            <input type="text" name="reason" placeholder="Enter your reason" required>
                         </div>
 
                         <div class="input-field">
                             <label>Upload</label>
-                            <input type="file" placeholder="Enter your reason" required  >
+                            <input type="file" placeholder="Enter your reason"   >
                         </div>
                         
                     </div>
                 </div>
 
                                    
-                    <button class="submitBtn">
+                    <button type="submit" class="submitBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
                     </button>
