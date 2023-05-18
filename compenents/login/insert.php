@@ -11,6 +11,9 @@ if (isset($_POST['submit'])) {
         echo "<h3>" . $rows["id"];
         echo "--" . $rows["username"];
         echo "--" . $rows["password"] . "</h3>";
+        // ($rows = mysqli_fetch_assoc($sel));
+        $_SESSION['username'] = "1";
+        header("location:..\Staff\index.php");
     } else {
         $_SESSION['alert'] = "invalid password or username";
         header("location:home.php");
