@@ -144,6 +144,9 @@ form button:hover{
 form button i{
     margin: 0 6px;
 }
+.success{
+    color: green;
+}
 
 
  @media (max-width: 750px) {
@@ -172,10 +175,10 @@ form button i{
 <?php include 'header.php'?>
 <div></div>
     <div class="main-content container">
-        
+    
         <header>Leave Form</header>
 
-        <form action="insert.php" method="POST" >
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Leave Details</span>
@@ -214,17 +217,17 @@ form button i{
 
                         <div class="input-field">
                             <label>From date</label>
-                            <input type="date" name="start" placeholder="Enter from date" required>
+                            <input type="date" name="start" placeholder="from" required>
                         </div>
 
                         <div class="input-field">
                             <label>To date</label>
-                            <input type="date" name="end" placeholder="Enter to date" required>
+                            <input type="date" name="end" placeholder="to" required>
                         </div>
                         
                         <div class="input-field">
                             <label>No of Days</label>
-                            <input type="number" name="days" placeholder="Enter mobile number" required>
+                            <input type="number" name="days" placeholder="Enter number of days" required>
                         </div>
 
                         <div class="input-field">
@@ -232,16 +235,15 @@ form button i{
                             <input type="text" name="reason" placeholder="Enter your reason" required>
                         </div>
 
-                        <div class="input-field">
+                          <div class="input-field">
                             <label>Upload</label>
-                            <input type="file" placeholder="Enter your reason"   >
+                            <input type="file" name="file" placeholder="Enter your reason"   >
                         </div>
-                        
                     </div>
                 </div>
 
                                    
-                    <button type="submit" class="submitBtn">
+                    <button type="submit" name="submit" class="submitBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
                     </button>
@@ -250,6 +252,60 @@ form button i{
 
             
         </form>
+        <h1 class="success">
+        <?php
+    // Check if the form is submitted
+    if (isset($_POST['submit'])) {
+        // Establish a connection to the database
+        $conn = new mysqli("localhost", "root", "", "demo");
+
+        // Check the connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Create the leave_applications table if it doesn't exist
+       
+       
+
+        // Get form inputs
+        $name = $_POST['name'];
+    $id = $_POST['id'];
+    $department = $_POST['department'];
+    $leaveType = $_POST['Ltype'];
+    $startDate = $_POST['start'];
+    $endDate = $_POST['end'];
+    $numDays = $_POST['days'];
+    $reason = $_POST['reason'];
+    $hod = 3;
+    $aqict = 3;
+    $principal = 3;
+
+        $target_directory = __DIR__ . "\uploads";
+        $file_name = $_FILES['file']['name'];
+        $file_path = $target_directory . $file_name;
+
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
+            // Insert form data into the database
+            $sql = "INSERT INTO faculty (Name, id, LType, start, end, days, reason, file)
+                    VALUES ('$name', '$id', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "Leave application submitted successfully.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Error uploading file.";
+        }
+
+        
+        $conn->close();
+    }
+    ?>
+        </h1>
+       
+      
     </div>
 
     

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<?php include 'Sidebar.php';?>
     <div class="container" style="margin-left: auto">
 
 
