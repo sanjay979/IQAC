@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +29,23 @@
             <li><a href="index.php"  class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
             <li><a href="profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
             <li><a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
-            <li><a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>">><span class="las la-receipt"></span> <span>Pending</span></a></li>
+            <li><a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
-            <li><a href=""><span class="las la-"></span> <span>Logout</span></a></li>
+            <li>
+                        <form action="logout.php" method="post">
+                            <button type="submit" name="logout" class="logout-btn">
+                                <span class="las la-power-off"></span>
+                                <span>Logout</span>
+                            </button>
+                        </form>
+                    </li>
         </ul>
         </div> 
     </div>
        
 
-   
-    
-</body>
-</html>
+
+
+    </body>
+
+    </html>
