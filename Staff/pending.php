@@ -4,23 +4,19 @@
 <head>
     <title>Faculty Details</title>
     <link rel="stylesheet" href="pending.css">
-
+    <link rel="stylesheet" type="text/css" href="../compenents/sidebar/sidebar.css">
 </head>
 
-<body>
-<?php include 'Sidebar.php';?>
+<body><?php include "../compenents/sidebar/Sidebar.php";?>
     <div class="container" style="margin-left: auto">
-
+    
+<?php include "../compenents/sidebar/header.php";?>
 
         <?php
         // Connect to the database
         //echo' container begins';
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "demo";
-
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+       include '../database/Databasedemo.php';
+       
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());

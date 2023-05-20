@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("database_connect.php");
+include("./database/database_connect.php");
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
         echo "--" . $rows["password"] . "</h3>";
         // ($rows = mysqli_fetch_assoc($sel));
         $_SESSION['username'] = "1";
-        header("location:..\Staff\index.php");
+     //   header("location:..\Staff\index.php");
     } else {
         $_SESSION['alert'] = "invalid password or username";
         header("location:home.php");
