@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -27,77 +28,75 @@
         }
 
         
-        $form_fields = [
-            'Name' => ['type' => 'text', 'label' => 'Name', 'required' => true],      // the coulumn name in the table in the single quotes firstly
-            'id' => ['type' => 'varchar', 'label' => 'ID', 'required' => true],
-            'LType' => ['type' => 'text', 'label' => 'Leave-Type', 'required' => true],
-            'days' => ['type' => 'int', 'label' => 'No of Days', 'required' => true],
-            'start' => ['type' => 'date', 'label' => 'From', 'required' => true],
-            'end' => ['type' => 'date', 'label' => 'To', 'required' => true],
-            'reason' => ['type' => 'text', 'label' => 'Reason', 'required' => false],
-
-        ];
-
+    
 
         // Fetch the data from the database
-        $id = "1234567";
-        $sql = "SELECT * FROM faculty WHERE hod=false or hod=3";
+        
+        $id=$_SESSION['s_id'];
+        $sql="SELECT department FROM faculty_details where s_id='$id'";
+        $result = $conn->query($sql);
+
+            
+                $row = $result->fetch_assoc();
+                $value = $row['department'];
+                echo  $value;
+            
+        
+        $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
         $result = mysqli_query($conn, $sql);
         //$row = mysqli_fetch_assoc($result);
 
         // Display the form data in non-editable format
-        while (true) {
-            $row = mysqli_fetch_assoc($result);
-            if ($row != null) {
-                echo '<div class="form-container';
-
-                //to give different border color for od,cl
-                if (strcasecmp($row['LType'], 'OD') == 0) {
-                    echo ' od-border"> <div class="odForm-head">';
-                    echo '<h2 class="form-heading">' . strtoupper($row['LType']) . '</h2>';
-                    //for dif color  style="color:#006400"
-                } elseif (strcasecmp($row['LType'], 'CL') == 0) {
-                    echo ' cl-border"> <div class="clForm-head">';
-                    echo '<h2 class="form-heading" >' . strtoupper($row['LType']) . '</h2>';
-                    //for dif color  style="color:#800080"
+        if (isset($_POST['reject'])) {
+            $itemID = $_POST['itemID'];
+    
+            // Perform the SQL update query to approve the item
+            $updateQuery = "UPDATE faculty1 SET hod=0 WHERE application_id = '$itemID'";
+            mysqli_query($conn, $updateQuery);
+        }        
+        if (isset($_POST['approve'])) {
+            $itemID = $_POST['itemID'];
+    
+            // Perform the SQL update query to approve the item
+            $updateQuery = "UPDATE faculty1 SET hod=1 WHERE application_id = '$itemID'";
+            mysqli_query($conn, $updateQuery);
+        }        echo '<div class="form-container">';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $itemID = $row['application_id'];
+                    $sID = $row['id'];
+                    $lType = $row['LType'];
+                    $start = $row['start'];
+                    $end = $row['end'];
+                    $ndays = $row['ndays'];
+                    $reason = $row['reason'];
+                    
+                    echo '<div class="odForm-head">';
+                    echo '<h2 class="value">' . $lType . '</h2>';
+                    echo '</div>';
+                    echo '<div class="card" >';
+                    echo '<div class="card-content">';
+                    echo '<span class="label">Staff ID:</span>';
+                    echo '<span class="value">' . $sID . '</span><br>';
+                    echo '<span class="label">Leave Type:</span>';
+                    echo '<span class="value">' . $lType . '</span><br>';
+                    echo '<span class="label">Start Date:</span>';
+                    echo '<span class="value">' . $start . '</span><br>';
+                    echo '<span class="label">End Date:</span>';
+                    echo '<span class="value">' . $end . '</span><br>';
+                    echo '<span class="label">Number of Days:</span>';
+                    echo '<span class="value">' . $ndays . '</span><br>';
+                    echo '<span class="label">Reason:</span>';
+                    echo '<span class="value">' . $reason . '</span><br>';
+                    echo '</div>';
+                    echo '<form method="post">';
+                    echo '<input type="hidden" name="itemID" value="' . $itemID . '">';
+                    echo '<input type="text" name="feedback">';
+                    echo '<input type="submit" name="approve" value="Approve" class="btn-primary">';
+                    echo '<input type="submit" name="reject" value="Reject" class="btn-secondary">';
+                    echo '</form>';
+                    echo '</div>';
                 }
-                echo'</div>';
-                //heading to the form -(type of leave)
-                //echo '<h2 class="form-heading">'.strtoupper($row['LType']).'</h2>';
-
-                echo '<hr>';
-
-                //echo '<div class="form-body">';
-                echo '<div class="box-container">';
-                echo '<fieldset>';
-                //$i=1;
-                //echo '<legend>'.$row['LType'].'</legend>';
-                foreach ($form_fields as $field_name => $field_data) {
-                    $value = $row[$field_name];
-                    echo '<label>' . $field_data['label'] . '</label>';
-                    echo '<span class="sp">' . $value . '<br></span>';
-                    //if($i%2==0) echo '<br>';
-                    //$i++;
-                    //echo'<label></label><span></span>';
-                }
-
-                echo '</fieldset>';
-
-                echo '<div class="button-container">';
-                echo '<label>Remarks</label>';
-                echo '<textarea row=3 column=10 style="resize:none; color:#333333" ></textarea>';
-                
-                echo '<div class="btn-phn">';
-                echo '<br><button class="btn-primary ">Approve</button>';
-                echo '<button class="btn-secondary ">Decline</button>';
-                echo '</div>';
-
-                echo '</div>';     //for button container 
-                echo '</div>';     // for fieldset box container
-                //echo '</div>';     // for form body
-                echo '</div>';     // for form container
-            } else break;
-        }
+           echo '</div>';
         // Close the database connection
         mysqli_close($conn);
         ?>

@@ -202,6 +202,7 @@ form button i{
                                 <option>Computer Science</option>
                                 <option>Physics</option>
                                 <option>Chemistry</option>
+                                <option>botany</option>
                             </select>
                         </div>
                          
@@ -285,8 +286,8 @@ form button i{
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             // Insert form data into the database
-            $sql = "INSERT INTO faculty1 (Name, id, LType, start, end, ndays, reason, file)
-                    VALUES ('$name', '$id', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
+            $sql = "INSERT INTO faculty1 (Name, id,department, LType, start, end, ndays, reason, file)
+                    VALUES ('$name', '$id','$department', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Leave application submitted successfully.";

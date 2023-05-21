@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,18 @@
            <div class="user-wrapper">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
             <div>
-            <h4><?php echo $_SESSION['s_id']; ?></h4>
+            <h4><?php
+        $id=$_SESSION['s_id'];
+        include '../database/Databasedemo.php';
+        $sql="SELECT name FROM faculty_details where s_id='$id'";
+        $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $value = $row['name'];
+                echo  $value;
+            }
+        ?></h4>
                 <small>Assistant professor</small>
             </div>
            </div>

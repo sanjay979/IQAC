@@ -36,7 +36,7 @@
 
 
         // Fetch the data from the database
-        $id = "22pca115";
+        $id = $_SESSION['s_id'];
         $sql = "SELECT Name,id,LType,ndays,start,end,reason FROM faculty1 WHERE id='" . $id . "' AND (hod=FALSE OR aqict=FALSE OR principal=FALSE OR hod=3  or 
                  aqict=3 OR  principal=3)";
 

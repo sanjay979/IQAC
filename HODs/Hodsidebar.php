@@ -1,3 +1,7 @@
+<?php
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,12 @@
             <li><a href="leaveform.php" class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
             <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>OD Required</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
-            <li><a href=""><span class="las la-"></span> <span>Logout</span></a></li>
+            <li><form action="..//..//Login/logout.php" method="post">
+                            <button type="submit" name="logout" class="logout-btn">
+                                <span class="las la-power-off"></span>
+                                <span>Logout</span>
+                            </button>
+                        </form></li>
         </ul>
         </div> 
     </div>
