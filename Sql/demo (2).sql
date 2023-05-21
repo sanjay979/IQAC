@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2023 at 09:31 AM
+-- Generation Time: May 21, 2023 at 07:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `faculty1` (
+  `application_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `id` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
@@ -46,8 +47,14 @@ CREATE TABLE `faculty1` (
 -- Dumping data for table `faculty1`
 --
 
-INSERT INTO `faculty1` (`name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`) VALUES
-('Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 3, 3, 3, '[value-12]');
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`) VALUES
+(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 3, 3, '[value-12]'),
+(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
+(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf');
 
 -- --------------------------------------------------------
 
@@ -67,8 +74,11 @@ CREATE TABLE `faculty_details` (
 --
 
 INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
+('01fbt101', 'senthilkumar', 'botany', '1965-05-08'),
+('01fbt102', 'John', 'botany', '1967-05-10'),
 ('01fcs101', 'dpj', 'computer science', '1965-02-14'),
-('01fcs110', 'ravindran', 'computer science', '1967-05-10');
+('01fcs110', 'ravindran', 'computer science', '1967-05-10'),
+('01fcs111', 'Charles', 'computer science', '1967-05-10');
 
 -- --------------------------------------------------------
 
@@ -78,16 +88,16 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 
 CREATE TABLE `hod_login` (
   `s_id` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `department` varchar(20) NOT NULL
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hod_login`
 --
 
-INSERT INTO `hod_login` (`s_id`, `password`, `department`) VALUES
-('01fcs111', '123', 'computer science');
+INSERT INTO `hod_login` (`s_id`, `password`) VALUES
+('01fbt101', '123'),
+('01fcs111', '123');
 
 -- --------------------------------------------------------
 
@@ -106,12 +116,19 @@ CREATE TABLE `staff_login` (
 --
 
 INSERT INTO `staff_login` (`s_id`, `password`, `c_password`) VALUES
+('01fbt102', '123', '123'),
 ('01fcs101', '123', '123'),
 ('01fcs110', '123', '123');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `faculty1`
+--
+ALTER TABLE `faculty1`
+  ADD PRIMARY KEY (`application_id`);
 
 --
 -- Indexes for table `faculty_details`
@@ -130,6 +147,16 @@ ALTER TABLE `hod_login`
 --
 ALTER TABLE `staff_login`
   ADD PRIMARY KEY (`s_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `faculty1`
+--
+ALTER TABLE `faculty1`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
