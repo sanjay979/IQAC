@@ -27,7 +27,7 @@
             'Name' => ['type' => 'text', 'label' => 'Name', 'required' => true],      // the coulumn name in the table in the single quotes firstly
             'id' => ['type' => 'varchar', 'label' => 'ID', 'required' => true],
             'LType' => ['type' => 'text', 'label' => 'Leave-Type', 'required' => true],
-            'days' => ['type' => 'int', 'label' => 'No of Days', 'required' => true],
+            'ndays' => ['type' => 'int', 'label' => 'No of Days', 'required' => true],
             'start' => ['type' => 'date', 'label' => 'From', 'required' => true],
             'end' => ['type' => 'date', 'label' => 'To', 'required' => true],
             'reason' => ['type' => 'text', 'label' => 'Reason', 'required' => false],
@@ -37,10 +37,10 @@
 
         // Fetch the data from the database
         $id = "22pca115";
-        $sql = "SELECT Name,id,LType,days,start,end,reason FROM faculty WHERE id='" . $id . "' AND (hod=FALSE OR aqict=FALSE OR principal=FALSE OR hod=3  or 
+        $sql = "SELECT Name,id,LType,ndays,start,end,reason FROM faculty1 WHERE id='" . $id . "' AND (hod=FALSE OR aqict=FALSE OR principal=FALSE OR hod=3  or 
                  aqict=3 OR  principal=3)";
 
-        $sql2 = "Select hod,aqict,principal from faculty where id ='" . $id . "' AND (hod=FALSE OR aqict=FALSE OR principal=FALSE OR hod=3  or 
+        $sql2 = "Select hod,aqict,principal from faculty1 where id ='" . $id . "' AND (hod=FALSE OR aqict=FALSE OR principal=FALSE OR hod=3  or 
         aqict=3 OR  principal=3)";
 
 

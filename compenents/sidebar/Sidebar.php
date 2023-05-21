@@ -1,6 +1,10 @@
 <?php
-    session_start();
-    ?>
+session_start();
+
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +36,7 @@
             <li><a href="..//..//Staff/pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
             <li>
-                        <form action="logout.php" method="post">
+                        <form action="..//..//Login/logout.php" method="post">
                             <button type="submit" name="logout" class="logout-btn">
                                 <span class="las la-power-off"></span>
                                 <span>Logout</span>

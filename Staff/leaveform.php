@@ -256,7 +256,7 @@ form button i{
     // Check if the form is submitted
     if (isset($_POST['submit'])) {
         // Establish a connection to the database
-        include("./database/Databasedemo.php");
+        include("..//database/Databasedemo.php");
         // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -285,7 +285,7 @@ form button i{
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             // Insert form data into the database
-            $sql = "INSERT INTO faculty (Name, id, LType, start, end, days, reason, file)
+            $sql = "INSERT INTO faculty1 (Name, id, LType, start, end, ndays, reason, file)
                     VALUES ('$name', '$id', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
 
             if ($conn->query($sql) === TRUE) {

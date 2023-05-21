@@ -19,7 +19,7 @@
            <div class="user-wrapper">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
             <div>
-                <h4>John</h4>
+            <h4><?php echo $_SESSION['s_id']; ?></h4>
                 <small>Assistant professor</small>
             </div>
            </div>
