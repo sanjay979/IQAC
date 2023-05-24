@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../compenents/sidebar/sidebar.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
    <title>Responsive Regisration Form </title>
@@ -171,8 +171,8 @@ form button i{
 </head>
 
 <body>
-<?php include 'Sidebar.php';?>
-<?php include 'header.php'?>
+<?php include "../compenents/sidebar/Sidebar.php";?>
+<?php include "../compenents/sidebar/header.php";?>
 <div></div>
     <div class="main-content container">
     
@@ -202,6 +202,7 @@ form button i{
                                 <option>Computer Science</option>
                                 <option>Physics</option>
                                 <option>Chemistry</option>
+                                <option>botany</option>
                             </select>
                         </div>
                          
@@ -222,14 +223,13 @@ form button i{
 
                         <div class="input-field">
                             <label>To date</label>
-                            <input type="date" name="end" placeholder="to" required>
+                            <input type="date" name="end"  placeholder="to" required>
                         </div>
                         
                         <div class="input-field">
                             <label>No of Days</label>
                             <input type="number" name="days" placeholder="Enter number of days" required>
                         </div>
-
                         <div class="input-field">
                             <label>Reason</label>
                             <input type="text" name="reason" placeholder="Enter your reason" required>
@@ -257,8 +257,7 @@ form button i{
     // Check if the form is submitted
     if (isset($_POST['submit'])) {
         // Establish a connection to the database
-        $conn = new mysqli("localhost", "root", "", "demo");
-
+        include("..//database/Databasedemo.php");
         // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -287,8 +286,8 @@ form button i{
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
             // Insert form data into the database
-            $sql = "INSERT INTO faculty (Name, id, LType, start, end, days, reason, file)
-                    VALUES ('$name', '$id', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
+            $sql = "INSERT INTO faculty1 (Name, id,department, LType, start, end, ndays, reason, file)
+                    VALUES ('$name', '$id','$department', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Leave application submitted successfully.";

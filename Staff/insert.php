@@ -1,12 +1,7 @@
 <?php
-// Database connection credentials
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'demo';
 
 // Connect to the database
-$conn = mysqli_connect($host, $username, $password, $database);
+include "./database/Databasedemo.php";
 
 // Check connection
 if (!$conn) {
