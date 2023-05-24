@@ -3,15 +3,14 @@
 <body>
     <?php
     session_start();
-    if ($_SESSION['alert']) {
+    if (isset($_SESSION['alert']) && $_SESSION['alert'] !== '') {
     ?>
         <script type="text/javascript">
-            window.alert("<?php echo $_SESSION['alert']; ?>")
+            window.alert("<?php echo $_SESSION['alert']; ?>");
         </script>
     <?php
-        unset($_SESSION['alert']);
+        $_SESSION['alert'] = ''; // Reset the alert after displaying it
     }
-    $_SESSION['alert'] = "";
     ?>
 </body>
 
