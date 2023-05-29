@@ -1,15 +1,17 @@
-
+<?php
+ session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Faculty Details</title>
     <link rel="stylesheet" href="ApproveForm.css">
-    <link rel="stylesheet" type="text/css" href="Hodsidebar.css">
+    <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
 </head>
 
 <body>
-    <?php include 'Hodsidebar.php'?>
+    <?php include 'PrincipalSideBar.php'?>
    
     <div class="main-content" style="margin-left: auto"> 
     <?php include 'header.php'?>
@@ -28,22 +30,27 @@
         }
 
         
-        
+    
 
         // Fetch the data from the database
         
         $id=$_SESSION['s_id'];
+
+        /*
         $sql="SELECT department FROM faculty_details where s_id='$id'";
         $result = $conn->query($sql);
 
             
-                $row = $result->fetch_assoc();    /* the fetch_assoc() function is used to retrieve a row from a result set returned by a database query using the mysqli extension. 
-                                                    It fetches the next row from the result set as an associative array, where the column names are used as the array keys, and the row values are the corresponding array values.*/
+                $row = $result->fetch_assoc();
                 $value = $row['department'];
                 echo  $value;
             
         
         $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
+
+        */
+
+        $sql = "SELECT * FROM faculty1 WHERE principal=3";
         $result = mysqli_query($conn, $sql);
         //$row = mysqli_fetch_assoc($result);
 
@@ -52,19 +59,23 @@
             $itemID = $_POST['itemID'];
     
             // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET hod=0 WHERE application_id = '$itemID'";
+            $updateQuery = "UPDATE faculty1 SET principal=0 WHERE application_id = '$itemID'";
             mysqli_query($conn, $updateQuery);
         }        
         if (isset($_POST['approve'])) {
             $itemID = $_POST['itemID'];
     
             // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET hod=1 WHERE application_id = '$itemID'";
+            $updateQuery = "UPDATE faculty1 SET principal=1 WHERE application_id = '$itemID'";
             mysqli_query($conn, $updateQuery);
         }        echo '<div class="form-container">';
                 while ($row = mysqli_fetch_assoc($result)) {
                     $itemID = $row['application_id'];
+                    $name = $row['name'];
                     $sID = $row['id'];
+
+                    $dep = $row['department'];
+
                     $lType = $row['LType'];
                     $start = $row['start'];
                     $end = $row['end'];
@@ -76,13 +87,23 @@
                     echo '</div>';
                     echo '<div class="card" >';
                     echo '<div class="card-content">';
-                    echo '<span class="label">Staff ID:</span>';
+                    echo '<span class="label">Staff ID : </span>';
                     echo '<span class="value">' . $sID . '</span><br>';
-                    echo '<span class="label">Leave Type:</span>';
+                    
+                    //adding name
+                    echo '<span class="label">Name : </span>';
+                    echo '<span class="value">' . $name . '</span><br>';
+                    
+                    //adding department
+                    echo '<span class="label">Department : </span>';
+                    echo '<span class="value">' . $dep . '</span><br>';
+                    
+
+                    echo '<span class="label">Leave Type : </span>';
                     echo '<span class="value">' . $lType . '</span><br>';
-                    echo '<span class="label">Start Date:</span>';
+                    echo '<span class="label">Start Date : </span>';
                     echo '<span class="value">' . $start . '</span><br>';
-                    echo '<span class="label">End Date:</span>';
+                    echo '<span class="label">End Date : </span>';
                     echo '<span class="value">' . $end . '</span><br>';
                     echo '<span class="label">Number of Days:</span>';
                     echo '<span class="value">' . $ndays . '</span><br>';
