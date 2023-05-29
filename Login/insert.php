@@ -7,6 +7,9 @@ if (isset($_POST['submit'])) {
     $st = mysqli_query($con, "select * from staff_login where s_id='$username' and password='$password' ");
     $hod = mysqli_query($con, "select * from hod_login where s_id='$username' and password='$password' ");
 
+    //check if the user is principal 
+    $prin = mysqli_query($con, "select * from principal_login where s_id='$username' and password='$password' ");
+
     if ($st->num_rows == 1) {
         $rows = mysqli_fetch_assoc($st);
         echo "<h3>" . $rows["id"];
@@ -15,11 +18,21 @@ if (isset($_POST['submit'])) {
         // ($rows = mysqli_fetch_assoc($sel));
         $_SESSION['s_id'] = $username;
        header("location:..\Staff\index.php");
-    } elseif ($hod->num_rows == 1) {
+    }
+
+    elseif ($hod->num_rows == 1) {
         $_SESSION['s_id'] = $username;
         
         header("location:..\HODs\index.php");
-    }else{
+    } 
+
+    //elseif block to direct to principal page if the user is principal 
+    elseif ($prin->num_rows == 1){
+        $_SESSION['s_id'] = $username;
+
+        header("location:..\Principal\index.php");
+    }
+    else{
         $_SESSION['alert'] = "invalid password or username";
         header("location:home.php");
     }

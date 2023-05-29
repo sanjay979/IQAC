@@ -1,0 +1,205 @@
+
+
+.form-container {
+    position: relative;
+    left: 350px;
+   width: calc(100% - 350px);
+    margin: 10px;
+    
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+   /* background: linear-gradient(to bottom, #fff1eb 0%, #ace0f9 100%);
+   */
+}
+
+.odForm-head{
+    background: white;
+    align-items: center;
+    /*
+    for light grn - rgb(168, 233, 94)
+    for mdm grm -   rgb(87, 183, 92)
+    */
+    padding:5px;
+    /*border-radius: 30px; */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+ 
+}
+
+.clForm-head{
+    background: white;/*#E06469;*/
+    
+    /*border-radius: 30px; */
+    color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.od-border {
+   border: none;
+    background: #fff;
+    padding: 1rem;
+    
+}
+
+.cl-border {
+    border-color: #800080;
+    background: linear-gradient(to bottom,#fff1eb 0%, rgb(221,198,242) 100%);
+
+}
+
+
+hr {
+    border: none;
+    /*height:1px;
+    */
+    background-color: grey;
+    /* Remove default border */
+    border-top: 1px solid #CCCCCC;
+    /* Set a solid line with light gray color */
+    margin: 20px 0;
+    /* Add some margin for spacing */
+    margin-top: 10px;
+}
+
+
+fieldset {
+    border: none;
+    padding-left: 5px;
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.btn-primary,.btn-secondary {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #019a01;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 1s ease-in;
+    padding-left: 40px;
+    padding-right: 40px;
+   
+}
+
+.btn-primary:hover{
+    background-color: #68f468;
+    color: black;
+    
+}
+
+.btn-secondary {
+    background-color: #e0040b;
+    color: white;
+    border-radius: 10px;
+    transition: 1s ease-in;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.btn-secondary:hover{
+    background-color: rgb(242, 100, 100);
+    color: black;
+}
+
+.box-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-container {
+        flex: 1 0 100%;
+    }
+
+    .box-container{
+        display: block;
+    }
+    
+    .button-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-phn{
+     display: flex;
+     justify-content: center;
+     flex-direction: row;   
+     
+    }
+    .btn-phn button{
+        flex-grow: 10px;
+    }
+    
+}
+
+.form-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color:black;
+}
+
+textarea {
+    padding: 5px;
+    /* Add padding for spacing within the textarea */
+    font-family: Arial, sans-serif;
+    /* Set the font family */
+    font-size: 14px;
+    /* Set the font size */
+    border: 1px solid #CCCCCC;
+    /* Add a border */
+    border-radius: 5px;
+    /* Add border radius for rounded corners */
+    resize: auto;
+    /* Allow vertical resizing of the textarea */
+}
+
+textarea:focus {
+    outline: none;
+    /* Remove the default focus outline */
+    border-color: #0000FF;
+    /* Change the border color on focus */
+}
+
+.sp{
+    font-family: Arial, sans-serif;
+    /* Set the font family */
+    font-size: 14px;
+    /* Set the font size */
+    /*display: inline-block;
+    background-color: #FFFF00;*/
+    color:black;
+    font-weight: bold;
+}
+
