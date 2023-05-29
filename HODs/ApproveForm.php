@@ -28,7 +28,7 @@
         }
 
         
-    
+        
 
         // Fetch the data from the database
         
@@ -37,7 +37,8 @@
         $result = $conn->query($sql);
 
             
-                $row = $result->fetch_assoc();
+                $row = $result->fetch_assoc();    /* the fetch_assoc() function is used to retrieve a row from a result set returned by a database query using the mysqli extension. 
+                                                    It fetches the next row from the result set as an associative array, where the column names are used as the array keys, and the row values are the corresponding array values.*/
                 $value = $row['department'];
                 echo  $value;
             
