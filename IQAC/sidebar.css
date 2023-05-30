@@ -17,6 +17,10 @@
     text-decoration: none;
     font-family: 'Poppins',sans-serif;
 }
+.logout-btn{
+    border: none;
+    background: transparent;
+}
 .sidebar{
     width: 345px;
     position: fixed;

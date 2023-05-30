@@ -11,14 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
 <!--font2 -->
 <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="Hodsidebar.css">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
 </head>
 <body>
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <?php $page = substr($_SERVER['SCRIPT_NAME'],strrpos($_SERVER['SCRIPT_NAME'],"/")+1) ?>
          <div class="sidebar-head">
-            <h2><span>SJC HOD</span></h2>
+            <h2><span>IQAC</span></h2>
         </div>
         <div class="sidebar-menu">
         <ul>
@@ -28,11 +28,15 @@
             <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>OD Required</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
             <li><form action="..//..//Login/logout.php" method="post">
+                            
+                            <a class="<?= $page == 'ApproveForm.php'? 'active':'' ?>">
                             <button type="submit" name="logout" class="logout-btn">
                                 <span class="las la-power-off"></span>
                                 <span>Logout</span>
                             </button>
-                        </form></li>
+                            </a>
+                            
+             </form></li>
         </ul>
         </div> 
     </div>
