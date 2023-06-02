@@ -10,9 +10,7 @@ try {
     echo "Looks like you don't have any database/connection for this project. Please check your Database Connection and Try Again! </br>";
     exit("Error: " . $e->getMessage());
 }
-?>
 
-<?php
 include('../database/Databasedemo.php');
 
 if (isset($_GET['inid'])) {
@@ -48,7 +46,7 @@ if (isset($_GET['delete'])) {
 <html class="no-js" lang="en">
 
 <?php include 'sidebar.php'; ?>
-<?php include 'header.php' ?>
+<?php include 'header.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -63,7 +61,6 @@ if (isset($_GET['delete'])) {
         .main-content-inner {
             border-collapse: collapse;
             margin-top: 150px;
-
         }
 
         .container {
@@ -90,7 +87,8 @@ if (isset($_GET['delete'])) {
         }
 
         th {
-            background-color: #f5f5f5;
+            background-color: #007bff;
+            color: #fff;
             font-weight: bold;
             text-align: left;
         }
@@ -109,7 +107,6 @@ if (isset($_GET['delete'])) {
             color: #ff0000;
         }
 
-
         .dataTables_wrapper .dataTables_filter {
             float: none;
             text-align: right;
@@ -121,12 +118,21 @@ if (isset($_GET['delete'])) {
             margin-right: 10px;
         }
 
+        .view-btn {
+            padding: 5px 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
         @media only screen and (max-width: 600px) {
             table {
                 font-size: 12px;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -199,19 +205,19 @@ if (isset($_GET['delete'])) {
                                                         </td>
                                                         <td>
                                                             <a href="update-employee.php?id=<?php echo htmlentities($result->id); ?>" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                                            <!-- <a href="view-employee.php?id=<?php echo htmlentities($result->id); ?>" class="view-btn">View</a> -->
                                                             <?php if ($result->Status == 1) { ?>
                                                                 <a href="employees.php?inid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to inactive this employee?');" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i></a>
                                                             <?php } else { ?>
-                                                                <a href="employees.php?id=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to activate this employee?');" class="btn btn-sm btn-success"><i class="fa fa-check"></i></a>
+                                                                <a href="employees.php?id=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to active this employee?');" class="btn btn-sm btn-primary"><i class="fa fa-check"></i></a>
                                                             <?php } ?>
                                                             <a href="employees.php?delete=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to delete this employee?');" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
-                                            <?php
+                                                <?php
                                                     $cnt++;
                                                 }
-                                            }
-                                            ?>
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -226,19 +232,16 @@ if (isset($_GET['delete'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
-        $(document).ready(function() {
-            $('#dataTable3').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-    </script>
-    <script type="text/javascript">
-        $(window).on('load', function() {
-            $('#preloader').fadeOut('slow', function() {
-                $(this).remove();
+            $(document).ready(function() {
+                $('#dataTable3').DataTable();
             });
-        });
-    </script>
+
+            function editEmployee(id) {
+                window.location.href = 'edit-employee.php?id=' + id;
+            }
+        </script>
 </body>
 
 </html>
