@@ -25,7 +25,7 @@
             <li><a href="index.php" class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
             <li><a href="profile.php" class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
             <li><a href="employees.php" class="<?= $page == 'employees.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Staff Section</span></a></li>
-            <li><a href="leaveform.php" class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
+            <li><a href="StaffLogin.php" class="<?= $page == 'StaffLogin.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>add staff</span> </a></li>
             <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>OD Required</span></a></li>
             
             <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>

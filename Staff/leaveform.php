@@ -254,20 +254,12 @@ form button i{
         </form>
         <h1 class="success">
         <?php
-    // Check if the form is submitted
     if (isset($_POST['submit'])) {
-        // Establish a connection to the database
         include("..//database/Databasedemo.php");
-        // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Create the leave_applications table if it doesn't exist
-       
-       
-
-        // Get form inputs
         $name = $_POST['name'];
     $id = $_POST['id'];
     $department = $_POST['department'];

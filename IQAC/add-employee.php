@@ -70,7 +70,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin Panel - Employee Leave</title>
+    <title>Add Staff</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="../assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -302,11 +302,11 @@ form button:hover{
                             <?php } else if (isset($msg)) { ?>
                             <div class="alert alert-success alert-dismissible fade show">
                             <strong>Info:</strong> <?php echo htmlentities($msg); ?>
-                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                           </button>
-                           </div>
-                           <?php } ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <?php } ?>
     
                            <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     
@@ -319,8 +319,13 @@ form button:hover{
     
                            <script src="../assets/js/plugins.js"></script>
                            <script src="../assets/js/scripts.js"></script>
-                            
+                           
                             <div class="container">
+                            
+                                <?php include 'sidebar.php';?>
+                                
+                                <?php include 'header.php'?>
+
                             <header>ADD EMPLOYEE</header>
                         
                             <ul class="breadcrumbs pull-left"> 
