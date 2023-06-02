@@ -1,18 +1,15 @@
-<?php 
-    define('DB_HOST','localhost');
-    define('DB_USER','root');
-    define('DB_PASS','');
-    define('DB_NAME','demo');
-    
-    try
-    {
-        $dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-    }
-    catch (PDOException $e)
-    {
-        echo "Looks like you don't have any database/connection for this project. Please check your Database Connection and Try Again! </br>";
-        exit("Error: " . $e->getMessage());
-    }
+<?php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'demo');
+
+try {
+    $dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+} catch (PDOException $e) {
+    echo "Looks like you don't have any database/connection for this project. Please check your Database Connection and Try Again! </br>";
+    exit("Error: " . $e->getMessage());
+}
 ?>
 
 <?php
@@ -50,8 +47,8 @@ if (isset($_GET['delete'])) {
 <!doctype html>
 <html class="no-js" lang="en">
 
-<?php include 'sidebar.php';?>
-<?php include 'header.php'?>
+<?php include 'sidebar.php'; ?>
+<?php include 'header.php' ?>
 
 <head>
     <meta charset="UTF-8">
@@ -63,9 +60,10 @@ if (isset($_GET['delete'])) {
             background-color: #f4f4f4;
         }
 
-        .loader {
+        .main-content-inner {
             border-collapse: collapse;
-            margin-top: 250px;
+            margin-top: 150px;
+
         }
 
         .container {
@@ -111,6 +109,18 @@ if (isset($_GET['delete'])) {
             color: #ff0000;
         }
 
+
+        .dataTables_wrapper .dataTables_filter {
+            float: none;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .dataTables_wrapper .dataTables_length {
+            float: left;
+            margin-right: 10px;
+        }
+
         @media only screen and (max-width: 600px) {
             table {
                 font-size: 12px;
@@ -150,7 +160,7 @@ if (isset($_GET['delete'])) {
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                                <th>Employee ID</th>
+                                                <th>Staff ID</th>
                                                 <th>Department</th>
                                                 <th>Joined On</th>
                                                 <th>Status</th>
@@ -188,7 +198,7 @@ if (isset($_GET['delete'])) {
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <a href="update-employee.php?empid=<?php echo htmlentities($result->id); ?>" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                                            <a href="update-employee.php?id=<?php echo htmlentities($result->id); ?>" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
                                                             <?php if ($result->Status == 1) { ?>
                                                                 <a href="employees.php?inid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to inactive this employee?');" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i></a>
                                                             <?php } else { ?>
