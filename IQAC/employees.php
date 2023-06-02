@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
@@ -214,7 +215,7 @@ if (isset($_GET['delete'])) {
                                                             <a href="employees.php?delete=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Are you sure you want to delete this employee?');" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
-                                                <?php
+                                            <?php
                                                     $cnt++;
                                                 }
                                             } ?>
@@ -234,14 +235,14 @@ if (isset($_GET['delete'])) {
     <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
-            $(document).ready(function() {
-                $('#dataTable3').DataTable();
-            });
+        $(document).ready(function() {
+            $('#dataTable3').DataTable();
+        });
 
-            function editEmployee(id) {
-                window.location.href = 'edit-employee.php?id=' + id;
-            }
-        </script>
+        function editEmployee(id) {
+            window.location.href = 'edit-employee.php?id=' + id;
+        }
+    </script>
 </body>
 
 </html>
