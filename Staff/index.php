@@ -1,4 +1,8 @@
+<?php
 
+session_start();
+if ($_SESSION['s_id']) {
+?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -15,8 +19,8 @@
     </head>
 
     <body>
-      
-    <?php include "../compenents/sidebar/Sidebar.php";?>
+
+        <?php include "../compenents/sidebar/Sidebar.php"; ?>
         <div class="main-content">
             <header>
                 <h2>
@@ -30,18 +34,18 @@
                 <div class="user-wrapper">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
                     <div>
-                        <h4>  <?php
-        $id=$_SESSION['s_id'];
-        include '../database/Databasedemo.php';
-        $sql="SELECT name FROM faculty_details where s_id='$id'";
-        $result = $conn->query($sql);
+                        <h4> <?php
+                                $id = $_SESSION['s_id'];
+                                include '../database/Databasedemo.php';
+                                $sql = "SELECT name FROM faculty_details where s_id='$id'";
+                                $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $value = $row['name'];
-                echo  $value;
-            }
-        ?></h4>
+                                if ($result->num_rows > 0) {
+                                    $row = $result->fetch_assoc();
+                                    $value = $row['name'];
+                                    echo  $value;
+                                }
+                                ?></h4>
                         <small>Assistant professor</small>
                     </div>
                 </div>
@@ -81,5 +85,8 @@
     </body>
 
     </html>
-
-
+<?php
+} else {
+    header("location:../Login/home.php");
+}
+?>
