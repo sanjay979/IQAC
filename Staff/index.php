@@ -16,7 +16,7 @@
 
     <body>
       
-    <?php include "../compenents/sidebar/Sidebar.php";?>
+    <?php include "Sidebar.php";?>
         <div class="main-content">
             <header>
                 <h2>
