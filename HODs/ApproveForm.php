@@ -15,7 +15,7 @@ if ($_SESSION['s_id']) {
     <body>
         <?php include 'Hodsidebar.php' ?>
 
-        <div class="main-content" style="margin-left: auto">
+        <div class="main-content">
             <?php include 'header.php' ?>
             <main>
                 <?php
