@@ -13,7 +13,7 @@
 <body>
     <?php include 'PrincipalSideBar.php'?>
    
-    <div class="main-content" style="margin-left: auto"> 
+    <div class="main-content"> 
     <?php include 'header.php'?>
     <main>
     <?php

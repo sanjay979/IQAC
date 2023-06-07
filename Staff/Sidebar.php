@@ -29,10 +29,10 @@ session_start();
         </div>
         <div class="sidebar-menu">
         <ul>
-            <li><a href="..//..//Staff/index.php"  class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
-            <li><a href="..//..//Staff/profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
-            <li><a href="..//..//Staff/leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
-            <li><a href="..//..//Staff/pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
+            <li><a href="index.php"  class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
+            <li><a href="profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
+            <li><a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
+            <li><a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
             <li><a href=""><span class="las la-list"></span> <span>History</span></a></li>
             <li>
                         <form action="..//..//Login/logout.php" method="post">

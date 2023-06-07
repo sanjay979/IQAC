@@ -114,7 +114,7 @@ form button{
                             <label>Staff Id</label>
                             <input type="text" name="id" placeholder="Enter your Id" required>
                         </div>
-                         
+
                         <div class="input-field">
                             <label>Department</label>
                             <select name="department" required>
@@ -125,7 +125,7 @@ form button{
                                 <option>botany</option>
                             </select>
                         </div>
-                         
+
                         <div class="input-field">
                             <label>Leave type</label>
                             <select name="Ltype" required>
@@ -145,7 +145,7 @@ form button{
                             <label>To date</label>
                             <input type="date" name="end"  placeholder="to" required>
                         </div>
-                        
+
                         <div class="input-field">
                             <label>No of Days</label>
                             <input type="number" name="days" placeholder="Enter number of days" required>
@@ -157,7 +157,7 @@ form button{
 
                           <div class="input-field">
                             <label>Upload</label>
-                            <input type="file" name="file" placeholder="Enter your reason"   >
+                            <input type="file" name="file" accept="application/pdf" >
                         </div>
                     </div>
                 </div>
@@ -167,13 +167,13 @@ form button{
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
                     </button>
-                
+
             </div>
 
-            
+
         </form>
     </main>
-     
+
         <h1 class="success">
         <?php
     if (isset($_POST['submit'])) {
@@ -194,7 +194,7 @@ form button{
     $aqict = 3;
     $principal = 3;
 
-        $target_directory = __DIR__ . "..//assets";
+        $target_directory ="../assets" . "/assets";
         $file_name = $_FILES['file']['name'];
         $file_path = $target_directory . $file_name;
 
@@ -212,16 +212,16 @@ form button{
             echo "Error uploading file.";
         }
 
-        
+
         $conn->close();
     }
     ?>
         </h1>
-       
-      
+
+
     </div>
 
-    
+
 
 </body>
 </html>
