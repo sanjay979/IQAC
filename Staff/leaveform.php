@@ -199,8 +199,8 @@ if ($_SESSION['s_id']) {
     </head>
 
     <body>
-        <?php include "../compenents/sidebar/Sidebar.php"; ?>
-        <?php include "../compenents/sidebar/header.php"; ?>
+        <?php include "Sidebar.php"; ?>
+        <?php include "header.php"; ?>
         <div></div>
         <div class="main-content container">
 

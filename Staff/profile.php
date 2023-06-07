@@ -20,9 +20,9 @@ if ($_SESSION['s_id']) {
 
     <body>
 
-        <?php include "../compenents/sidebar/Sidebar.php"; ?>
+        <?php include "Sidebar.php"; ?>
         <div class="main-content">
-            <?php include "../compenents/sidebar/header.php"; ?>
+            <?php include "header.php"; ?>
             <main>
                 <div>
                     <ul>

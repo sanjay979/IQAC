@@ -12,10 +12,10 @@ if ($_SESSION['s_id']) {
         <link rel="stylesheet" type="text/css" href="../compenents/sidebar/sidebar.css">
     </head>
 
-    <body><?php include "../compenents/sidebar/Sidebar.php"; ?>
+    <body><?php include "Sidebar.php"; ?>
         <div class="container" style="margin-left: auto">
 
-            <?php include "../compenents/sidebar/header.php"; ?>
+            <?php include "header.php"; ?>
 
             <?php
             // Connect to the database
