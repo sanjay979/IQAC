@@ -1,42 +1,44 @@
 <?php
- session_start();
+
+session_start();
+if ($_SESSION['s_id']) {
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <title>Faculty Details</title>
-    <link rel="stylesheet" href="ApproveForm.css">
-    <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
-</head>
+    <head>
+        <title>Faculty Details</title>
+        <link rel="stylesheet" href="ApproveForm.css">
+        <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
+    </head>
 
-<body>
-    <?php include 'PrincipalSideBar.php'?>
-   
-    <div class="main-content" style="margin-left: auto"> 
-    <?php include 'header.php'?>
-    <main>
-    <?php
-        // Connect to the database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "demo";
+    <body>
+        <?php include 'PrincipalSideBar.php' ?>
 
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        <div class="main-content" style="margin-left: auto">
+            <?php include 'header.php' ?>
+            <main>
+                <?php
+                // Connect to the database
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "demo";
 
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        
-    
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
 
-        // Fetch the data from the database
-        
-        $id=$_SESSION['s_id'];
 
-        /*
+
+
+                // Fetch the data from the database
+
+                $id = $_SESSION['s_id'];
+
+                /*
         $sql="SELECT department FROM faculty_details where s_id='$id'";
         $result = $conn->query($sql);
 
@@ -50,25 +52,26 @@
 
         */
 
-        $sql = "SELECT * FROM faculty1 WHERE principal=3";
-        $result = mysqli_query($conn, $sql);
-        //$row = mysqli_fetch_assoc($result);
+                $sql = "SELECT * FROM faculty1 WHERE principal=3";
+                $result = mysqli_query($conn, $sql);
+                //$row = mysqli_fetch_assoc($result);
 
-        // Display the form data in non-editable format
-        if (isset($_POST['reject'])) {
-            $itemID = $_POST['itemID'];
-    
-            // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET principal=0 WHERE application_id = '$itemID'";
-            mysqli_query($conn, $updateQuery);
-        }        
-        if (isset($_POST['approve'])) {
-            $itemID = $_POST['itemID'];
-    
-            // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET principal=1 WHERE application_id = '$itemID'";
-            mysqli_query($conn, $updateQuery);
-        }        echo '<div class="form-container">';
+                // Display the form data in non-editable format
+                if (isset($_POST['reject'])) {
+                    $itemID = $_POST['itemID'];
+
+                    // Perform the SQL update query to approve the item
+                    $updateQuery = "UPDATE faculty1 SET principal=0 WHERE application_id = '$itemID'";
+                    mysqli_query($conn, $updateQuery);
+                }
+                if (isset($_POST['approve'])) {
+                    $itemID = $_POST['itemID'];
+
+                    // Perform the SQL update query to approve the item
+                    $updateQuery = "UPDATE faculty1 SET principal=1 WHERE application_id = '$itemID'";
+                    mysqli_query($conn, $updateQuery);
+                }
+                echo '<div class="form-container">';
                 while ($row = mysqli_fetch_assoc($result)) {
                     $itemID = $row['application_id'];
                     $name = $row['name'];
@@ -81,7 +84,7 @@
                     $end = $row['end'];
                     $ndays = $row['ndays'];
                     $reason = $row['reason'];
-                    
+
                     echo '<div class="odForm-head">';
                     echo '<h2 class="value">' . $lType . '</h2>';
                     echo '</div>';
@@ -89,15 +92,15 @@
                     echo '<div class="card-content">';
                     echo '<span class="label">Staff ID : </span>';
                     echo '<span class="value">' . $sID . '</span><br>';
-                    
+
                     //adding name
                     echo '<span class="label">Name : </span>';
                     echo '<span class="value">' . $name . '</span><br>';
-                    
+
                     //adding department
                     echo '<span class="label">Department : </span>';
                     echo '<span class="value">' . $dep . '</span><br>';
-                    
+
 
                     echo '<span class="label">Leave Type : </span>';
                     echo '<span class="value">' . $lType . '</span><br>';
@@ -118,14 +121,19 @@
                     echo '</form>';
                     echo '</div>';
                 }
-           echo '</div>';
-        // Close the database connection
-        mysqli_close($conn);
-        ?>
-    </main>
-        
-    </div>
+                echo '</div>';
+                // Close the database connection
+                mysqli_close($conn);
+                ?>
+            </main>
 
-</body>
+        </div>
 
-</html>
+    </body>
+
+    </html>
+<?php
+} else {
+    header("location:../Login/home.php");
+}
+?>
