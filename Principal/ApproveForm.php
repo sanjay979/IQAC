@@ -18,13 +18,7 @@
     <main>
     <?php
         // Connect to the database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "demo";
-
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+        include("..//database/Databasedemo.php");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }

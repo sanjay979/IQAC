@@ -9,13 +9,13 @@ if ($_SESSION['s_id']) {
     <head>
         <title>Faculty Details</title>
         <link rel="stylesheet" href="pending.css">
-        <link rel="stylesheet" type="text/css" href="../compenents/sidebar/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
-    <body><?php include "../compenents/sidebar/Sidebar.php"; ?>
+    <body><?php include "Sidebar.php"; ?>
         <div class="container" style="margin-left: auto">
 
-            <?php include "../compenents/sidebar/header.php"; ?>
+            <?php include "header.php"; ?>
 
             <?php
             // Connect to the database
