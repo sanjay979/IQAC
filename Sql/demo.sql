@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 06:59 PM
+-- Generation Time: Jun 10, 2023 at 09:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,8 +38,11 @@ CREATE TABLE `faculty1` (
   `ndays` int(30) NOT NULL,
   `reason` varchar(50) NOT NULL,
   `hod` int(10) NOT NULL DEFAULT 3,
+  `H_feedback` varchar(100) DEFAULT NULL,
   `aqict` int(10) NOT NULL DEFAULT 3,
+  `IC_feedback` varchar(100) DEFAULT NULL,
   `principal` int(10) NOT NULL DEFAULT 3,
+  `Pn_feedback` varchar(100) DEFAULT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -47,14 +50,17 @@ CREATE TABLE `faculty1` (
 -- Dumping data for table `faculty1`
 --
 
-INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`) VALUES
-(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 3, 3, '[value-12]'),
-(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
-(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf');
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_feedback`, `principal`, `Pn_feedback`, `file`) VALUES
+(1, 'Sanjay Rohith A', '22pca115', 'botany', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 'sanjay cl accept', 1, 'hii sanjay this is iqac cl has been declined ', 1, 'hiii sanjay this is principal this is rejected', '[value-12]'),
+(2, 'dpj', '01fcs101', 'botany', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 'no. 2 dpj ml', 1, NULL, 1, 'hello dpj', 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 1, 'hii john ur reason is free l type - od rejected', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 1, 'john cl approve', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(5, 'dpj', '01fcs101', 'botany', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 'venthu thanintha thu kadu', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(6, 'Sanjay Rohith A', '01fcs101', 'botany', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 'smart applied od app id:6', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
+(7, 'ravi', '01fcs110', 'botany', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 1, 'hello ravi u requested od and ur app id : 7', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf'),
+(8, 'Shankar', '22pca127', 'Physics', 'CL', '2023-06-08', '2023-06-09', 3, 'boring', 1, NULL, 1, 'iqac test for shankar', 1, 'Hii shankar your request has been approved by pricipal', '../assets/assetsGetting started with OneDrive.pdf'),
+(11, 'popoye', '22pca127', 'botany', 'OD', '2023-06-02', '2023-06-05', 3, 'going to canteen', 1, 'hello popoye avoid takind leave too often', 1, 'approved by iqac', 0, 'sorry rejected ', '../assets/assetsGetting started with OneDrive.pdf'),
+(17, 'John', '01fbt102', 'botany', 'OD', '2023-06-12', '2023-06-13', 2, 'Office work', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf');
 
 -- --------------------------------------------------------
 
@@ -74,7 +80,7 @@ CREATE TABLE `faculty_details` (
 --
 
 INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
-('01fbt101', 'senthilkumar', 'botany', '1965-05-08'),
+('01fbt101', 'SenthilKumar', 'botany', '1965-05-08'),
 ('01fbt102', 'John', 'botany', '1967-05-10'),
 ('01fcs101', 'dpj', 'computer science', '1965-02-14'),
 ('01fcs110', 'ravindran', 'computer science', '1967-05-10'),
@@ -265,7 +271,7 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `faculty1`
 --
 ALTER TABLE `faculty1`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbldepartments`
