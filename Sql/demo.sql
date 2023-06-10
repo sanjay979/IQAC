@@ -1,11 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jun 10, 2023 at 09:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
+=======
+-- Generation Time: Jun 11, 2023 at 09:36 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
+>>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,14 +48,21 @@ CREATE TABLE `faculty1` (
   `aqict` int(10) NOT NULL DEFAULT 3,
   `IC_feedback` varchar(100) DEFAULT NULL,
   `principal` int(10) NOT NULL DEFAULT 3,
+<<<<<<< HEAD
   `Pn_feedback` varchar(100) DEFAULT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+=======
+  `file` varchar(255) NOT NULL,
+  `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+>>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
 
 --
 -- Dumping data for table `faculty1`
 --
 
+<<<<<<< HEAD
 INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_feedback`, `principal`, `Pn_feedback`, `file`) VALUES
 (1, 'Sanjay Rohith A', '22pca115', 'botany', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 'sanjay cl accept', 1, 'hii sanjay this is iqac cl has been declined ', 1, 'hiii sanjay this is principal this is rejected', '[value-12]'),
 (2, 'dpj', '01fcs101', 'botany', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 'no. 2 dpj ml', 1, NULL, 1, 'hello dpj', 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
@@ -61,6 +74,21 @@ INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `
 (8, 'Shankar', '22pca127', 'Physics', 'CL', '2023-06-08', '2023-06-09', 3, 'boring', 1, NULL, 1, 'iqac test for shankar', 1, 'Hii shankar your request has been approved by pricipal', '../assets/assetsGetting started with OneDrive.pdf'),
 (11, 'popoye', '22pca127', 'botany', 'OD', '2023-06-02', '2023-06-05', 3, 'going to canteen', 1, 'hello popoye avoid takind leave too often', 1, 'approved by iqac', 0, 'sorry rejected ', '../assets/assetsGetting started with OneDrive.pdf'),
 (17, 'John', '01fbt102', 'botany', 'OD', '2023-06-12', '2023-06-13', 2, 'Office work', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf');
+=======
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`, `RegDate`) VALUES
+(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 3, 3, '[value-12]', '2023-06-07 00:29:07'),
+(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
+(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
+(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
+(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
+(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf', '2023-06-07 00:29:07'),
+(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf', '2023-06-07 00:29:07'),
+(8, 'peter', '22pca132', 'Chemistry', 'OD', '2023-06-06', '2023-06-08', 2, 'personal', 3, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsEVS.pdf', '2023-06-07 00:29:07'),
+(10, 'kitta', 'cs112', 'Computer Science', 'CL', '2023-06-08', '2023-06-09', 1, 'function', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadspython acc.pdf', '2023-06-07 02:29:37'),
+(11, 'ananth', 'cs115', 'Computer Science', 'ML', '2023-06-10', '2023-06-12', 2, 'health issue', 0, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 02:34:17'),
+(12, 'ragul', 'cs120', 'Computer Science', 'CL', '2023-06-07', '2023-06-08', 1, 'casual', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 05:19:18'),
+(13, 'rohit', 'cs130', 'Computer Science', 'ML', '2023-06-09', '2023-06-10', 2, 'Health Issue', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsFcFIoCaJ-6342.pdf', '2023-06-07 18:02:14');
+>>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
 
 -- --------------------------------------------------------
 
@@ -73,7 +101,7 @@ CREATE TABLE `faculty_details` (
   `name` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `dob` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty_details`
@@ -85,7 +113,8 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 ('01fcs101', 'dpj', 'computer science', '1965-02-14'),
 ('01fcs110', 'ravindran', 'computer science', '1967-05-10'),
 ('01fcs111', 'Charles', 'computer science', '1967-05-10'),
-('01fqc101', 'IQAC', 'chemistry', '1967-05-10');
+('01fqc101', 'IQAC', 'chemistry', '1967-05-10'),
+('asdfgh', 'kitta', 'Physics', '2023-06-25');
 
 -- --------------------------------------------------------
 
@@ -96,7 +125,7 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 CREATE TABLE `hod_login` (
   `s_id` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hod_login`
@@ -115,7 +144,7 @@ INSERT INTO `hod_login` (`s_id`, `password`) VALUES
 CREATE TABLE `iqac_login` (
   `s_id` varchar(10) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `iqac_login`
@@ -133,7 +162,7 @@ INSERT INTO `iqac_login` (`s_id`, `password`) VALUES
 CREATE TABLE `principal_login` (
   `s_id` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `principal_login`
@@ -152,7 +181,7 @@ CREATE TABLE `staff_login` (
   `s_id` varchar(11) NOT NULL,
   `password` varchar(20) NOT NULL,
   `c_password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `staff_login`
@@ -161,7 +190,8 @@ CREATE TABLE `staff_login` (
 INSERT INTO `staff_login` (`s_id`, `password`, `c_password`) VALUES
 ('01fbt102', '123', '123'),
 ('01fcs101', '123', '123'),
-('01fcs110', '123', '123');
+('01fcs110', '123', '123'),
+('asdfgh', 'sss', '');
 
 -- --------------------------------------------------------
 
@@ -175,7 +205,7 @@ CREATE TABLE `tbldepartments` (
   `DepartmentShortName` varchar(100) NOT NULL,
   `DepartmentCode` varchar(50) DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbldepartments`
@@ -214,14 +244,20 @@ CREATE TABLE `tblemployees` (
   `Phonenumber` int(10) NOT NULL,
   `Status` int(1) NOT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblemployees`
 --
 
 INSERT INTO `tblemployees` (`id`, `EmpId`, `FirstName`, `LastName`, `EmailId`, `Password`, `Gender`, `Dob`, `Department`, `Qualification`, `Address`, `City`, `Country`, `Phonenumber`, `Status`, `RegDate`) VALUES
-(1, '22pca132', 'peter', 'thamiyan', 'peter@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'MALE', '2002-07-01', 'Computer Science', 'MCA', '2-20 east street, Alambakkam', 'Trichy', 'India', 2147483647, 1, '2023-05-29 23:50:16');
+(1, '22pca132', 'peter', 'thamiyan', 'peter@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'MALE', '2002-07-01', 'Computer Science', 'MCA', '2-20 east street, Alambakkam', 'Trichy', 'India', 2147483647, 1, '2023-05-29 23:50:16'),
+(5, '22pca113', 'nnnn', 'gandhi', 'ragul@gmail.com', '698d51a19d8a121ce581499d7b701668', 'MALE', '0000-00-00', 'Commerce', 'dfg', '2-20 east street, pullambadi', 'trichy', 'India', 2147483647, 1, '2023-05-31 10:05:32'),
+(6, '22120cs', 'anantha', 'krishnan', 'ananth@gmail.com', 'd0970714757783e6cf17b26fb8e2298f', 'MALE', '1996-09-16', 'English', 'MA English', '1-19 east street, alambakkam', 'trichy', 'india', 2147483647, 1, '2023-05-31 16:23:41'),
+(7, '123', 'ragul', 'gandhi', 'ragul@gmail.com', '934b535800b1cba8f96a5d72f72f1611', 'MALE', '2023-06-01', 'Information Technology', 'MBA', 'alambakkam', 'trichy', 'India', 2147483647, 1, '2023-06-01 08:46:46'),
+(8, '123', 'ragul', 'gandhi', 'ragul@gmail.com', '202cb962ac59075b964b07152d234b70', 'MALE', '2023-06-01', 'Physics', 'asdfgh', 'alambakkam', 'trichy', 'India', 2147483647, 1, '2023-06-01 21:04:53'),
+(9, '123', 'ragul', 'gandhi', 'ragul@gmail.com', '202cb962ac59075b964b07152d234b70', 'MALE', '2023-06-01', 'Physics', 'asdfgh', 'alambakkam', 'trichy', 'India', 2147483647, 1, '2023-06-01 21:05:45'),
+(10, '123', 'raguly', 'gandhi', 'ragul@gmail.com', '9f6e6800cfae7749eb6c486619254b9c', 'MALE', '2023-06-01', 'English', 'asdfgh', 'alambakkam', 'trichy', 'India', 2147483647, 1, '2023-06-01 21:06:25');
 
 --
 -- Indexes for dumped tables
@@ -271,7 +307,11 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `faculty1`
 --
 ALTER TABLE `faculty1`
+<<<<<<< HEAD
   MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+=======
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+>>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
 
 --
 -- AUTO_INCREMENT for table `tbldepartments`
@@ -283,7 +323,7 @@ ALTER TABLE `tbldepartments`
 -- AUTO_INCREMENT for table `tblemployees`
 --
 ALTER TABLE `tblemployees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

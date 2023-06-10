@@ -1,4 +1,8 @@
+<?php
 
+session_start();
+if ($_SESSION['s_id']) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,3 +51,9 @@
     </div>
 </body>
 </html>
+
+<?php
+} else {
+    header("location:../Login/home.php");
+}
+?>

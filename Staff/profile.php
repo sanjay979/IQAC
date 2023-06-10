@@ -20,20 +20,37 @@ if ($_SESSION['s_id']) {
 
     <body>
 
-        <?php include "../compenents/sidebar/Sidebar.php"; ?>
+        <?php include "Sidebar.php"; ?>
         <div class="main-content">
-            <?php include "../compenents/sidebar/header.php"; ?>
+            <?php include "header.php"; ?>
+            <?php include("..//database/Databasedemo.php");
+            $id=$_SESSION['s_id'];
+
+        
+            $sql = "SELECT * FROM faculty_details WHERE s_id='$id'";
+            $result = mysqli_query($conn, $sql);
+            ?>
             <main>
                 <div>
                     <ul>
-                        <li class="card-single">Name<span><?php $name = 'Ravindran';
-                                                            echo $name ?></span></li>
-                        <li class="card-single">Department<span><?php $deparment = 'Computer science';
-                                                                echo $deparment ?></span></li>
-                        <li class="card-single">Staff ID<span><?php $s_id = '01fcs10';
-                                                                echo $s_id ?></span></li>
-                        <li class="card-single">Date of birth<span><?php $dob = '01/01/1976';
-                                                                    echo $dob ?></span></li>
+                        <li class="card-single">Name<span><?php 
+                if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $name = $row['name'];
+                $dep = $row['department'];
+                $dob = $row['dob'];
+                echo  $name;
+            } ?>
+            </span></li>
+                        <li class="card-single">Department<span><?php 
+               echo $dep;
+            ?></span></li>
+                        <li class="card-single">Staff ID<span><?php 
+               echo $id;
+            ?></span></li>
+                        <li class="card-single">Date of birth<span><?php 
+               echo $dob;
+            ?></span></li>
                         <li class="card-single">Experience<span><?php $exp = '32 years';
                                                                 echo $exp ?></span></li>
                     </ul>
