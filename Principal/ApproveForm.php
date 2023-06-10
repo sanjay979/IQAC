@@ -28,10 +28,8 @@
         
         $id=$_SESSION['s_id'];
 
-<<<<<<< HEAD
     
         $sql = "SELECT * FROM faculty1 WHERE hod=1 and aqict=1 and principal=3";
-=======
         /*
         $sql="SELECT department FROM faculty_details where s_id='$id'";
         $result = $conn->query($sql);
@@ -47,7 +45,7 @@
         */
 
         $sql = "SELECT * FROM faculty1 WHERE principal=3 and aqict=1";
->>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
+
         $result = mysqli_query($conn, $sql);
         //$row = mysqli_fetch_assoc($result);
 
