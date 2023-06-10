@@ -33,7 +33,13 @@ session_start();
             <li><a href="profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
             <li><a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
             <li><a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
-            <li><a href=""><span class="las la-list"></span> <span>History</span></a></li>
+            <li> <a class="dropdown-btn"><span class="fa fa-clock" ></span> &nbsp;<span>Status <i class="fa fa-caret-down"></i></span>  
+    
+</a>
+  <div class="dropdown-container">
+    <a href="rejected.php" class="<?= $page == 'rejected.php'? 'active':'' ?>">Rejected</a>
+    <a href="accepted.php" class="<?= $page == 'accepted.php'? 'active':'' ?>">Accepted</a>
+  </div></li>
             <li>
                         <form action="..//..//Login/logout.php" method="post">
                             <button type="submit" name="logout" class="logout-btn">
@@ -49,6 +55,22 @@ session_start();
 
 
 
+    <script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
     </body>
 
     </html>
