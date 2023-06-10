@@ -1,17 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Jun 10, 2023 at 09:03 PM
+-- Generation Time: Jun 10, 2023 at 10:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
-=======
--- Generation Time: Jun 11, 2023 at 09:36 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
->>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,49 +40,36 @@ CREATE TABLE `faculty1` (
   `hod` int(10) NOT NULL DEFAULT 3,
   `H_feedback` varchar(100) DEFAULT NULL,
   `aqict` int(10) NOT NULL DEFAULT 3,
-  `IC_feedback` varchar(100) DEFAULT NULL,
+  `IC_Feedback` varchar(100) DEFAULT NULL,
   `principal` int(10) NOT NULL DEFAULT 3,
-<<<<<<< HEAD
   `Pn_feedback` varchar(100) DEFAULT NULL,
-  `file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
   `file` varchar(255) NOT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
->>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `faculty1`
 --
 
-<<<<<<< HEAD
-INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_feedback`, `principal`, `Pn_feedback`, `file`) VALUES
-(1, 'Sanjay Rohith A', '22pca115', 'botany', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 'sanjay cl accept', 1, 'hii sanjay this is iqac cl has been declined ', 1, 'hiii sanjay this is principal this is rejected', '[value-12]'),
-(2, 'dpj', '01fcs101', 'botany', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 'no. 2 dpj ml', 1, NULL, 1, 'hello dpj', 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 1, 'hii john ur reason is free l type - od rejected', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 1, 'john cl approve', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(5, 'dpj', '01fcs101', 'botany', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 'venthu thanintha thu kadu', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(6, 'Sanjay Rohith A', '01fcs101', 'botany', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 'smart applied od app id:6', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
-(7, 'ravi', '01fcs110', 'botany', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 1, 'hello ravi u requested od and ur app id : 7', 1, NULL, 1, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf'),
-(8, 'Shankar', '22pca127', 'Physics', 'CL', '2023-06-08', '2023-06-09', 3, 'boring', 1, NULL, 1, 'iqac test for shankar', 1, 'Hii shankar your request has been approved by pricipal', '../assets/assetsGetting started with OneDrive.pdf'),
-(11, 'popoye', '22pca127', 'botany', 'OD', '2023-06-02', '2023-06-05', 3, 'going to canteen', 1, 'hello popoye avoid takind leave too often', 1, 'approved by iqac', 0, 'sorry rejected ', '../assets/assetsGetting started with OneDrive.pdf'),
-(17, 'John', '01fbt102', 'botany', 'OD', '2023-06-12', '2023-06-13', 2, 'Office work', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf');
-=======
-INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`, `RegDate`) VALUES
-(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 3, 3, '[value-12]', '2023-06-07 00:29:07'),
-(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
-(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
-(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
-(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
-(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf', '2023-06-07 00:29:07'),
-(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf', '2023-06-07 00:29:07'),
-(8, 'peter', '22pca132', 'Chemistry', 'OD', '2023-06-06', '2023-06-08', 2, 'personal', 3, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsEVS.pdf', '2023-06-07 00:29:07'),
-(10, 'kitta', 'cs112', 'Computer Science', 'CL', '2023-06-08', '2023-06-09', 1, 'function', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadspython acc.pdf', '2023-06-07 02:29:37'),
-(11, 'ananth', 'cs115', 'Computer Science', 'ML', '2023-06-10', '2023-06-12', 2, 'health issue', 0, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 02:34:17'),
-(12, 'ragul', 'cs120', 'Computer Science', 'CL', '2023-06-07', '2023-06-08', 1, 'casual', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 05:19:18'),
-(13, 'rohit', 'cs130', 'Computer Science', 'ML', '2023-06-09', '2023-06-10', 2, 'Health Issue', 1, 3, 3, 'C:xampphtdocs\new projectaqictStaffuploadsFcFIoCaJ-6342.pdf', '2023-06-07 18:02:14');
->>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`, `RegDate`) VALUES
+(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, NULL, 3, NULL, 3, NULL, '[value-12]', '2023-06-07 00:29:07'),
+(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
+(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf', '2023-06-07 00:29:07'),
+(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
+(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf', '2023-06-07 00:29:07'),
+(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf', '2023-06-07 00:29:07'),
+(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, NULL, 3, NULL, 3, NULL, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf', '2023-06-07 00:29:07'),
+(8, 'peter', '22pca132', 'Chemistry', 'OD', '2023-06-06', '2023-06-08', 2, 'personal', 0, NULL, 3, NULL, 3, NULL, 'C:xampphtdocs\new projectaqictStaffuploadsEVS.pdf', '2023-06-07 00:29:07'),
+(10, 'kitta', 'cs112', 'Computer Science', 'CL', '2023-06-08', '2023-06-09', 1, 'function', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocs\new projectaqictStaffuploadspython acc.pdf', '2023-06-07 02:29:37'),
+(11, 'ananth', 'cs115', 'Computer Science', 'ML', '2023-06-10', '2023-06-12', 2, 'health issue', 0, NULL, 3, NULL, 3, NULL, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 02:34:17'),
+(12, 'ragul', 'cs120', 'Computer Science', 'CL', '2023-06-07', '2023-06-08', 1, 'casual', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocs\new projectaqictStaffuploadsAdobe Scan Nov 27, 2020.pdf', '2023-06-07 05:19:18'),
+(13, 'rohit', 'cs130', 'Computer Science', 'ML', '2023-06-09', '2023-06-10', 2, 'Health Issue', 1, NULL, 3, NULL, 3, NULL, 'C:xampphtdocs\new projectaqictStaffuploadsFcFIoCaJ-6342.pdf', '2023-06-07 18:02:14'),
+(14, 'IQAC', '01fqc101', 'chemistry', '', '2023-06-12', '2023-06-14', 3, 'this is a demo application', 0, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:05:30'),
+(15, 'IQAC', '01fqc101', 'chemistry', '', '2023-06-12', '2023-06-14', 3, 'this is a demo application', 0, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:06:37'),
+(16, 'IQAC', '01fqc101', 'chemistry', '', '2023-06-11', '2023-06-11', 1, 'Office work', 1, 'office work demo', 1, 'demo approval iqac', 1, 'demo approval', '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:07:18'),
+(17, 'John', '01fbt102', 'botany', '', '2023-06-01', '2023-06-22', 22, 'this is a demo application', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:15:13'),
+(18, 'John', '01fbt102', 'botany', '', '2023-06-14', '2023-06-27', 14, 'boooring', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:16:31'),
+(19, 'John', '01fbt102', 'botany', '', '2023-06-11', '2023-06-11', 1, 'this is a demo application', 3, NULL, 3, NULL, 3, NULL, '../assets/assetsGetting started with OneDrive.pdf', '2023-06-10 20:21:42');
 
 -- --------------------------------------------------------
 
@@ -101,14 +82,14 @@ CREATE TABLE `faculty_details` (
   `name` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `dob` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `faculty_details`
 --
 
 INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
-('01fbt101', 'SenthilKumar', 'botany', '1965-05-08'),
+('01fbt101', 'senthilkumar', 'botany', '1965-05-08'),
 ('01fbt102', 'John', 'botany', '1967-05-10'),
 ('01fcs101', 'dpj', 'computer science', '1965-02-14'),
 ('01fcs110', 'ravindran', 'computer science', '1967-05-10'),
@@ -125,7 +106,7 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 CREATE TABLE `hod_login` (
   `s_id` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hod_login`
@@ -144,7 +125,7 @@ INSERT INTO `hod_login` (`s_id`, `password`) VALUES
 CREATE TABLE `iqac_login` (
   `s_id` varchar(10) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `iqac_login`
@@ -162,7 +143,7 @@ INSERT INTO `iqac_login` (`s_id`, `password`) VALUES
 CREATE TABLE `principal_login` (
   `s_id` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `principal_login`
@@ -181,7 +162,7 @@ CREATE TABLE `staff_login` (
   `s_id` varchar(11) NOT NULL,
   `password` varchar(20) NOT NULL,
   `c_password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `staff_login`
@@ -205,7 +186,7 @@ CREATE TABLE `tbldepartments` (
   `DepartmentShortName` varchar(100) NOT NULL,
   `DepartmentCode` varchar(50) DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbldepartments`
@@ -244,7 +225,7 @@ CREATE TABLE `tblemployees` (
   `Phonenumber` int(10) NOT NULL,
   `Status` int(1) NOT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblemployees`
@@ -307,11 +288,7 @@ ALTER TABLE `tblemployees`
 -- AUTO_INCREMENT for table `faculty1`
 --
 ALTER TABLE `faculty1`
-<<<<<<< HEAD
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-=======
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
->>>>>>> 5ff64b7f5b55e51081bdb132365293beb692d861
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbldepartments`
