@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-if ($_SESSION['s_id']) {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
+
 ?>
 
     <!DOCTYPE html>
