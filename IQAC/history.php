@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+<?php
+
+session_start();
+
+?>
+
+<?php include 'sidebar.php'; ?>
+<?php include 'header.php'; ?>
+
 <head>
     <title>Filter Data</title>
     <meta charset="utf-8">
@@ -7,10 +16,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            
+        }
+
+        .main-content-inner {
+            border-collapse: collapse;
+            margin-left: 150px;
+            margin-top: 180px;
+        }        
+
+        .data_table{
+
+            margin-left: 150px;
+            margin-top: 30px;
+
+        }
+</style>
 </head>
 <body>
-      <div id="filters" class="container mt-4">
-        <span>Fetch results by:</span>
+      <div id="filters" class="main-content-inner">
+        <span>Sort by:</span>
         <select name="fetchval" id="fetchval">
             <option value="" disabled selected>Select Filter</option>
             <option value="hours">Last 24 hours</option>
@@ -21,7 +52,7 @@
 
      
 
-    <div id="table-container" class="container mt-4">
+    <div id="table-container" class="data_table">
         <table id="data-table" class="table">
             <thead>
                 <tr>
@@ -29,11 +60,11 @@
                     <th>Staff Name</th>
                     <th>Staff ID</th>
                     <th>Leave Type</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>No of Days</th>
+                    <!-- <th>Start Date</th>
+                    <th>End Date</th> -->
+                    <!-- <th>No of Days</th> -->
                     <th>Applied On</th>
-                    <th>Reason</th>
+                    <!-- <th>Reason</th> -->
                     <th>Status</th>
                 </tr>
             </thead>
@@ -49,7 +80,7 @@
                 var value = $(this).val();
 
                 $.ajax({
-                    url: "fetch.php",
+                    url: "leave.php",
                     type: "POST",
                     data: { request: value },
                     beforeSend: function(){
