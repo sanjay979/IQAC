@@ -1,4 +1,5 @@
 <?php
+
  session_start();
  if ($_SESSION['s_id']) {
 ?>
@@ -43,6 +44,7 @@
         $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
 
         */
+
 
         $sql = "SELECT * FROM faculty1 WHERE principal=3 and aqict=1";
 
@@ -114,6 +116,7 @@
                     $end = $row['end'];
                     $ndays = $row['ndays'];
                     $reason = $row['reason'];
+
                     
                      //to remove the approved/rejected form from the display
                      if (in_array($itemID, $approvedIDs) || in_array($itemID, $rejectedIDs)) {
@@ -127,15 +130,15 @@
                     echo '<div class="card-content">';
                     echo '<span class="label">Staff ID : </span>';
                     echo '<span class="value">' . $sID . '</span><br>';
-                    
+
                     //adding name
                     echo '<span class="label">Name : </span>';
                     echo '<span class="value">' . $name . '</span><br>';
-                    
+
                     //adding department
                     echo '<span class="label">Department : </span>';
                     echo '<span class="value">' . $dep . '</span><br>';
-                    
+
 
                     echo '<span class="label">Leave Type : </span>';
                     echo '<span class="value">' . $lType . '</span><br>';
@@ -156,17 +159,16 @@
                     echo '</form>';
                     echo '</div>';
                 }
-           echo '</div>';
-        // Close the database connection
-        mysqli_close($conn);
-        ?>
-    </main>
-        
-    </div>
+                echo '</div>';
+                // Close the database connection
+                mysqli_close($conn);
+                ?>
+            </main>
 
-</body>
+        </div>
+    </body>
 
-</html>
+    </html>
 <?php
 } else {
     header("location:../Login/home.php");

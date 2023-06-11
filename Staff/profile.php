@@ -23,6 +23,7 @@ if ($_SESSION['s_id']) {
         <?php include "Sidebar.php"; ?>
         <div class="main-content">
             <?php include "header.php"; ?>
+
             <?php include("..//database/Databasedemo.php");
             $id=$_SESSION['s_id'];
 
