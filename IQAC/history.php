@@ -6,9 +6,6 @@ session_start();
 
 ?>
 
-<?php include 'sidebar.php'; ?>
-<?php include 'header.php'; ?>
-
 <head>
     <title>Filter Data</title>
     <meta charset="utf-8">
@@ -27,8 +24,7 @@ session_start();
 
         .main-content-inner {
             border-collapse: collapse;
-            margin-left: 150px;
-            margin-top: 180px;
+            
         }        
 
         .data_table{
@@ -40,7 +36,11 @@ session_start();
 </style>
 </head>
 <body>
-      <div id="filters" class="main-content-inner">
+<?php include 'sidebar.php'; ?>
+        <div class="main-content">
+            <?php include 'header.php' ?>
+            <main>
+            <div id="filters" class="main-content-inner">
         <span>Sort by:</span>
         <select name="fetchval" id="fetchval">
             <option value="" disabled selected>Select Filter</option>
@@ -96,5 +96,7 @@ session_start();
             });
         });
     </script>
+    <main>
+    </div>
 </body>
 </html>
