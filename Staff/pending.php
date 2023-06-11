@@ -9,7 +9,7 @@ if ($_SESSION['s_id']) {
     <head>
         <title>Faculty Details</title>
         <link rel="stylesheet" href="pending.css">
-        <link rel="stylesheet" type="text/css" href="../compenents/sidebar/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
     <body><?php include "Sidebar.php"; ?>

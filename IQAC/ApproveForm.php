@@ -6,13 +6,13 @@ if ($_SESSION['s_id']) {
     <html>
 
     <head>
-        <title>Hod Approve</title>
+        <title>IQAC Approval</title>
         <link rel="stylesheet" href="ApproveForm.css">
-        <link rel="stylesheet" type="text/css" href="Hodsidebar.css">
+        <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
     <body>
-        <?php include 'Hodsidebar.php' ?>
+        <?php include 'sidebar.php' ?>
 
         <div class="main-content">
             <?php include 'header.php' ?>
@@ -33,24 +33,25 @@ if ($_SESSION['s_id']) {
                 // Fetch the data from the database
 
                 $id = $_SESSION['s_id'];
+               /*
                 $sql = "SELECT department FROM faculty_details where s_id='$id'";
                 $result = $conn->query($sql);
 
                 $row = $result->fetch_assoc();
                 $value = $row['department'];
-
-                $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
+                */
+                $sql = "SELECT * FROM faculty1 WHERE hod=1 and aqict =3";
                 $result = mysqli_query($conn, $sql);
 
                 if (isset($_POST['approve'])) {
                     $itemID = $_POST['itemID'];
 
                     // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET hod=1 ";
+                    $updateQuery = "UPDATE faculty1 SET aqict =1 ";
 
                     if (!empty($_POST['feedback'])) {
                         $feedback = $_POST['feedback'];
-                        $updateQuery .= ", H_feedback = '$feedback'";
+                        $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
                     $updateQuery .= " WHERE application_id = '$itemID'";
@@ -60,11 +61,11 @@ if ($_SESSION['s_id']) {
                     $itemID = $_POST['itemID'];
 
                     // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET hod=0 ";
+                    $updateQuery = "UPDATE faculty1 SET aqict=0 ";
 
                     if (!empty($_POST['feedback'])) {
                         $feedback = $_POST['feedback'];
-                        $updateQuery .= ", H_feedback = '$feedback'";
+                        $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
                     $updateQuery .= " WHERE application_id = '$itemID'";
@@ -79,8 +80,8 @@ if ($_SESSION['s_id']) {
                 $rejectedIDs = array();
 
                 // Fetch the approved and rejected application IDs from the database
-                $approvedQuery = "SELECT application_id FROM faculty1 WHERE hod = 1";
-                $rejectedQuery = "SELECT application_id FROM faculty1 WHERE hod = 0";
+                $approvedQuery = "SELECT application_id FROM faculty1 WHERE aqict = 1";
+                $rejectedQuery = "SELECT application_id FROM faculty1 WHERE aqict = 0";
 
                 $approvedResult = mysqli_query($conn, $approvedQuery);
                 $rejectedResult = mysqli_query($conn, $rejectedQuery);
@@ -99,6 +100,9 @@ if ($_SESSION['s_id']) {
                     $itemID = $row['application_id'];
                     $sID = $row['id'];
                     $name = $row['name'];
+
+                    $dep = $row['department'];
+
                     $lType = $row['LType'];
                     $start = $row['start'];
                     $end = $row['end'];

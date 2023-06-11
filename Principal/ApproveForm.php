@@ -1,44 +1,37 @@
 <?php
 
-session_start();
-if ($_SESSION['s_id']) {
+ session_start();
+ if ($_SESSION['s_id']) {
 ?>
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <title>Faculty Details</title>
-        <link rel="stylesheet" href="ApproveForm.css">
-        <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
-    </head>
+<head>
+    <title>Principal Approve</title>
+    <link rel="stylesheet" href="ApproveForm.css">
+    <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
+</head>
 
-    <body>
-        <?php include 'PrincipalSideBar.php' ?>
+<body>
+    <?php include 'PrincipalSideBar.php'?>
+   
+    <div class="main-content"> 
+    <?php include 'header.php'?>
+    <main>
+    <?php
+        // Connect to the database
+        include("..//database/Databasedemo.php");
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-        <div class="main-content" style="margin-left: auto">
-            <?php include 'header.php' ?>
-            <main>
-                <?php
-                // Connect to the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "demo";
+        // Fetch the data from the database
+        
+        $id=$_SESSION['s_id'];
 
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-
-
-
-                // Fetch the data from the database
-
-                $id = $_SESSION['s_id'];
-
-                /*
+    
+        $sql = "SELECT * FROM faculty1 WHERE hod=1 and aqict=1 and principal=3";
+        /*
         $sql="SELECT department FROM faculty_details where s_id='$id'";
         $result = $conn->query($sql);
 
@@ -52,25 +45,64 @@ if ($_SESSION['s_id']) {
 
         */
 
-                $sql = "SELECT * FROM faculty1 WHERE principal=3";
-                $result = mysqli_query($conn, $sql);
-                //$row = mysqli_fetch_assoc($result);
 
-                // Display the form data in non-editable format
-                if (isset($_POST['reject'])) {
-                    $itemID = $_POST['itemID'];
+        $sql = "SELECT * FROM faculty1 WHERE principal=3 and aqict=1";
 
-                    // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET principal=0 WHERE application_id = '$itemID'";
-                    mysqli_query($conn, $updateQuery);
-                }
-                if (isset($_POST['approve'])) {
-                    $itemID = $_POST['itemID'];
+        $result = mysqli_query($conn, $sql);
+        //$row = mysqli_fetch_assoc($result);
 
-                    // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET principal=1 WHERE application_id = '$itemID'";
-                    mysqli_query($conn, $updateQuery);
-                }
+       
+        if (isset($_POST['approve'])) {
+            $itemID = $_POST['itemID'];
+
+            // Perform the SQL update query to approve the item
+            $updateQuery = "UPDATE faculty1 SET principal =1 ";
+
+            if (!empty($_POST['feedback'])) {
+                $feedback = $_POST['feedback'];
+                $updateQuery .= ", Pn_feedback = '$feedback'";
+            }
+
+            $updateQuery .= " WHERE application_id = '$itemID'";
+            mysqli_query($conn, $updateQuery);
+        } 
+        else if (isset($_POST['reject'])) {
+            $itemID = $_POST['itemID'];
+
+            // Perform the SQL update query to approve the item
+            $updateQuery = "UPDATE faculty1 SET principal=0 ";
+
+            if (!empty($_POST['feedback'])) {
+                $feedback = $_POST['feedback'];
+                $updateQuery .= ", Pn_feedback = '$feedback'";
+            }
+
+            $updateQuery .= " WHERE application_id = '$itemID'";
+
+            mysqli_query($conn, $updateQuery);
+        }
+
+        //the following code till 3rd while loop are used to remove approved/rejected forms in the display
+
+        // Get the list of approved and rejected application IDs
+        $approvedIDs = array();
+        $rejectedIDs = array();
+
+        // Fetch the approved and rejected application IDs from the database
+        $approvedQuery = "SELECT application_id FROM faculty1 WHERE principal = 1";
+        $rejectedQuery = "SELECT application_id FROM faculty1 WHERE principal = 0";
+
+        $approvedResult = mysqli_query($conn, $approvedQuery);
+        $rejectedResult = mysqli_query($conn, $rejectedQuery);
+
+        while ($row = mysqli_fetch_assoc($approvedResult)) {
+            $approvedIDs[] = $row['application_id'];
+        }
+
+        while ($row = mysqli_fetch_assoc($rejectedResult)) {
+            $rejectedIDs[] = $row['application_id'];
+        }
+
                 echo '<div class="form-container">';
                 while ($row = mysqli_fetch_assoc($result)) {
                     $itemID = $row['application_id'];
@@ -84,6 +116,12 @@ if ($_SESSION['s_id']) {
                     $end = $row['end'];
                     $ndays = $row['ndays'];
                     $reason = $row['reason'];
+
+                    
+                     //to remove the approved/rejected form from the display
+                     if (in_array($itemID, $approvedIDs) || in_array($itemID, $rejectedIDs)) {
+                        continue;
+                    }
 
                     echo '<div class="odForm-head">';
                     echo '<h2 class="value">' . $lType . '</h2>';
@@ -128,7 +166,6 @@ if ($_SESSION['s_id']) {
             </main>
 
         </div>
-
     </body>
 
     </html>

@@ -29,12 +29,12 @@
                 <li><a href="employees.php" class="<?= $page == 'employees.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Staff Section</span></a></li>
                 <li><a href="StaffLogin.php" class="<?= $page == 'StaffLogin.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>add staff</span> </a></li>
                 <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>OD Required</span></a></li>
-
+                 <li><a href="history.php" class="<?= $page == 'history.php'? 'active':'' ?>"><span  class="fa fa-clock"></span> <span>history</span></a></li>
+            
                 <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
             </ul>
         </div>
-    </div>
 
 
 
