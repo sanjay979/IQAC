@@ -7,7 +7,7 @@ if ($_SESSION['s_id']) {
 
     <head>
         <title>IQAC Approval</title>
-        <link rel="stylesheet" href="ApproveForm.css">
+        <link rel="stylesheet" href="ApproveForm1.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
@@ -33,7 +33,7 @@ if ($_SESSION['s_id']) {
                 // Fetch the data from the database
 
                 $id = $_SESSION['s_id'];
-               /*
+                /*
                 $sql = "SELECT department FROM faculty_details where s_id='$id'";
                 $result = $conn->query($sql);
 
@@ -56,8 +56,7 @@ if ($_SESSION['s_id']) {
 
                     $updateQuery .= " WHERE application_id = '$itemID'";
                     mysqli_query($conn, $updateQuery);
-                } 
-                else if (isset($_POST['reject'])) {
+                } else if (isset($_POST['reject'])) {
                     $itemID = $_POST['itemID'];
 
                     // Perform the SQL update query to approve the item
@@ -116,37 +115,54 @@ if ($_SESSION['s_id']) {
 
                     // Display the form data in non-editable format
 
-
-                    echo '<div  class="card">';
-                    echo '<table>';
-                    echo '<tr><td class="label">Name:</td><td class="value">' . $name . '</td>';
-                    echo '<td class="label">Staff Id:</td><td class="value">' . $sID . '</td></tr>';
-                    echo '<tr><td class="label">Leave Type:</td><td class="value">' . $lType . '</td>';
-                    echo '<td class="label">Number of Days:</td><td class="value">' . $ndays . '</td></tr>';
-                    echo '<tr><td class="label">Start Date:</td><td class="value">' . $start . '</td>';
-                    echo '<td class="label">End Date:</td><td class="value">' . $end . '</td></tr>';
-                    echo '<tr><td class="label">Reason:</td><td colspan="3" class="value">' . $reason . '</td></tr>';
-                    echo '<tr>';
-                    echo '</table>';
-                    echo '<div colspan="4" class="feedback-form">';
-                    echo '<form method="post">';
-                    echo '<input type="hidden" name="itemID" value="' . $itemID . '">';
-                    echo '<label for="feedback">Feedback:</label>';
-                    echo '<input type="text" name="feedback" id="feedback" placeholder="Enter Feedback">';
-                    echo '<div class="button-container">';
-                    echo '<input type="submit" name="approve" value="Approve" class="btn-primary">';
-                    echo '<input type="submit" name="reject" value="Reject" class="btn-secondary">';
-                    echo '</div>';
-                    echo '</form>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-                echo '</div>';
-
-                // Close the database connection
-                mysqli_close($conn);
                 ?>
-            </main>
+                    '<div class="card">';
+                        '<table>';
+                            '<tr>
+                                <td class="label">Name:</td>
+                                <td class="value">' . $name . '</td>';
+                                '<td class="label">Staff Id:</td>
+                                <td class="value">' . $sID . '</td>
+                            </tr>';
+                            '<tr>
+                                <td class="label">Leave Type:</td>
+                                <td class="value">' . $lType . '</td>';
+                                '<td class="label">Number of Days:</td>
+                                <td class="value">' . $ndays . '</td>
+                            </tr>';
+                            '<tr>
+                                <td class="label">Start Date:</td>
+                                <td class="value">' . $start . '</td>';
+                                '<td class="label">End Date:</td>
+                                <td class="value">' . $end . '</td>
+                            </tr>';
+                            '<tr>
+                                <td class="label">Reason:</td>
+                                <td colspan="3" class="value">' . $reason . '</td>
+                            </tr>';
+                            '<tr>';
+                                '</table>';
+                        '<div colspan="4" class="feedback-form">';
+                            '<form method="post">';
+                                '<input type="hidden" name="itemID" value="' . $itemID . '">';
+                                '<label for="feedback">Feedback:</label>';
+                                '<input type="text" name="feedback" id="feedback" placeholder="Enter Feedback">';
+                                '<div class="button-container">';
+                                    '<input type="submit" name="approve" value="Approve" class="btn-primary">';
+                                    '<input type="submit" name="reject" value="Reject" class="btn-secondary">';
+                                    '</div>';
+                                '</form>';
+                            '</div>';
+                        '</div>';
+                <?php } ?>
+
+                '
+        </div>';
+
+        // Close the database connection
+        mysqli_close($conn);
+        ?>
+        </main>
         </div>
 
     </body>

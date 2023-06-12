@@ -26,10 +26,17 @@
   
   .card table {
     width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .card td {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
   }
   
   .card td.label {
     font-weight: bold;
+    width: 25%;
   }
   
   .feedback-form {
@@ -57,34 +64,31 @@
   
   .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: 10px;
   }
   
   .button-container input[type="submit"] {
-    flex-grow: 1;
-    margin: 0 5px;
+    margin-left: 10px;
   }
   
   .btn-primary,
   .btn-secondary {
     display: inline-block;
-    padding: 10px;
+    padding: 10px 20px;
     margin: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
   }
   
   .btn-primary {
     background-color: #019a01;
     color: white;
-    border-radius: 10px;
-    border: none;
-    transition: 1s ease-in;
-    padding-left: 40px;
-    padding-right: 40px;
   }
   
   .btn-primary:hover {
@@ -95,10 +99,6 @@
   .btn-secondary {
     background-color: #e0040b;
     color: white;
-    border-radius: 10px;
-    transition: 1s ease-in;
-    padding-left: 40px;
-    padding-right: 40px;
   }
   
   .btn-secondary:hover {
