@@ -1,0 +1,20 @@
+.reject{
+    color: #792405;
+    background: #f6b2a7;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.content{
+    display: block;
+    justify-content: space-between;
+   
+    
+}
+
+.card{
+    background:#d8d9d7;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
