@@ -12,11 +12,13 @@ if (mysqli_connect_errno()) {
 //include("config.php");
 
 // Check if the request parameter is set
-if (isset($_POST['request'])) {
+// Check if the request parameter and search parameter are set
+if (isset($_POST['request']) && isset($_POST['search'])) {
     $filter = $_POST['request'];
+    $search = $_POST['search'];
 
-    // Perform the data filtering based on the selected filter
-    $filteredData = filterData($filter);
+    // Perform the data filtering based on the selected filter and search value
+    $filteredData = filterData($filter, $search);
 
     // Generate the HTML for the filtered data
     $html = generateHTML($filteredData);
@@ -25,27 +27,27 @@ if (isset($_POST['request'])) {
     echo $html;
 }
 
-// Function to filter the data based on the selected filter
-function filterData($filter)
+// Function to filter the data based on the selected filter and search value
+function filterData($filter, $search)
 {
     global $con; // Use the global connection variable
 
-    // Perform the data filtering based on the selected filter
+    // Perform the data filtering based on the selected filter and search value
     $query = "";
 
-    // Example: Filtering based on the last 24 hours
+    // Example: Filtering based on the last 24 hours and search by Staff ID
     if ($filter === 'hours') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY AND id LIKE '%$search%'";
     }
 
-    // Example: Filtering based on the last 1 week
+    // Example: Filtering based on the last 1 week and search by Staff ID
     if ($filter === 'week') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK AND id LIKE '%$search%'";
     }
 
-    // Example: Filtering based on the last 1 month
+    // Example: Filtering based on the last 1 month and search by Staff ID
     if ($filter === 'month') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%'";
     }
 
     // Execute the query
