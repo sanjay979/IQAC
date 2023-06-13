@@ -7,7 +7,7 @@ if ($_SESSION['s_id']) {
 
     <head>
         <title>IQAC Approval</title>
-        <link rel="stylesheet" href="ApproveForm1.css">
+        <link rel="stylesheet" href="ApproveForm2.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
@@ -116,48 +116,50 @@ if ($_SESSION['s_id']) {
                     // Display the form data in non-editable format
 
                 ?>
-                    '<div class="card">';
-                        '<table>';
-                            '<tr>
-                                <td class="label">Name:</td>
-                                <td class="value">' . $name . '</td>';
-                                '<td class="label">Staff Id:</td>
-                                <td class="value">' . $sID . '</td>
-                            </tr>';
-                            '<tr>
-                                <td class="label">Leave Type:</td>
-                                <td class="value">' . $lType . '</td>';
-                                '<td class="label">Number of Days:</td>
-                                <td class="value">' . $ndays . '</td>
-                            </tr>';
-                            '<tr>
-                                <td class="label">Start Date:</td>
-                                <td class="value">' . $start . '</td>';
-                                '<td class="label">End Date:</td>
-                                <td class="value">' . $end . '</td>
-                            </tr>';
-                            '<tr>
-                                <td class="label">Reason:</td>
-                                <td colspan="3" class="value">' . $reason . '</td>
-                            </tr>';
-                            '<tr>';
-                                '</table>';
-                        '<div colspan="4" class="feedback-form">';
-                            '<form method="post">';
-                                '<input type="hidden" name="itemID" value="' . $itemID . '">';
-                                '<label for="feedback">Feedback:</label>';
-                                '<input type="text" name="feedback" id="feedback" placeholder="Enter Feedback">';
-                                '<div class="button-container">';
-                                    '<input type="submit" name="approve" value="Approve" class="btn-primary">';
-                                    '<input type="submit" name="reject" value="Reject" class="btn-secondary">';
-                                    '</div>';
-                                '</form>';
-                            '</div>';
-                        '</div>';
+                    <div class="card">
+                        <div style="margin:5%">
+                            <table>
+                                <tr>
+                                    <td class="label">Name:</td>
+                                    <td class="value"> <?php echo $name ?></td>
+                                    <td class="label">Staff Id:</td>
+                                    <td class="value"> <?php echo $sID ?> </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Leave Type:</td>
+                                    <td class="value"> <?php echo $lType ?></td>
+                                    <td class="label">Number of Days:</td>
+                                    <td class="value"> <?php echo $ndays ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Start Date:</td>
+                                    <td class="value"><?php echo $start ?></td>
+                                    <td class="label">End Date:</td>
+                                    <td class="value"> <?php echo $end ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Reason:</td>
+                                    <td colspan="3" class="value"> <?php echo $reason ?></td>
+                                </tr>
+                                <tr>
+                            </table>
+                            <div colspan="4" class="feedback-form">
+                                <form method="post">
+                                    <input type="hidden" name="itemID" value="' <?php echo $itemID ?>'">
+                                    <label for="feedback">Feedback:</label>
+                                    <input type="text" name="feedback" id="feedback" placeholder="Enter Feedback">
+                                    <div class="button-container">
+                                        <input type="submit" name="approve" value="Approve" class="btn-primary">
+                                        <input type="submit" name="reject" value="Reject" class="btn-secondary">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 <?php } ?>
 
-                '
-        </div>';
+
+        </div>
 
         // Close the database connection
         mysqli_close($conn);
