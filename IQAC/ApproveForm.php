@@ -54,7 +54,7 @@ if ($_SESSION['s_id']) {
                         $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
-                    $updateQuery .= " WHERE application_id = '$itemID'";
+                    $updateQuery .= " WHERE application_id = ".$itemID;
                     mysqli_query($conn, $updateQuery);
                 } else if (isset($_POST['reject'])) {
                     $itemID = $_POST['itemID'];
@@ -67,7 +67,7 @@ if ($_SESSION['s_id']) {
                         $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
-                    $updateQuery .= " WHERE application_id = '$itemID'";
+                    $updateQuery .= " WHERE application_id = ".$itemID;
 
                     mysqli_query($conn, $updateQuery);
                 }
@@ -160,8 +160,7 @@ if ($_SESSION['s_id']) {
 
 
         </div>
-
-        // Close the database connection
+<?php
         mysqli_close($conn);
         ?>
         </main>
