@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2023 at 06:38 PM
+-- Generation Time: Jun 13, 2023 at 11:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,8 +38,11 @@ CREATE TABLE `faculty1` (
   `ndays` int(30) NOT NULL,
   `reason` varchar(50) NOT NULL,
   `hod` int(10) NOT NULL DEFAULT 3,
+  `H_feedback` varchar(100) NOT NULL,
   `aqict` int(10) NOT NULL DEFAULT 3,
+  `IC_Feedback` varchar(100) NOT NULL,
   `principal` int(10) NOT NULL DEFAULT 3,
+  `Pn_feedback` varchar(100) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -47,14 +50,14 @@ CREATE TABLE `faculty1` (
 -- Dumping data for table `faculty1`
 --
 
-INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `aqict`, `principal`, `file`) VALUES
-(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, 3, 3, '[value-12]'),
-(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
-(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
-(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
-(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 0, 3, 3, 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf');
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`) VALUES
+(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, '', 1, 'sanjay nothing approved', 3, '', '[value-12]'),
+(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 1, '', 1, 'dpj fever', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 1, 'hello john have a nice day', 1, 'john od free approved', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadsaadhar card.pdf'),
+(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 1, 'sorry better luck next time', 0, 'john testing rejected', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, '', 0, 'dpj testing rejected', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadscommunite.pdf'),
+(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 1, '', 1, '', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadsration card.pdf'),
+(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 1, '', 3, '', 3, '', 'C:xampphtdocsAQICTaqictStaffuploadsself.pdf');
 
 -- --------------------------------------------------------
 
