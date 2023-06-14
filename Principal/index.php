@@ -15,7 +15,7 @@ if ($_SESSION['s_id']) {
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
-        <link rel="stylesheet" type="text/css" href="sidebar.css">he
+        <link rel="stylesheet" type="text/css" href="sidebar.css">
 
     <body>
 
@@ -50,10 +50,34 @@ if ($_SESSION['s_id']) {
                 </div>
             </header>
             <main>
+                <?php
+                $sql1 = "SELECT sum(ndays) AS ml from faculty1 where principal=1 and LType='ML'";
+                $sql2 = "SELECT sum(ndays) AS od from faculty1 where principal=1 and LType='OD'";
+                $sql3 = "SELECT sum(ndays) AS cl from faculty1 where principal=1 and LType='CL'";
+                $result1 = mysqli_query($conn, $sql1);
+                $result2 = mysqli_query($conn, $sql2);
+                $result3 = mysqli_query($conn, $sql3);
+
+
+                ?>
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
+                            <h1><?php 
+                            if($result1){
+                                $row = mysqli_fetch_assoc($result1);
+  
+                                
+                                $ml = $row['ml'];
+                                if($ml==0){
+                                    echo '0';
+                                }else{
+                                    echo $ml;
+                                
+                                }
+                                
+                            }
+                             ?></h1>
                             <span>No of days OD</span>
                         </div>
                         <div>
@@ -62,7 +86,18 @@ if ($_SESSION['s_id']) {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
+                            <h1><?php 
+                            if($result2){
+                                $row = mysqli_fetch_assoc($result3);
+                                $cl = $row['cl'];
+                                if($cl==0){
+                                    echo '0';
+                                }else{
+                                    echo $cl;
+                                }
+                                
+                            }
+                             ?></h1>
                             <span>No of days CL</span>
                         </div>
                         <div>
@@ -71,7 +106,15 @@ if ($_SESSION['s_id']) {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
+                            <h1><?php 
+                            if($result3){
+                                $row = mysqli_fetch_assoc($result2);
+                                $od = $row['od'];
+                                if($od==0){
+                                    echo '0';
+                                }else{
+                                    echo $od;
+                                }}?></h1>
                             <span>No of days ML</span>
                         </div>
                         <div>
@@ -79,6 +122,7 @@ if ($_SESSION['s_id']) {
                         </div>
                     </div>
                 </div>
+                <?php include 'bodydashboard.php';?>
             </main>
         </div>
     </body>
