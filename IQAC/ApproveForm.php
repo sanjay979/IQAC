@@ -19,60 +19,44 @@ if ($_SESSION['s_id']) {
             <main>
                 <?php
                 // Connect to the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "demo";
-
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+                include("..//database/Databasedemo.php");
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
 
                 // Fetch the data from the database
-
                 $id = $_SESSION['s_id'];
-                /*
-                $sql = "SELECT department FROM faculty_details where s_id='$id'";
-                $result = $conn->query($sql);
 
-                $row = $result->fetch_assoc();
-                $value = $row['department'];
-                */
-                $sql = "SELECT * FROM faculty1 WHERE hod=1 and aqict =3";
+                $sql = "SELECT * FROM faculty1 WHERE hod = 1 AND aqict = 3";
                 $result = mysqli_query($conn, $sql);
 
                 if (isset($_POST['approve'])) {
                     $itemID = $_POST['itemID'];
 
                     // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET aqict =1 ";
+                    $updateQuery = "UPDATE faculty1 SET aqict = 1";
 
                     if (!empty($_POST['feedback'])) {
                         $feedback = $_POST['feedback'];
                         $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
-                    $updateQuery .= " WHERE application_id = '$itemID'";
+                    $updateQuery .= " WHERE application_id = $itemID";
                     mysqli_query($conn, $updateQuery);
                 } else if (isset($_POST['reject'])) {
                     $itemID = $_POST['itemID'];
 
-                    // Perform the SQL update query to approve the item
-                    $updateQuery = "UPDATE faculty1 SET aqict=0 ";
+                    // Perform the SQL update query to reject the item
+                    $updateQuery = "UPDATE faculty1 SET aqict = 0";
 
                     if (!empty($_POST['feedback'])) {
                         $feedback = $_POST['feedback'];
                         $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
-                    $updateQuery .= " WHERE application_id = '$itemID'";
-
+                    $updateQuery .= " WHERE application_id = $itemID";
                     mysqli_query($conn, $updateQuery);
                 }
-
-                //the following code till 3rd while loop are used to remove approved/rejected forms in the display
 
                 // Get the list of approved and rejected application IDs
                 $approvedIDs = array();
@@ -99,53 +83,49 @@ if ($_SESSION['s_id']) {
                     $itemID = $row['application_id'];
                     $sID = $row['id'];
                     $name = $row['name'];
-
                     $dep = $row['department'];
-
                     $lType = $row['LType'];
                     $start = $row['start'];
                     $end = $row['end'];
                     $ndays = $row['ndays'];
                     $reason = $row['reason'];
 
-                    //to remove the approved/rejected form from the display
+                    // Skip displaying approved or rejected forms
                     if (in_array($itemID, $approvedIDs) || in_array($itemID, $rejectedIDs)) {
                         continue;
                     }
 
                     // Display the form data in non-editable format
-
                 ?>
                     <div class="card">
                         <div style="margin:5%">
                             <table>
                                 <tr>
                                     <td class="label">Name:</td>
-                                    <td class="value"> <?php echo $name ?></td>
+                                    <td class="value"><?php echo $name ?></td>
                                     <td class="label">Staff Id:</td>
-                                    <td class="value"> <?php echo $sID ?> </td>
+                                    <td class="value"><?php echo $sID ?></td>
                                 </tr>
                                 <tr>
                                     <td class="label">Leave Type:</td>
-                                    <td class="value"> <?php echo $lType ?></td>
+                                    <td class="value"><?php echo $lType ?></td>
                                     <td class="label">Number of Days:</td>
-                                    <td class="value"> <?php echo $ndays ?></td>
+                                    <td class="value"><?php echo $ndays ?></td>
                                 </tr>
                                 <tr>
                                     <td class="label">Start Date:</td>
                                     <td class="value"><?php echo $start ?></td>
                                     <td class="label">End Date:</td>
-                                    <td class="value"> <?php echo $end ?></td>
+                                    <td class="value"><?php echo $end ?></td>
                                 </tr>
                                 <tr>
                                     <td class="label">Reason:</td>
-                                    <td colspan="3" class="value"> <?php echo $reason ?></td>
+                                    <td colspan="3" class="value"><?php echo $reason ?></td>
                                 </tr>
-                                <tr>
                             </table>
                             <div colspan="4" class="feedback-form">
                                 <form method="post">
-                                    <input type="hidden" name="itemID" value="' <?php echo $itemID ?>'">
+                                    <input type="hidden" name="itemID" value="<?php echo $itemID ?>">
                                     <label for="feedback">Feedback:</label>
                                     <input type="text" name="feedback" id="feedback" placeholder="Enter Feedback">
                                     <div class="button-container">
@@ -156,17 +136,15 @@ if ($_SESSION['s_id']) {
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php
+                }
+                echo '</div>';
 
-
+                // Close the database connection
+                mysqli_close($conn);
+                ?>
+            </main>
         </div>
-
-        // Close the database connection
-        mysqli_close($conn);
-        ?>
-        </main>
-        </div>
-
     </body>
 
     </html>
