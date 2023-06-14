@@ -54,7 +54,8 @@ if ($_SESSION['s_id']) {
                         $updateQuery .= ", IC_feedback = '$feedback'";
                     }
 
-                    $updateQuery .= " WHERE application_id = $itemID";
+                    $updateQuery .= " WHERE application_id = '$itemID'";
+
                     mysqli_query($conn, $updateQuery);
                 }
 
@@ -136,14 +137,15 @@ if ($_SESSION['s_id']) {
                             </div>
                         </div>
                     </div>
-                <?php
-                }
-                echo '</div>';
+                <?php } ?>
 
-                // Close the database connection
-                mysqli_close($conn);
-                ?>
-            </main>
+
+        </div>
+
+        // Close the database connection
+        mysqli_close($conn);
+        ?>
+        </main>
         </div>
     </body>
 
