@@ -52,6 +52,7 @@ if ($_SESSION['s_id']) {
             }
             ?>
             <main>
+                <div class="form_center">
                 <h1>Leave Form</h1>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                     <div class="form first">
@@ -130,6 +131,7 @@ if ($_SESSION['s_id']) {
 
 
                 </form>
+                </div>    
             </main>
 
             <h1 class="success">

@@ -1,0 +1,102 @@
+/* ApproveForm.css */
+
+/* Table styles */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Button styles */
+  .approve-btn,
+  .reject-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .approve-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .approve-btn:hover,
+  .reject-btn:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* Sidebar styles 
+  .sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #555;
+  }
+  
+  /* Main content styles 
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+  /* Header styles 
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  */
+  
+  
