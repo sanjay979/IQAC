@@ -1,171 +1,147 @@
 <?php
-
- session_start();
- if ($_SESSION['s_id']) {
+session_start();
+if ($_SESSION['s_id']) {
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <title>Principal Approve</title>
-    <link rel="stylesheet" href="ApproveForm.css">
-    <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
-</head>
+    <head>
+        <title>principal Approve</title>
+        <link rel="stylesheet" href="ApproveForm.css">
+        <link rel="stylesheet" type="text/css" href="PrincipalSidebar.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
 
-<body>
-    <?php include 'PrincipalSideBar.php'?>
-   
-    <div class="main-content"> 
-    <?php include 'header.php'?>
-    <main>
-    <?php
-        // Connect to the database
-        include("..//database/Databasedemo.php");
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+    <body>
+        <?php include 'PrincipalSidebar.php' ?>
 
-        // Fetch the data from the database
-        
-        $id=$_SESSION['s_id'];
+        <div class="main-content">
+            <?php include 'header.php' ?>
+            <main>
 
-    
-        $sql = "SELECT * FROM faculty1 WHERE hod=1 and aqict=1 and principal=3";
-        /*
-        $sql="SELECT department FROM faculty_details where s_id='$id'";
-        $result = $conn->query($sql);
+                <?php
+                $con = mysqli_connect("localhost", "root", "", "demo");
+                if (mysqli_connect_errno()) {
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                    exit();
+                }
 
-            
-                $row = $result->fetch_assoc();
-                $value = $row['department'];
-                echo  $value;
-            
-        
-        $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
+                // Retrieve all rows from the faculty1 table where hod=1 and principal=3
+                $query = "SELECT * FROM faculty1 WHERE hod = 1 and aqict=1 and principal = 3";
+                $result = mysqli_query($con, $query);
 
-        */
+                // Generate the HTML table
+                $html = '<div class="table-responsive">';
+                $html .= '<table class="table table-striped table-bordered">';
+                $html .= '<thead class="thead-dark">';
+                $html .= '<tr>';
+                $html .= '<th>S.N</th>';
+                $html .= '<th>Staff Name</th>';
+                $html .= '<th>Staff ID</th>';
+                $html .= '<th>Leave Type</th>';
+                $html .= '<th>Start Date</th>';
+                $html .= '<th>End Date</th>';
+                $html .= '<th>No of Days</th>';
+                $html .= '<th>Reason</th>';
+                $html .= '<th>Documents</th>';
+                $html .= '<th>Comments</th>';
+                
+                $html .= '<th>Approval</th>';
+                $html .= '</tr>';
+                $html .= '</thead>';
+                $html .= '<tbody>';
 
+                $serialNumber = 1; // Initialize the serial number
 
-        $sql = "SELECT * FROM faculty1 WHERE principal=3 and aqict=1";
-
-        $result = mysqli_query($conn, $sql);
-        //$row = mysqli_fetch_assoc($result);
-
-       
-        if (isset($_POST['approve'])) {
-            $itemID = $_POST['itemID'];
-
-            // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET principal =1 ";
-
-            if (!empty($_POST['feedback'])) {
-                $feedback = $_POST['feedback'];
-                $updateQuery .= ", Pn_feedback = '$feedback'";
-            }
-
-            $updateQuery .= " WHERE application_id = '$itemID'";
-            mysqli_query($conn, $updateQuery);
-        } 
-        else if (isset($_POST['reject'])) {
-            $itemID = $_POST['itemID'];
-
-            // Perform the SQL update query to approve the item
-            $updateQuery = "UPDATE faculty1 SET principal=0 ";
-
-            if (!empty($_POST['feedback'])) {
-                $feedback = $_POST['feedback'];
-                $updateQuery .= ", Pn_feedback = '$feedback'";
-            }
-
-            $updateQuery .= " WHERE application_id = '$itemID'";
-
-            mysqli_query($conn, $updateQuery);
-        }
-
-        //the following code till 3rd while loop are used to remove approved/rejected forms in the display
-
-        // Get the list of approved and rejected application IDs
-        $approvedIDs = array();
-        $rejectedIDs = array();
-
-        // Fetch the approved and rejected application IDs from the database
-        $approvedQuery = "SELECT application_id FROM faculty1 WHERE principal = 1";
-        $rejectedQuery = "SELECT application_id FROM faculty1 WHERE principal = 0";
-
-        $approvedResult = mysqli_query($conn, $approvedQuery);
-        $rejectedResult = mysqli_query($conn, $rejectedQuery);
-
-        while ($row = mysqli_fetch_assoc($approvedResult)) {
-            $approvedIDs[] = $row['application_id'];
-        }
-
-        while ($row = mysqli_fetch_assoc($rejectedResult)) {
-            $rejectedIDs[] = $row['application_id'];
-        }
-
-                echo '<div class="form-container">';
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $itemID = $row['application_id'];
-                    $name = $row['name'];
-                    $sID = $row['id'];
+                    $html .= '<tr id="row_' . $row['application_id'] . '">';
+                    $html .= '<td>' . $serialNumber . '</td>'; // Add the serial number column
+                    $html .= '<td>' . $row['name'] . '</td>';
+                    $html .= '<td>' . $row['id'] . '</td>';
+                    $html .= '<td>' . $row['LType'] . '</td>';
+                    $html .= '<td>' . $row['start'] . '</td>';
+                    $html .= '<td>' . $row['end'] . '</td>';
+                    $html .= '<td>' . $row['ndays'] . '</td>';
 
-                    $dep = $row['department'];
+                    $html .= '<td>' . $row['reason'] . '</td>';
 
-                    $lType = $row['LType'];
-                    $start = $row['start'];
-                    $end = $row['end'];
-                    $ndays = $row['ndays'];
-                    $reason = $row['reason'];
+                    $html .= '<td>';
 
-                    
-                     //to remove the approved/rejected form from the display
-                     if (in_array($itemID, $approvedIDs) || in_array($itemID, $rejectedIDs)) {
-                        continue;
+                    if (!empty($row['file'])) {
+                        $html .= '<a href="'.$row['file'].'" target="_blank">View File</a>';
+                    } else {
+                        $html .= 'No File Available';
                     }
 
-                    echo '<div class="odForm-head">';
-                    echo '<h2 class="value">' . $lType . '</h2>';
-                    echo '</div>';
-                    echo '<div class="card" >';
-                    echo '<div class="card-content">';
-                    echo '<span class="label">Staff ID : </span>';
-                    echo '<span class="value">' . $sID . '</span><br>';
+                    $html .= '</td>';
 
-                    //adding name
-                    echo '<span class="label">Name : </span>';
-                    echo '<span class="value">' . $name . '</span><br>';
+                    $html .= '<td>';
+                    $html .= '<input type="text" name="comments['. $row['application_id'].']" placeholder="Enter comments">';
+                    $html .= '</td>';
 
-                    //adding department
-                    echo '<span class="label">Department : </span>';
-                    echo '<span class="value">' . $dep . '</span><br>';
+                    $html .= '<td>';
+                    $html .= '<form method="post">';
+                    $html .= '<input type="hidden" name="leave_id" value="' . $row['application_id'] . '">';
 
+                    // Add CSS classes to the buttons for styling
+                    $html .= '<button class="approve-btn" type="button" onclick="updateApprovalStatus(' . $row['application_id'] . ', 1)">Approve</button>';
+                    $html .= '<button class="reject-btn" type="button" onclick="updateApprovalStatus(' . $row['application_id'] . ', 0)">Reject</button>';
 
-                    echo '<span class="label">Leave Type : </span>';
-                    echo '<span class="value">' . $lType . '</span><br>';
-                    echo '<span class="label">Start Date : </span>';
-                    echo '<span class="value">' . $start . '</span><br>';
-                    echo '<span class="label">End Date : </span>';
-                    echo '<span class="value">' . $end . '</span><br>';
-                    echo '<span class="label">Number of Days:</span>';
-                    echo '<span class="value">' . $ndays . '</span><br>';
-                    echo '<span class="label">Reason:</span>';
-                    echo '<span class="value">' . $reason . '</span><br>';
-                    echo '</div>';
-                    echo '<form method="post">';
-                    echo '<input type="hidden" name="itemID" value="' . $itemID . '">';
-                    echo '<input type="text" name="feedback">';
-                    echo '<input type="submit" name="approve" value="Approve" class="btn-primary">';
-                    echo '<input type="submit" name="reject" value="Reject" class="btn-secondary">';
-                    echo '</form>';
-                    echo '</div>';
+                    $html .= '</form>';
+                    $html .= '</td>';
+                    $html .= '</tr>';
+
+                    $serialNumber++; // Increment the serial number
                 }
-                echo '</div>';
-                // Close the database connection
-                mysqli_close($conn);
-                ?>
-            </main>
 
+                $html .= '</tbody>';
+                $html .= '</table>';
+                $html .= '</div>';
+
+                // Output the generated HTML table
+                echo $html;
+                ?>
+
+                <script>
+                    function updateApprovalStatus(leaveID, status) {
+
+                        var comments = $("input[name='comments[" + leaveID + "]']").val(); // Get the comments for the specific row
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'update_approval.php', // PHP file to handle the update
+                            data: {
+                                leave_id: leaveID,
+                                status: status,
+                                comments: comments
+                            },
+                            success: function(response) {
+                                // Handle the response
+                                if (response === 'success') {
+                                    // Remove the row from the table
+                                    $('#row_' + leaveID).remove();
+
+                                    // Update the serial numbers of remaining rows
+                                    updateSerialNumbers();
+                                } else {
+                                    console.log(response); // Log the error message for debugging
+                                }
+                            }
+                        });
+                    }
+
+                    function updateSerialNumbers() {
+                        var rows = $('table tbody tr'); // Get all table rows
+
+                        rows.each(function(index) {
+                            $(this).find('td:first-child').text(index + 1); // Update the serial number column
+                        });
+                    }
+                </script>
+
+            </main>
         </div>
+
     </body>
 
     </html>
