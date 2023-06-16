@@ -78,7 +78,7 @@ if ($_SESSION['s_id']) {
                                 
                             }
                              ?></h1>
-                            <span>No of days OD</span>
+                            <span>No of days ML</span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
@@ -115,7 +115,7 @@ if ($_SESSION['s_id']) {
                                 }else{
                                     echo $od;
                                 }}?></h1>
-                            <span>No of days ML</span>
+                            <span>No of days OD</span>
                         </div>
                         <div>
                             <span class="las la-hospital"></span>
