@@ -6,7 +6,7 @@ if ($_SESSION['s_id']) {
     <html>
 
     <head>
-        <title>Hod Approve</title>
+        <title>IQAC Approve</title>
         <link rel="stylesheet" href="ApproveForm.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -42,8 +42,10 @@ if ($_SESSION['s_id']) {
                 $html .= '<th>Start Date</th>';
                 $html .= '<th>End Date</th>';
                 $html .= '<th>No of Days</th>';
-                $html .= '<th>Applied On</th>';
                 $html .= '<th>Reason</th>';
+                $html .= '<th>Documents</th>';
+                $html .= '<th>Comments</th>';
+                
                 $html .= '<th>Approval</th>';
                 $html .= '</tr>';
                 $html .= '</thead>';
@@ -60,8 +62,23 @@ if ($_SESSION['s_id']) {
                     $html .= '<td>' . $row['start'] . '</td>';
                     $html .= '<td>' . $row['end'] . '</td>';
                     $html .= '<td>' . $row['ndays'] . '</td>';
-                    $html .= '<td>' . $row['RegDate'] . '</td>';
+
                     $html .= '<td>' . $row['reason'] . '</td>';
+
+                    $html .= '<td>';
+
+                    if (!empty($row['file'])) {
+                        $html .= '<a href="'.$row['file'].'" target="_blank">View File</a>';
+                    } else {
+                        $html .= 'No File Available';
+                    }
+
+                    $html .= '</td>';
+
+                    $html .= '<td>';
+                    $html .= '<input type="text" name="comments['. $row['application_id'].']" placeholder="Enter comments">';
+                    $html .= '</td>';
+
                     $html .= '<td>';
                     $html .= '<form method="post">';
                     $html .= '<input type="hidden" name="leave_id" value="' . $row['application_id'] . '">';
@@ -87,12 +104,16 @@ if ($_SESSION['s_id']) {
 
                 <script>
                     function updateApprovalStatus(leaveID, status) {
+
+                        var comments = $("input[name='comments[" + leaveID + "]']").val(); // Get the comments for the specific row
+
                         $.ajax({
                             type: 'POST',
                             url: 'update_approval.php', // PHP file to handle the update
                             data: {
                                 leave_id: leaveID,
-                                status: status
+                                status: status,
+                                comments: comments
                             },
                             success: function(response) {
                                 // Handle the response
