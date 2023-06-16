@@ -91,7 +91,7 @@ if ($_SESSION['s_id']) {
                                         <option disabled selected>--Select--</option>
                                         <option>OD</option>
                                         <option>CL</option>
-                                        <!--option>ML</option-->
+                                        <option>ML</option>
                                     </select >
                                 </div>
 
