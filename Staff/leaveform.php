@@ -54,7 +54,7 @@ if ($_SESSION['s_id']) {
             <main>
                 <div class="form_center">
                 <h1>Leave Form</h1>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+                <form action="success.php" method="POST" enctype="multipart/form-data">
                     <div class="form first">
                         <div class="details personal">
                             <span class="title">Leave Details</span>
@@ -123,9 +123,10 @@ if ($_SESSION['s_id']) {
 
 
                         <button type="submit" name="submit" class="submitBtn">
-                            <span class="btnText">Submit</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
+                                <span class="btnText">Submit</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
+
 
                     </div>
 
@@ -164,11 +165,11 @@ if ($_SESSION['s_id']) {
                         $sql = "INSERT INTO faculty1 (Name, id,department, LType, start, end, ndays, reason, file)
                     VALUES ('$name', '$id','$department', '$leaveType', '$startDate', '$endDate', '$numDays','$reason', '$file_path')";
 
-                        if ($conn->query($sql) === TRUE) {
-                            echo "Leave application submitted successfully.";
-                        } else {
-                            echo "Error: " . $sql . "<br>" . $conn->error;
-                        }
+                        // if ($conn->query($sql) === TRUE) {
+                        //     echo "Leave application submitted successfully.";
+                        // } else {
+                        //     echo "Error: " . $sql . "<br>" . $conn->error;
+                        // }
                     } else {
                         echo "Error uploading file.";
                     }
