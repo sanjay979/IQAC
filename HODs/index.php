@@ -52,11 +52,35 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                 </div>
             </header>
             <main>
-                <div class="cards">
+            <?php
+             $id = $_SESSION['s_id'];
+                $sql1 = "SELECT sum(ndays) AS ml from faculty1 where principal=1 and LType='ML' and id='$id'";
+                $sql2 = "SELECT sum(ndays) AS od from faculty1 where principal=1 and LType='OD' and id='$id'";
+                $sql3 = "SELECT sum(ndays) AS cl from faculty1 where principal=1 and LType='CL' and id='$id'";
+                $result1 = mysqli_query($conn, $sql1);
+                $result2 = mysqli_query($conn, $sql2);
+                $result3 = mysqli_query($conn, $sql3);
+
+
+                ?>
+               <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
-                            <span>No of days OD</span>
+                            <h1><?php 
+                            if($result1){
+                                $row = mysqli_fetch_assoc($result1);
+  
+                                
+                                $ml = $row['ml'];
+                                if($ml==0){
+                                    echo '0';
+                                }else{
+                                    echo $ml;
+                                
+                                }
+                            }
+                             ?></h1>
+                            <span>No of days ML</span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
@@ -64,7 +88,17 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
+                            <h1><?php 
+                            if($result2){
+                                $row = mysqli_fetch_assoc($result3);
+                                $cl = $row['cl'];
+                                if($cl==0){
+                                    echo '0';
+                                }else{
+                                    echo $cl;
+                                }
+                            }
+                             ?></h1>
                             <span>No of days CL</span>
                         </div>
                         <div>
@@ -73,8 +107,16 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1>54</h1>
-                            <span>No of days ML</span>
+                            <h1><?php 
+                            if($result3){
+                                $row = mysqli_fetch_assoc($result2);
+                                $od = $row['od'];
+                                if($od==0){
+                                    echo '0';
+                                }else{
+                                    echo $od;
+                                }}?></h1>
+                            <span>No of days OD</span>
                         </div>
                         <div>
                             <span class="las la-hospital"></span>

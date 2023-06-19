@@ -26,9 +26,8 @@
             <ul>
                 <li><a href="index.php" class="<?= $page == 'index.php' ? 'active' : '' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
                 <li><a href="profile.php" class="<?= $page == 'profile.php' ? 'active' : '' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
-                <li><a href="leaveform.php" class="<?= $page == 'leaveform.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply OD</span> </a></li>
-                <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>OD Required</span></a></li>
-                <li><a href=""><span class="las la-list"></span> <span>OD List</span></a></li>
+                <li><a href="leaveform.php" class="<?= $page == 'leaveform.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a></li>
+                <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave Requests</span></a></li>
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
 
             </ul>
