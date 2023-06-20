@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if ($_SESSION['s_id']) {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
 ?>
 
     <!DOCTYPE html>
@@ -63,21 +63,19 @@ if ($_SESSION['s_id']) {
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result1){
-                                $row = mysqli_fetch_assoc($result1);
-  
-                                
-                                $ml = $row['ml'];
-                                if($ml==0){
-                                    echo '0';
-                                }else{
-                                    echo $ml;
-                                
+                            <h1><?php
+                                if ($result1) {
+                                    $row = mysqli_fetch_assoc($result1);
+
+
+                                    $ml = $row['ml'];
+                                    if ($ml == 0) {
+                                        echo '0';
+                                    } else {
+                                        echo $ml;
+                                    }
                                 }
-                                
-                            }
-                             ?></h1>
+                                ?></h1>
                             <span>No of days ML</span>
                         </div>
                         <div>
@@ -86,18 +84,17 @@ if ($_SESSION['s_id']) {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result2){
-                                $row = mysqli_fetch_assoc($result3);
-                                $cl = $row['cl'];
-                                if($cl==0){
-                                    echo '0';
-                                }else{
-                                    echo $cl;
+                            <h1><?php
+                                if ($result2) {
+                                    $row = mysqli_fetch_assoc($result3);
+                                    $cl = $row['cl'];
+                                    if ($cl == 0) {
+                                        echo '0';
+                                    } else {
+                                        echo $cl;
+                                    }
                                 }
-                                
-                            }
-                             ?></h1>
+                                ?></h1>
                             <span>No of days CL</span>
                         </div>
                         <div>
@@ -106,15 +103,16 @@ if ($_SESSION['s_id']) {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result3){
-                                $row = mysqli_fetch_assoc($result2);
-                                $od = $row['od'];
-                                if($od==0){
-                                    echo '0';
-                                }else{
-                                    echo $od;
-                                }}?></h1>
+                            <h1><?php
+                                if ($result3) {
+                                    $row = mysqli_fetch_assoc($result2);
+                                    $od = $row['od'];
+                                    if ($od == 0) {
+                                        echo '0';
+                                    } else {
+                                        echo $od;
+                                    }
+                                } ?></h1>
                             <span>No of days OD</span>
                         </div>
                         <div>
@@ -122,7 +120,7 @@ if ($_SESSION['s_id']) {
                         </div>
                     </div>
                 </div>
-                <?php include 'bodydashboard.php';?>
+                <?php include 'bodydashboard.php'; ?>
             </main>
         </div>
     </body>
