@@ -20,15 +20,22 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
             <main>
 
                 <?php
-                $con = mysqli_connect("localhost", "root", "", "demo");
+               include("..//database/Databasedemo.php");
                 if (mysqli_connect_errno()) {
                     echo "Failed to connect to MySQL: " . mysqli_connect_error();
                     exit();
                 }
 
                 // Retrieve all rows from the faculty1 table where hod=1 and hod=3
-                $query = "SELECT * FROM faculty1 WHERE hod = 3";
-                $result = mysqli_query($con, $query);
+                  $id = $_SESSION['s_id'];
+                $sql = "SELECT department FROM faculty_details where s_id='$id'";
+                $result = $conn->query($sql);
+
+                $row = $result->fetch_assoc();
+                $value = $row['department'];
+
+                $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
+                $result = mysqli_query($conn, $sql);
 
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
