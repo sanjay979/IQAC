@@ -30,7 +30,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                   $id = $_SESSION['s_id'];
                 $sql = "SELECT department FROM faculty_details where s_id='$id'";
                 $result = $conn->query($sql);
-
+ 
                 $row = $result->fetch_assoc();
                 $value = $row['department'];
 
