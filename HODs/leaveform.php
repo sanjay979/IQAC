@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 ?>
@@ -267,6 +266,14 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
         ?>
       </h1>
 
+      <?php if (isset($successMessage)) : ?>
+        <div class="success-message"><?php echo $successMessage; ?></div>
+        <script>
+          setTimeout(function() {
+            document.querySelector('.success-message').style.display = 'none';
+          }, 3000);
+        </script>
+      <?php endif; ?>
 
     </div>
 
