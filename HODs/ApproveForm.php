@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['s_id']) {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 ?>
     <!DOCTYPE html>
     <html>
@@ -45,7 +45,7 @@ if ($_SESSION['s_id']) {
                 $html .= '<th>Reason</th>';
                 $html .= '<th>Documents</th>';
                 $html .= '<th>Comments</th>';
-                
+
                 $html .= '<th>Approval</th>';
                 $html .= '</tr>';
                 $html .= '</thead>';
@@ -68,7 +68,7 @@ if ($_SESSION['s_id']) {
                     $html .= '<td>';
 
                     if (!empty($row['file'])) {
-                        $html .= '<a href="'.$row['file'].'" target="_blank">View File</a>';
+                        $html .= '<a href="' . $row['file'] . '" target="_blank">View File</a>';
                     } else {
                         $html .= 'No File Available';
                     }
@@ -76,7 +76,7 @@ if ($_SESSION['s_id']) {
                     $html .= '</td>';
 
                     $html .= '<td>';
-                    $html .= '<input type="text" name="comments['. $row['application_id'].']" placeholder="Enter comments">';
+                    $html .= '<input type="text" name="comments[' . $row['application_id'] . ']" placeholder="Enter comments">';
                     $html .= '</td>';
 
                     $html .= '<td>';
