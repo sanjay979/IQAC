@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if ($_SESSION['s_id']) {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'Staff') {
 ?>
     <!DOCTYPE html>
     <html lang="en">
