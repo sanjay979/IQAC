@@ -28,6 +28,7 @@
                 <li><a href="profile.php" class="<?= $page == 'profile.php' ? 'active' : '' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
                 <li><a href="leaveform.php" class="<?= $page == 'leaveform.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a></li>
                 <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave Requests</span></a></li>
+                <li><a href="pending.php" class="<?= $page == 'pending.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
 
             </ul>
