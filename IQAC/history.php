@@ -1,8 +1,11 @@
+<?php
+
+session_start();
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
+?>
+
 <!DOCTYPE html>
 <html>
-<?php
-session_start();
-?>
 
 <head>
     <title>Filter Data</title>
@@ -21,33 +24,30 @@ session_start();
         .main-content-inner {
             border-collapse: collapse;
         }
-        
 
         .data_table {
-    margin-left: 150px;
-    margin-top: 30px;
-}
+            margin-top: 30px;
+        }
 
-@media (max-width: 576px) {
-    .data_table {
-        margin-left: 0;
-    }
+        @media (max-width: 576px) {
+            .data_table {
+                margin-left: 0;
+            }
 
-    #filters {
-        padding: 15px;
-    }
+            #filters {
+                padding: 15px;
+            }
 
-    #search-input {
-        margin-top: 10px;
-    }
-}
+            #search-input {
+                margin-top: 10px;
+            }
+        }
 
-@media (min-width: 576px) {
-    .text-right {
-        text-align: right !important;
-    }
-}
-
+        @media (min-width: 576px) {
+            .text-right {
+                text-align: right !important;
+            }
+        }
     </style>
 </head>
 
@@ -61,8 +61,7 @@ session_start();
                     <div class="col-md-6">
                         <span>Sort by:</span>
                         <select name="fetchval" id="fetchval">
-                            <option value="" disabled selected>Select Filter</option>
-                            <option value="hours">Last 24 hours</option>
+                            <option value="hours" selected>Last 24 hours</option>
                             <option value="week">Last 1 week</option>
                             <option value="month">Last 1 month</option>
                         </select>
@@ -81,11 +80,7 @@ session_start();
                             <th>Staff Name</th>
                             <th>Staff ID</th>
                             <th>Leave Type</th>
-                            <!-- <th>Start Date</th>
-                            <th>End Date</th> -->
-                            <!-- <th>No of Days</th> -->
                             <th>Applied On</th>
-                            <!-- <th>Reason</th> -->
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -97,20 +92,6 @@ session_start();
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $("#fetchval").on('change', function() {
-                        var value = $(this).val();
-                        var searchValue = $("#search-input").val();
-
-                        fetchFilteredData(value, searchValue);
-                    });
-
-                    $("#search-input").on("keyup", function() {
-                        var value = $("#fetchval").val();
-                        var searchValue = $(this).val();
-
-                        fetchFilteredData(value, searchValue);
-                    });
-
                     function fetchFilteredData(filterValue, searchValue) {
                         $.ajax({
                             url: "leave.php",
@@ -130,6 +111,22 @@ session_start();
                             }
                         });
                     }
+
+                    fetchFilteredData("hours", ""); // Fetch initial data for last 24 hours
+
+                    $("#fetchval").on('change', function() {
+                        var value = $(this).val();
+                        var searchValue = $("#search-input").val();
+
+                        fetchFilteredData(value, searchValue);
+                    });
+
+                    $("#search-input").on("keyup", function() {
+                        var value = $("#fetchval").val();
+                        var searchValue = $(this).val();
+
+                        fetchFilteredData(value, searchValue);
+                    });
                 });
             </script>
         </main>
@@ -137,3 +134,9 @@ session_start();
 </body>
 
 </html>
+
+<?php
+} else {
+    header("location:../Login/home.php");
+}
+?>
