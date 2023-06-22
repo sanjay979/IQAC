@@ -7,7 +7,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
     <html>
 
     <head>
-        <title>Faculty Details</title>
+        <title>Pending Application</title>
         <link rel="stylesheet" href="pending.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>

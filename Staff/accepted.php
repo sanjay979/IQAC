@@ -12,6 +12,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="accepted.css">
+        <link rel="stylesheet" href="accepted1.css">
         <title>Accepted applications</title>
     </head>
 
@@ -30,50 +31,66 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 $sql = "SELECT * FROM faculty1 WHERE principal=1 and id='$id'";
                 $result = mysqli_query($conn, $sql);
+                // Generate the HTML table
+                $html = '<div class="table-responsive">';
+                $html .= '<table class="table table-striped table-bordered">';
+                $html .= '<thead class="thead-dark">';
+                $html .= '<tr>';
+                $html .= '<th>S.N</th>';
+                $html .= '<th>Staff Name</th>';
+                $html .= '<th>Staff ID</th>';
+                $html .= '<th>Leave Type</th>';
+                $html .= '<th>Start Date</th>';
+                $html .= '<th>End Date</th>';
+                $html .= '<th>No of Days</th>';
+                $html .= '<th>Reason</th>';
+                $html .= '<th>Document</th>';
+                $html .= '<th>Continue</th>';
+                
+                $html .= '</tr>';
+                $html .= '</thead>';
+                $html .= '<tbody>';
+
+                $serialNumber = 1; // Initialize the serial number
+
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $itemID = $row['application_id'];
-                    $name = $row['name'];
-                    $sID = $row['id'];
+                    $html .= '<tr id="row_' . $row['application_id'] . '">';
+                    $html .= '<td>' . $serialNumber . '</td>'; // Add the serial number column
+                    $html .= '<td>' . $row['name'] . '</td>';
+                    $html .= '<td>' . $row['id'] . '</td>';
+                    $html .= '<td>' . $row['LType'] . '</td>';
+                    $html .= '<td>' . $row['start'] . '</td>';
+                    $html .= '<td>' . $row['end'] . '</td>';
+                    $html .= '<td>' . $row['ndays'] . '</td>';
 
-                    $dep = $row['department'];
+                    $html .= '<td>' . $row['reason'] . '</td>';
 
-                    $lType = $row['LType'];
-                    $start = $row['start'];
-                    $end = $row['end'];
-                    $ndays = $row['ndays'];
-                    $reason = $row['reason'];
-                    echo '<div class="card">';
-                    echo '<div class="head">';
-                    echo '<h2 class="value">' . $lType . '</h2>';
-                    echo '</div>';
-                    echo '<div class="content" >';
-                    echo '<div class="card-content">';
-                    echo '<span class="label">Staff ID : </span>';
-                    echo '<span class="value">' . $sID . '</span><br>';
+                    $html .= '<td>';
 
-                    echo '<span class="label">Name : </span>';
-                    echo '<span class="value">' . $name . '</span><br>';
+                    if (!empty($row['file'])) {
+                        $html .= '<a href="' . $row['file'] . '" target="_blank">View File</a>';
+                    } else {
+                        $html .= 'No File Available';
+                    }
+                    $currentDate = date('Y-m-d');
+                    if($row['end']>=$currentDate){
+                        $html .= '<button class="approve-btn" type="button" onclick="updateApprovalStatus(' . $row['application_id'] . ', 1)">Continue</button>';
+            
+                    }
+                    $html .= '</form>';
+                    $html .= '</td>';
+                    $html .= '</tr>';
 
-                    //adding department
-                    echo '<span class="label">Department : </span>';
-                    echo '<span class="value">' . $dep . '</span><br>';
-                    echo '</div>';
-                    echo '<div class="card-content">';
-                    echo '<span class="label">Leave Type : </span>';
-                    echo '<span class="value">' . $lType . '</span><br>';
-                    echo '<span class="label">Start Date : </span>';
-                    echo '<span class="value">' . $start . '</span><br>';
-                    echo '<span class="label">End Date : </span>';
-                    echo '<span class="value">' . $end . '</span><br>';
-                    echo '<span class="label">Number of Days:</span>';
-                    echo '<span class="value">' . $ndays . '</span><br>';
-                    echo '<span class="label">Reason:</span>';
-                    echo '<span class="value">' . $reason . '</span><br>';
-                    echo '<span class="approve">Approved</span>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    $serialNumber++; // Increment the serial number
                 }
+
+                $html .= '</tbody>';
+                $html .= '</table>';
+                $html .= '</div>';
+
+                // Output the generated HTML table
+                echo $html;
+                
                 ?>
             </main>
         </div>
