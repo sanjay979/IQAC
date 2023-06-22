@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2023 at 06:44 PM
+-- Generation Time: Jun 22, 2023 at 06:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,13 +52,12 @@ CREATE TABLE `faculty1` (
 --
 
 INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`, `RegDate`) VALUES
-(1, 'Sanjay Rohith A', '22pca115', '', 'CL', '2023-05-22', '2023-05-23', 2, 'nothing', 1, '', 1, 'sanjay approved', 1, 'enjoy ur leave Mr.sanjay', '../assets/leaveTECHX INVITATION.pdf', '2023-06-14 08:27:47'),
-(2, 'dpj', '01fcs101', 'Computer Science', 'ML', '2023-05-23', '2023-05-26', 4, 'fever', 0, '', 3, '\'\'; DROP TABLE faculty1;--\'', 3, '', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47'),
-(3, 'john', '01fbt102', 'botany', 'OD', '2023-05-23', '2023-05-26', 3, 'free', 1, 'john 3 hod=1', 1, 'hii firstly approved by iqac', 1, 'firstly approved by principal', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47'),
-(4, 'john', '01fbt102', 'botany', 'CL', '2023-05-22', '2023-05-25', 4, 'testing', 0, 'this works just perfect rejected', 3, '', 3, '', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47'),
-(5, 'dpj', '01fcs101', 'Computer Science', 'OD', '2023-05-22', '2023-05-24', 2, 'testing', 1, '', 1, 'dpj approved', 0, 'Sorry dpj', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47'),
-(6, 'Sanjay Rohith A', '01fcs101', 'Computer Science', 'OD', '2023-05-15', '2023-05-30', 4, 'testing', 0, '', 3, 'unnodu nadantha kallana kadu', 3, '', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47'),
-(7, 'ravi', '01fcs110', 'Computer Science', 'OD', '2023-05-23', '2023-05-24', 3, 'testing 2', 1, '', 0, 'ravi rejected', 3, '', '../assets/assetsApplication Form krishnaveni.pdf', '2023-06-14 08:27:47');
+(1, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-21', '2023-06-22', 2, 'testing', 1, '', 1, '', 1, '', '../assets/assetsBDU Convocation Application Form (1).pdf', '2023-06-20 15:50:39'),
+(2, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-21', '2023-06-22', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-20 16:00:54'),
+(3, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-21 02:57:40'),
+(4, 'John', '01fbt102', 'botany', 'OD', '2023-06-22', '2023-06-23', 2, 'nothing', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-22 02:40:14'),
+(5, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-22 15:11:10'),
+(6, 'dpj', '01fcs101', 'computer science', 'OD', '2023-06-19', '2023-06-20', 2, 'no', 1, '', 1, '', 1, '', '../assets/assetsTECHX INVITATION.pdf', '2023-06-22 15:26:51');
 
 -- --------------------------------------------------------
 
@@ -115,10 +114,26 @@ INSERT INTO `login` (`s_id`, `password`, `position`) VALUES
 --
 
 --
+-- Indexes for table `faculty1`
+--
+ALTER TABLE `faculty1`
+  ADD PRIMARY KEY (`application_id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`s_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `faculty1`
+--
+ALTER TABLE `faculty1`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
