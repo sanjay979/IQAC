@@ -293,7 +293,8 @@ if ($_SESSION['s_id']) {
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            // $leaveType = $_POST['Ltype'];
+            $application_id = $_POST['application_id'];
+            $assesment = $_POST['assessment'];
             // $startDate = $_POST['start'];
             // $endDate = $_POST['end'];
             // $numDays = $_POST['days'];
@@ -308,7 +309,7 @@ if ($_SESSION['s_id']) {
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
-                $sql = "INSERT INTO leave_details (Application Id,Name, id, department,Assessment,file)
+                $sql = "INSERT INTO leave_details (Application_id,name, id, department,assessment,file)
                         VALUES ('$application_id','$name', '$id', '$department','$assesment','$file_path')";
 
                 if ($conn->query($sql) === TRUE) {
