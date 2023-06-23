@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2023 at 06:50 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 23, 2023 at 08:34 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ CREATE TABLE `faculty1` (
   `Pn_feedback` varchar(100) NOT NULL,
   `file` varchar(255) NOT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty1`
@@ -70,7 +70,7 @@ CREATE TABLE `faculty_details` (
   `name` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `dob` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty_details`
@@ -87,6 +87,21 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leave_details`
+--
+
+CREATE TABLE `leave_details` (
+  `application_id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `id` varchar(30) NOT NULL,
+  `department` varchar(30) NOT NULL,
+  `assessment` varchar(250) NOT NULL,
+  `file` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -94,7 +109,7 @@ CREATE TABLE `login` (
   `s_id` varchar(11) NOT NULL,
   `password` varchar(20) NOT NULL,
   `position` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
@@ -120,6 +135,12 @@ ALTER TABLE `faculty1`
   ADD PRIMARY KEY (`application_id`);
 
 --
+-- Indexes for table `leave_details`
+--
+ALTER TABLE `leave_details`
+  ADD PRIMARY KEY (`application_id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -134,6 +155,12 @@ ALTER TABLE `login`
 --
 ALTER TABLE `faculty1`
   MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `leave_details`
+--
+ALTER TABLE `leave_details`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
