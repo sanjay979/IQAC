@@ -37,7 +37,7 @@
   </div></li>
             <li> <a class="dropdown-btn"><span class="fa fa-clock" ></span> &nbsp;<span>Post-Leave <i class="fa fa-caret-down"></i></span>  </a>
   <div class="dropdown-container">
-    <a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
+    <a href="postleave.php"  class="<?= $page == 'postleave.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
     <a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
     <a href="rejected.php" class="<?= $page == 'rejected.php'? 'active':'' ?>"><i class="fa fa-trash-can"></i>Rejected</a>
     <a href="accepted.php" class="<?= $page == 'accepted.php'? 'active':'' ?>">Accepted</a>
