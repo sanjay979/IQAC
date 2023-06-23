@@ -32,7 +32,7 @@ if ($_SESSION['s_id']) {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    margin-top: 30px;
+    margin-top: -23px;
   }
   
   form {
@@ -174,6 +174,7 @@ if ($_SESSION['s_id']) {
             $name = $row['name'];
             $id = $row['s_id'];
             $department = $row['department'];
+            
 
             // Other fields to be fetched from the faculty_details table
 
@@ -195,6 +196,9 @@ if ($_SESSION['s_id']) {
                             <!-- <span class="title">Leave Details</span> -->
 
                             <div class="fields">
+
+                            
+
                                 <div class="input-field">
                                     <label>Staff Name</label>
                                     <input type="text" name="name" value="<?php echo $name; ?>" readonly>
@@ -204,6 +208,8 @@ if ($_SESSION['s_id']) {
                                     <label>Staff Id</label>
                                     <input type="text" name="id" value="<?php echo $id; ?>" readonly>
                                 </div>
+
+                                
 
                                 <!-- <div class="input-field">
                                     <label>Application Id</label>
@@ -222,6 +228,11 @@ if ($_SESSION['s_id']) {
                                         <option>Botany</option>
                                     </select>
                                     */ ?>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Application Id</label>
+                                    <input type="text" name="application_id" placeholder="Enter your Application Id" required>
                                 </div>
 
                                 <!-- <div class="input-field">
@@ -253,6 +264,11 @@ if ($_SESSION['s_id']) {
                                     <label>Reason</label>
                                     <input type="text" name="reason" placeholder="Enter your reason" required>
                                 </div> -->
+                                
+                                <div class="input-field">
+                                    <label>Assessment</label>
+                                    <input type="text" name="assessment" placeholder="Description" required>
+                                </div>
 
                                 <div class="input-field">
                                     <label>Upload</label>
@@ -292,8 +308,8 @@ if ($_SESSION['s_id']) {
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
-                $sql = "INSERT INTO faculty1 (Name, id, department,  file)
-                        VALUES ('$name', '$id', '$department',  '$file_path')";
+                $sql = "INSERT INTO leave_details (Application Id,Name, id, department,Assessment,file)
+                        VALUES ('$application_id','$name', '$id', '$department','$assesment','$file_path')";
 
                 if ($conn->query($sql) === TRUE) {
                     $successMessage = "certificate upload successfully.";
