@@ -32,7 +32,7 @@ if ($_SESSION['s_id']) {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    margin-top: -39px;
+    margin-top: -29px;
   }
   
   form {
@@ -47,7 +47,7 @@ if ($_SESSION['s_id']) {
   h1 {
     text-align: center;
     margin-bottom: 0px;
-    margin-top: -50px;
+    margin-top: -20px;
     color: #4070f4; /* Change heading color */
   }
   
