@@ -46,7 +46,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $html .= '<th>Reason</th>';
                 $html .= '<th>Document</th>';
                 $html .= '<th>Continue</th>';
-                
+
                 $html .= '</tr>';
                 $html .= '</thead>';
                 $html .= '<tbody>';
@@ -73,9 +73,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                         $html .= 'No File Available';
                     }
                     $currentDate = date('Y-m-d');
-                    if($row['end']>=$currentDate){
+                    if ($row['end'] >= $currentDate) {
                         $html .= '<button class="approve-btn" type="button" onclick="updateApprovalStatus(' . $row['application_id'] . ', 1)">Continue</button>';
-            
                     }
                     $html .= '</form>';
                     $html .= '</td>';
@@ -90,7 +89,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 // Output the generated HTML table
                 echo $html;
-                
+
                 ?>
             </main>
         </div>
