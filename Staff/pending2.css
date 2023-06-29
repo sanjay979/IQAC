@@ -7,23 +7,14 @@
 
 .form-container {
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
   box-sizing: border-box;
-}
-
-fieldset {
-  /*
-  border: none; /* Remove the fieldset border * /
-  padding: 0; /* Remove default padding * /
-  margin: 0; /* Remove default margin * /
-  */
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-sizing: border-box;
+  margin-top: 10px;
+  background-color: #fcfeff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #05b6fa;
 }
 
 .form-container label {
@@ -34,35 +25,21 @@ fieldset {
   color: brown;
 }
 
-.box-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
 .sp {
   font-family: Arial, sans-serif;
-  /* Set the font family */
   font-size: 14px;
-  /* Set the font size */
-  /*display: inline-block;
-  background-color: #FFFF00;*/
   color: black;
   font-weight: bold;
   margin-top: 20px;
 }
 
-/* Styles for the table */
 table {
   width: 100%;
   border-collapse: collapse;
-  /*margin-top: 20px; */
 }
 
 td {
   padding: 10px;
-  border: 1px solid #ccc;
 }
 
 tr:nth-child(even) {
@@ -73,120 +50,18 @@ tr:hover {
   background-color: #e0e0e0;
 }
 
-
-
-.form-heading {
-  text-align: center;
-}
-
-hr {
-  margin-bottom: 7px;
-}
-
 @media screen and (max-width: 600px) {
   .container {
-      padding: 10px;
+    padding: 10px;
   }
 
   .form-container label {
-      width: 100%; /* Make the labels full width on smaller screens */
-      text-align: left;
-      margin-bottom: 5px; /* Add spacing between label and value */
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
   }
 }
 
-/* CSS for the progress bar */
-
-.containerB {
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.progressbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.progressbar li {
-  list-style-type: none;
-  float: left;
-  width: 33.33%;
-  position: relative;
-  text-align: center;
-}
-
-.progressbar li::before {
-  content: attr(data-symbol);
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid #ddd;
-  display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.progressbar li:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background-color: #ddd;
-  top: 15px;
-  left: -50%;
-  z-index: -1;
-}
-
-.progressbar li:first-child:after {
-  content: none;
-  left: 0;
-}
-
-.progressbar li.pending {
-  color: #ddd;
-}
-
-.progressbar li.Approved {
-  color: green;
-}
-
-.progressbar li.Approved:before {
-  border-color: green;
-}
-
-.progressbar li.Approved+li:after {
-  background-color: green;
-}
-
-.progressbar li.Declined {
-  color: red;
-}
-
-.progressbar li.Declined:before {
-  border-color: red;
-}
-
-.step-symbol {
-  font-size: 12px;
-  display: block;
-  margin-top: 5px;
-  color: #999;
-}
-
-
-/*for the approval status in the label of the authority */
-/* CSS for approval status */
 .approval-status {
   display: inline-block;
   padding: 5px 10px;
