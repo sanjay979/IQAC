@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "demo");
+include("..//database/Databasedemo.php");
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
@@ -21,10 +21,10 @@ if (isset($_POST['leave_id']) && isset($_POST['status'])) {
     }
 
     // Update the principal and IC_feedback columns in the faculty1 table
-    $query = "UPDATE faculty1 SET principal = $status, Pn_Feedback = '$comments' WHERE application_id = $leaveID";  
+    $query = "UPDATE faculty1 SET principal = $status, Pn_Feedback = '$comments',next_form=1 WHERE application_id = $leaveID";  
 
     // Execute the query
-    $result = mysqli_query($con, $query);
+    $result = mysqli_query($conn, $query);
 
     // Check if the query executed successfully
     if ($result) {
