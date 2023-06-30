@@ -34,7 +34,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 // Display the form data in a table format
                 while ($row = mysqli_fetch_assoc($result)) {
                     $approvalStatus = array();
-                    $officials = array('HOD', 'AQICT', 'PRINCIPAL');
+                    $officials = array('HOD', 'IQAC', 'PRINCIPAL');
                     $officialKeys = array('hod', 'aqict', 'principal');
                     $official_fb = array('H_feedback', 'IC_Feedback', 'Pn_feedback');
 
