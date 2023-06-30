@@ -180,6 +180,67 @@
       </header>
       <main class="h-full pb-16 overflow-y-auto">
 
+        <!-- index.html -->
+
+        <!DOCTYPE html>
+        <html>
+
+        <head>
+          <title>OD Management System</title>
+          <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+
+        <body>
+          <h1>OD Management System</h1>
+
+          <form action="insert.php" method="POST">
+            <h2>Submit OD Request</h2>
+            <label for="staff_id">Staff/HOD ID:</label>
+            <input type="text" name="staff_id" required>
+
+            <label for="staff_name">Staff/HOD Name:</label>
+            <input type="text" name="staff_name" required>
+
+            <label for="od_date">OD Date:</label>
+            <input type="date" name="od_date" required>
+
+            <label for="reason">Reason:</label>
+            <textarea name="reason" rows="4" required></textarea>
+
+            <button type="submit">Submit Request</button>
+          </form>
+
+          <!-- Display existing OD requests with options to update and delete -->
+          <div class="od-requests">
+            <h2>Existing OD Requests</h2>
+            <table>
+              <tr>
+                <th>Request ID</th>
+                <th>Staff/HOD ID</th>
+                <th>Staff/HOD Name</th>
+                <th>OD Date</th>
+                <th>Reason</th>
+                <th>Options</th>
+              </tr>
+              <!-- Loop through the OD requests and populate the table rows -->
+              <tr>
+                <td>1</td>
+                <td>12345</td>
+                <td>John Doe</td>
+                <td>2023-07-10</td>
+                <td>Attending a conference</td>
+                <td>
+                  <button class="edit-btn">Edit</button>
+                  <button class="delete-btn">Delete</button>
+                </td>
+              </tr>
+              <!-- Repeat rows for other OD requests -->
+            </table>
+          </div>
+        </body>
+
+        </html>
+
       </main>
     </div>
   </div>
