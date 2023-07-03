@@ -50,7 +50,8 @@
                         $clCount = $counts['CL'];
                         $mlCount = $counts['ML'];
 
-                        echo "<tr><td>$department</td><td>$odCount</td><td>$clCount</td><td>$mlCount</td></tr>";
+                        // Add a link to the department page with department name as a parameter
+                        echo "<tr><td><a href='department.php?dept=$department'>$department</a></td><td>$odCount</td><td>$clCount</td><td>$mlCount</td></tr>";
                     }
 
                     echo "</tbody>";
