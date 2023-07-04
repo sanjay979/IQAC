@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
@@ -180,70 +184,106 @@
       </header>
       <main class="h-full pb-16 overflow-y-auto">
 
-        <!-- index.html -->
-
-        <!DOCTYPE html>
         <html>
 
         <head>
-          <title>OD Management System</title>
-          <link rel="stylesheet" type="text/css" href="style.css">
+          <title>Pending Application</title>
+          <link rel="stylesheet" href="style2.css">
+
         </head>
 
         <body>
-          <h1>OD Management System</h1>
 
-          <form action="insert.php" method="POST">
-            <h2>Submit OD Request</h2>
-            <label for="staff_id">Staff/HOD ID:</label>
-            <input type="text" name="staff_id" required>
+          <div class="main-content">
+            <div class="container" style="margin-left: auto">
+              <?php
+              // Connect to the database
+              include '../database/Databasedemo.php';
 
-            <label for="staff_name">Staff/HOD Name:</label>
-            <input type="text" name="staff_name" required>
+              if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+              }
 
-            <label for="od_date">OD Date:</label>
-            <input type="date" name="od_date" required>
+              // Fetch the data from the database
+              $id = $_SESSION['id'];
+              $sql = "SELECT Name, id, LType, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)";
+              $result = mysqli_query($conn, $sql);
 
-            <label for="reason">Reason:</label>
-            <textarea name="reason" rows="4" required></textarea>
+              // Display the form data in a table format
+              while ($row = mysqli_fetch_assoc($result)) {
+                $approvalStatus = array();
+                $officials = array('HOD', 'IQAC', 'PRINCIPAL');
+                $officialKeys = array('hod', 'aqict', 'principal');
+                $official_fb = array('H_feedback', 'IC_Feedback', 'Pn_feedback');
 
-            <button type="submit">Submit Request</button>
-          </form>
+                foreach ($officialKeys as $key) {
+                  if ($row[$key] == 1) {
+                    $approvalStatus[] = 'Approved';
+                  } elseif ($row[$key] == 0) {
+                    $approvalStatus[] = 'Declined';
+                  } else {
+                    $approvalStatus[] = 'Pending';
+                  }
+                }
+              ?>
+                <div class="form-container">
+                  <table>
+                    <?php
+                    $form_fields = [
+                      'id' => ['label' => 'ID'],
+                      'LType' => ['label' => 'Leave-Type'],
+                      'start' => ['label' => 'Date'],
+                      'ndays' => ['label' => 'No of Days'],
+                      'reason' => ['label' => 'Reason'],
+                      'file' => ['label' => 'File'],
+                    ];
 
-          <!-- Display existing OD requests with options to update and delete -->
-          <div class="od-requests">
-            <h2>Existing OD Requests</h2>
-            <table>
-              <tr>
-                <th>Request ID</th>
-                <th>Staff/HOD ID</th>
-                <th>Staff/HOD Name</th>
-                <th>OD Date</th>
-                <th>Reason</th>
-                <th>Options</th>
-              </tr>
-              <!-- Loop through the OD requests and populate the table rows -->
-              <tr>
-                <td>1</td>
-                <td>12345</td>
-                <td>John Doe</td>
-                <td>2023-07-10</td>
-                <td>Attending a conference</td>
-                <td>
-                  <button class="edit-btn">Edit</button>
-                  <button class="delete-btn">Delete</button>
-                </td>
-              </tr>
-              <!-- Repeat rows for other OD requests -->
-            </table>
+                    foreach ($form_fields as $field_name => $field_data) {
+                      $value = $row[$field_name];
+                      echo '<tr>';
+                      echo '<td><label>' . $field_data['label'] . '</label></td>';
+
+                      if ($field_name === 'file') {
+                        if ($row['file']) {
+                          echo '<td><a href="' . $row['file'] . '">View File</a></td>';
+                        } else {
+                          echo '<td>No File</td>';
+                        }
+                      } elseif ($field_name === 'start' || $field_name === 'end') {
+                        $start_date = date('Y-m-d', strtotime($row['start']));
+                        $end_date = date('Y-m-d', strtotime($row['end']));
+                        $date_range = $start_date . ' to ' . $end_date;
+                        echo '<td><span class="sp">' . $date_range . '</span></td>';
+                      } else {
+                        echo '<td><span class="sp">' . $value . '</span></td>';
+                      }
+                      echo '</tr>';
+                    }
+
+                    // Display the approval status for each official
+                    foreach ($officials as $index => $official) {
+                      $status = $approvalStatus[$index];
+                      echo '<tr>';
+                      echo '<td><label>' . $official . '</label></td>';
+                      echo '<td colspan="3"><span class="approval-status ' . strtolower($status) . '">' . $status . '</span><br>
+                            ' . $row[$official_fb[$index]] . '
+                            </td>';
+                      echo '</tr>';
+                    }
+
+
+                    ?>
+                  </table>
+                </div>
+
+              <?php
+              }
+
+              // Close the database connection
+              mysqli_close($conn);
+              ?>
+            </div>
           </div>
         </body>
 
         </html>
-
-      </main>
-    </div>
-  </div>
-</body>
-
-</html>
