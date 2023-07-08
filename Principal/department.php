@@ -83,16 +83,17 @@
 
     if (mysqli_num_rows($staffLeaveResult) > 0) {
         echo "<table>";
-        echo "<thead><tr><th>Name</th><th>Leave Type</th><th>Start Date</th><th>End Date</th></tr></thead>";
+        echo "<thead><tr><th>Name</th><th>Staff ID</th><th>Leave Type</th><th>Start Date</th><th>End Date</th></tr></thead>";
         echo "<tbody>";
 
         while ($row = mysqli_fetch_assoc($staffLeaveResult)) {
             $name = $row['name'];
+            $id = $row['id'];
             $leaveType = $row['LType'];
             $startDate = $row['start'];
             $endDate = $row['end'];
 
-            echo "<tr><td>$name</td><td>$leaveType</td><td>$startDate</td><td>$endDate</td></tr>";
+            echo "<tr><td>$name</td><td>$id</td><td>$leaveType</td><td>$startDate</td><td>$endDate</td></tr>";
         }
 
         echo "</tbody>";
