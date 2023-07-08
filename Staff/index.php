@@ -21,6 +21,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
         <?php include 'Sidebar.php'; ?>
         <div class="main-content">
+
+            <?php 
+            include "header.php"; 
+            /*
             <header>
                 <h2>
                     <div class="header-list">
@@ -45,10 +49,11 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 echo  $value;
                             }
                             ?></h4>
-                        <small>HOD</small>
+                        <small>Assistant Proffessor</small>
                     </div>
                 </div>
             </header>
+            */ ?>
             <main>
             <?php
              $id = $_SESSION['s_id'];
