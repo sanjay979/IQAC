@@ -1,0 +1,131 @@
+.new-card-block {
+    margin-top: 20px;
+}
+
+.new-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.new-card h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.new-card span {
+    font-size: 14px;
+    color: #777;
+}
+
+.new-card .button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.new-card .button:hover {
+    background-color: #0056b3;
+}
+
+.new-card .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+/*css for the progress bar*/
+
+  .containerB {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .progressbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .progressbar li {
+    list-style-type: none;
+    width: 33.33%;
+    position: relative;
+    text-align: center;
+  }
+  
+  .progressbar li::before {
+    content: attr(data-symbol);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+  }
+  
+  .progressbar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    top: 15px;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .progressbar li:first-child:after {
+    content: none;
+  }
+  
+  .progressbar li.pending:after,
+  .progressbar li.approved:after,
+  .progressbar li.declined:after {
+    width: calc(33.33% - 15px);
+    left: 15px;
+  }
+  
+  .progressbar li.approved:after {
+    background-color: rgb(122, 232, 122);
+  }
+  
+  .progressbar li.declined:after {
+    background-color: red;
+  }
+  
+  .step-symbol {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    color: #999;
+  }
+  
+  /*css for the colors of the officials name*/
+  .approved {
+    color: green;
+}
+
+.declined {
+    color: red;
+}
