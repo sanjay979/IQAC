@@ -26,36 +26,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
             <?php
             include "header.php";
-            /*
-            <header>
-                <h2>
-                    <div class="header-list">
-                        <label for="nav-toggle">
-                            <span class="las la-bars"></span>
-                        </label> Dashboard
-                    </div>
-
-                </h2>
-                <div class="user-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
-                    <div>
-                        <h4><?php
-                            $id = $_SESSION['s_id'];
-                            include '../database/Databasedemo.php';
-                            $sql = "SELECT name FROM faculty_details where s_id='$id'";
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                $row = $result->fetch_assoc();
-                                $value = $row['name'];
-                                echo  $value;
-                            }
-                            ?></h4>
-                        <small>Assistant Proffessor</small>
-                    </div>
-                </div>
-            </header>
-            */ ?>
+            ?>
             <main>
                 <?php
                 $id = $_SESSION['s_id'];
@@ -134,14 +105,15 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $sql = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3 )";
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_assoc($result);
-                
-                while($row2= mysqli_fetch_assoc($result)){
-                    if($row2['next_form']==1){
 
-                    }
-                }
-                if($row['next_form']==1){
-                    ?>
+                //statements for next_form for od
+
+                $sql2 = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND next_form=1";
+                $result2 = $conn->query($sql2);
+                $row2 = mysqli_fetch_assoc($result2);
+
+                if ($result2->num_rows > 0 && $row2['next_form'] == 1) {
+                ?>
 
                     <div class="new-card-block">
                         <div class="new-card">
@@ -150,15 +122,17 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 <span>Kindly update the od completion document</span>
                             </div>
                             <div>
-                                <a href="leaveform.php" class="button">Open Form</a>
+                                <a href="postleave.php" class="button">Open Form</a>
                             </div>
                         </div>
                     </div>
 
-                    <?php
-                }
 
-                if (($result->num_rows == 0) ) {
+                <?php
+                }
+                //if block to display the post form updation redirecting
+                /*
+                if (($result->num_rows == 0)) {
 
                 ?>
                     <div class="new-card-block">
@@ -172,11 +146,15 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             </div>
                         </div>
                     </div>
-                <?php } else {
+                <?php 
+                }
+                */
+                //else block for displaying the status bar and the redirection to pending page 
+                // else {
+
+                   if($result->num_rows != 0){
                     //echo "varata mamea";
                     //$row = mysqli_fetch_assoc($result);
-
-
                 ?>
 
                     <div class="new-card-block">
@@ -193,7 +171,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                         HOD <span class="step-symbol"><?php echo getStatusClass($row['hod']); ?></span>
                                     </li>
                                     <li class="<?php echo getStatusClass($row['aqict']); ?>" data-symbol="<?php echo getStatusSymbol($row['aqict']); ?> ">
-                                        AQICT <span class="step-symbol"><?php echo getStatusClass($row['aqict']); ?></span>
+                                        IQAC <span class="step-symbol"><?php echo getStatusClass($row['aqict']); ?></span>
                                     </li>
                                     <li class="<?php echo getStatusClass($row['principal']); ?>" data-symbol="<?php echo getStatusSymbol($row['principal']); ?> ">
                                         PRINCIPAL <span class="step-symbol"><?php echo getStatusClass($row['principal']); ?></span>
@@ -202,7 +180,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 </ul>
                             </div>
 
-                           
+
 
                         </div>
 
@@ -211,7 +189,17 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 <?php
                 }
                 ?>
-
+                <div class="new-card-block">
+                    <div class="new-card">
+                        <div>
+                            <h1>Leave Form</h1>
+                            <span>Do you want to Apply Leave</span>
+                        </div>
+                        <div>
+                            <a href="leaveform.php" class="button">Apply Leave</a>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </body>
