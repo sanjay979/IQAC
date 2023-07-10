@@ -28,21 +28,20 @@
         <ul>
             <li><a href="index.php"  class="<?= $page == 'index.php'? 'active':'' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
             <li><a href="profile.php"  class="<?= $page == 'profile.php'? 'active':'' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
-           
-            <li> <a class="dropdown-btn"><span class="fa fa-clock" ></span>  &nbsp;<span>Pre-Leave <i class="fa fa-caret-down"></i></span>  </a>
-  <div class="dropdown-container">
-    <a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
+            <li><a class="dropdown-btn"><span class="fa fa-backward" ></span>  &nbsp;<span>Pre-Leave <i class="fa fa-caret-down"></i></span>  </a>
+                <ul class="dropdown-content">
+                <a href="leaveform.php"  class="<?= $page == 'leaveform.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
+                <a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
+                <a href="accepted.php" class="<?= $page == 'accepted.php'? 'active':'' ?>"><span class="fa fa-history"></span><span>History</span></a>
+                </ul>
+            </li>
+            <li><a class="dropdown-btn"><span class="fa fa-forward" ></span> &nbsp;<span>Post-Leave <i class="fa fa-caret-down"></i></span>  </a>
+                <ul class="dropdown-content">
+                <a href="postleave.php"  class="<?= $page == 'postleave.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
     <a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
-    <a href="rejected.php" class="<?= $page == 'rejected.php'? 'active':'' ?>">Rejected</a>
-    <a href="accepted.php" class="<?= $page == 'accepted.php'? 'active':'' ?>">Accepted</a>
-  </div></li>
-            <li> <a class="dropdown-btn"><span class="fa fa-clock" ></span> &nbsp;<span>Post-Leave <i class="fa fa-caret-down"></i></span>  </a>
-  <div class="dropdown-container">
-    <a href="postleave.php"  class="<?= $page == 'postleave.php'? 'active':'' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
-    <a href="pending.php" class="<?= $page == 'pending.php'? 'active':'' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
-    <a href="rejected.php" class="<?= $page == 'rejected.php'? 'active':'' ?>"><i class="fa fa-trash-can"></i>Rejected</a>
-    <a href="accepted.php" class="<?= $page == 'accepted.php'? 'active':'' ?>">Accepted</a>
-  </div></li>
+    <a href="rejected.php" class="<?= $page == 'rejected.php'? 'active':'' ?>"><span class="fa fa-history"></span><span>History</span></a>
+                </ul>
+            </li>
               <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
         </ul>
         </div> 
