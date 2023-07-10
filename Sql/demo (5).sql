@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 08:34 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Jul 10, 2023 at 11:05 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,20 +44,26 @@ CREATE TABLE `faculty1` (
   `principal` int(10) NOT NULL DEFAULT 3,
   `Pn_feedback` varchar(100) NOT NULL,
   `file` varchar(255) NOT NULL,
+  `next_form` int(11) NOT NULL DEFAULT 3,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `faculty1`
 --
 
-INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`, `RegDate`) VALUES
-(1, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-21', '2023-06-22', 2, 'testing', 1, '', 1, '', 1, '', '../assets/assetsBDU Convocation Application Form (1).pdf', '2023-06-20 15:50:39'),
-(2, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-21', '2023-06-22', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-20 16:00:54'),
-(3, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-21 02:57:40'),
-(4, 'John', '01fbt102', 'botany', 'OD', '2023-06-22', '2023-06-23', 2, 'nothing', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-22 02:40:14'),
-(5, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', '2023-06-22 15:11:10'),
-(6, 'dpj', '01fcs101', 'computer science', 'OD', '2023-06-19', '2023-06-20', 2, 'no', 1, '', 1, '', 1, '', '../assets/assetsTECHX INVITATION.pdf', '2023-06-22 15:26:51');
+INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`, `next_form`, `RegDate`) VALUES
+(1, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-21', '2023-06-22', 2, 'testing', 1, '', 1, '', 1, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-20 15:50:39'),
+(2, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-21', '2023-06-22', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 3, '2023-06-20 16:00:54'),
+(3, 'dpj', '01fcs101', 'computer science', 'ML', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 3, '2023-06-21 02:57:40'),
+(5, 'dpj', '01fcs101', 'computer science', 'CL', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 15:11:10'),
+(6, 'dpj', '01fcs101', 'computer science', 'OD', '2023-06-19', '2023-06-20', 2, 'no', 1, '', 1, '', 1, '', '../assets/assetsTECHX INVITATION.pdf', 3, '2023-06-22 15:26:51'),
+(8, 'John', '01fbt102', 'botany', 'CL', '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 16:54:02'),
+(9, 'John', '01fbt102', 'botany', 'CL', '2023-06-29', '2023-06-30', 2, 'go to kodaikanal', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 1, '2023-06-29 15:34:22'),
+(10, 'John', '01fbt102', 'botany', 'OD', '2023-06-29', '2023-07-01', 3, 'testing', 3, '', 3, '', 3, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-30 07:22:27'),
+(11, 'dpj', '01fcs101', 'computer science', 'OD', '2023-06-30', '2023-07-07', 8, 'testing', 1, '', 1, '', 1, '', '../assets/assetscash receipt.pdf', 1, '2023-06-30 10:12:59'),
+(12, 'Charles', '01fcs111', 'computer science', 'CL', '2023-06-30', '2023-07-04', 5, 'fgf', 1, '', 3, '', 3, '', '../assets/assetsVisit 01 Document.pdf', 3, '2023-06-30 10:21:09'),
+(13, 'dpj', '01fcs101', 'computer science', 'OD', '2023-07-03', '2023-07-05', 3, 'nothing', 1, '', 1, '', 1, '', '../assets/assetsSheep.pdf', 1, '2023-07-03 16:32:11');
 
 -- --------------------------------------------------------
 
@@ -70,7 +76,7 @@ CREATE TABLE `faculty_details` (
   `name` varchar(30) NOT NULL,
   `department` varchar(30) NOT NULL,
   `dob` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `faculty_details`
@@ -87,21 +93,6 @@ INSERT INTO `faculty_details` (`s_id`, `name`, `department`, `dob`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leave_details`
---
-
-CREATE TABLE `leave_details` (
-  `application_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `id` varchar(30) NOT NULL,
-  `department` varchar(30) NOT NULL,
-  `assessment` varchar(250) NOT NULL,
-  `file` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `login`
 --
 
@@ -109,7 +100,7 @@ CREATE TABLE `login` (
   `s_id` varchar(11) NOT NULL,
   `password` varchar(20) NOT NULL,
   `position` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
@@ -135,12 +126,6 @@ ALTER TABLE `faculty1`
   ADD PRIMARY KEY (`application_id`);
 
 --
--- Indexes for table `leave_details`
---
-ALTER TABLE `leave_details`
-  ADD PRIMARY KEY (`application_id`);
-
---
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -154,13 +139,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `faculty1`
 --
 ALTER TABLE `faculty1`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `leave_details`
---
-ALTER TABLE `leave_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

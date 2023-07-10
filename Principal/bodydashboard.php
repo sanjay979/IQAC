@@ -16,7 +16,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT department, LType, sum(ndays) as sum FROM faculty1 where principal=1 GROUP BY department, LType ";
+    $sql = "SELECT department, LType, SUM(ndays) AS leaveSum FROM faculty1 WHERE principal=1 GROUP BY department, LType";
     $result = mysqli_query($conn, $sql);
 
     ?>
@@ -36,7 +36,7 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         $department = $row['department'];
                         $leaveType = $row['LType'];
-                        $count = $row['sum'];
+                        $count = $row['leaveSum'];
 
                         if (!isset($leaveCounts[$department])) {
                             $leaveCounts[$department] = array('OD' => 0, 'CL' => 0, 'ML' => 0);
@@ -46,9 +46,9 @@
                     }
 
                     foreach ($leaveCounts as $department => $counts) {
-                        $odCount = $counts['OD'];
-                        $clCount = $counts['CL'];
-                        $mlCount = $counts['ML'];
+                        $odCount = isset($counts['OD']) ? $counts['OD'] : 0;
+                        $clCount = isset($counts['CL']) ? $counts['CL'] : 0;
+                        $mlCount = isset($counts['ML']) ? $counts['ML'] : 0;
 
                         // Add a link to the department page with department name as a parameter
                         echo "<tr><td><a href='department.php?dept=$department'>$department</a></td><td>$odCount</td><td>$clCount</td><td>$mlCount</td></tr>";
@@ -74,12 +74,12 @@
 
                         // Query to retrieve faculties with today's date in their leave range
                         $todayLeaveQuery = "SELECT department,
-                    SUM(CASE WHEN LType = 'OD' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS odCount,
-                    SUM(CASE WHEN LType = 'CL' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS clCount,
-                    SUM(CASE WHEN LType = 'ML' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS mlCount
-                    FROM faculty1
-                    WHERE principal = 1
-                    GROUP BY department";
+                            SUM(CASE WHEN LType = 'OD' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS odCount,
+                            SUM(CASE WHEN LType = 'CL' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS clCount,
+                            SUM(CASE WHEN LType = 'ML' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS mlCount
+                            FROM faculty1
+                            WHERE principal = 1
+                            GROUP BY department";
                         $todayLeaveResult = mysqli_query($conn, $todayLeaveQuery);
 
                         echo "<table width='100%'>";
