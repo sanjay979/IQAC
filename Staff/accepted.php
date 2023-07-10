@@ -13,7 +13,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
         <link rel="stylesheet" href="accepted.css">
         <link rel="stylesheet" href="accepted1.css">
-        <title>Accepted applications</title>
+        <title>History of Applications</title>
     </head>
 
     <body>
@@ -45,7 +45,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $html .= '<th>No of Days</th>';
                 $html .= '<th>Reason</th>';
                 $html .= '<th>Document</th>';
-                $html .= '<th>Continue</th>';
+                $html .= '<th>Status</th>';
 
                 $html .= '</tr>';
                 $html .= '</thead>';
@@ -72,12 +72,21 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     } else {
                         $html .= 'No File Available';
                     }
-                    $currentDate = date('Y-m-d');
-                    if ($row['end'] >= $currentDate) {
-                        $html .= '<button class="approve-btn" type="button" onclick="updateApprovalStatus(' . $row['application_id'] . ', 1)">Continue</button>';
-                    }
-                    $html .= '</form>';
                     $html .= '</td>';
+                    $html .= '<td>';
+                    if($row['principal']==1){
+                    $html .= '<p class="completed">completed</p>';
+                    }elseif ($row['hod']==0) {
+                        $html .= '<p class="rejected" >Rejected by HOD</p>';
+                    }elseif ($row['aqict']==0) {
+                        $html .= '<p class="rejected" >Rejected by IQAC</p>';
+                    }elseif ($row['principal']==0) {
+                        $html .= '<p class="rejected" >Rejected by Principal</p>';
+                    }else{
+                        $html .= '<p>Rejected</p>';
+                    }
+                    $html .= '</td>';
+
                     $html .= '</tr>';
 
                     $serialNumber++; // Increment the serial number

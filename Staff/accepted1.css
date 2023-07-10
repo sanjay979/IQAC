@@ -49,4 +49,9 @@
   .reject-btn:hover {
     background-color: #1e7e34;
   }
-  
+  .completed{
+    color: #28a745;
+  }
+  .rejected{
+    color: red;
+  }
