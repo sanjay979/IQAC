@@ -29,7 +29,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $id = $_SESSION['s_id'];
 
 
-                $sql = "SELECT * FROM faculty1 WHERE principal=1 and id='$id'";
+                $sql = "SELECT * FROM faculty1 WHERE (principal=1 and id='$id') or hod=0 or aqict=0 or principal=0";
                 $result = mysqli_query($conn, $sql);
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
