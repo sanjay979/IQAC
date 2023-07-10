@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
     <!--font2 -->
     <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="sidebar1.css">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
   
 </head>
 
