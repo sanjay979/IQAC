@@ -189,7 +189,7 @@ if ($_SESSION['s_id']) {
         <main>
             <div class="form_center">
                 <?php 
-                //echo $_POST['id'];
+                echo $_POST['id'];
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                 <h1>Post Leave Form</h1>
