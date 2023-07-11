@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Leaves</title>
-    <link rel="stylesheet" type="text/css" href="bodyDashboard.css">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +17,7 @@
             margin-top: 20px;
             margin-bottom: 20px;
             text-align: center;
-            color:cornflowerblue;
+            color: cornflowerblue;
         }
 
         table {
@@ -82,20 +80,30 @@
     echo "<h2>Leaves in $department Department</h2>";
 
     if (mysqli_num_rows($staffLeaveResult) > 0) {
+        $odCount = 0;
+        $clCount = 0;
+        $mlCount = 0;
+
         echo "<table>";
-        echo "<thead><tr><th>Name</th><th>Staff ID</th><th>Leave Type</th><th>Start Date</th><th>End Date</th></tr></thead>";
+        echo "<thead><tr><th>Name</th><th>Staff ID</th><th>OD</th><th>CL</th><th>ML</th><th>Total</th></tr></thead>";
         echo "<tbody>";
 
         while ($row = mysqli_fetch_assoc($staffLeaveResult)) {
             $name = $row['name'];
             $id = $row['id'];
             $leaveType = $row['LType'];
-            $startDate = $row['start'];
-            $endDate = $row['end'];
 
-            echo "<tr><td>$name</td><td>$id</td><td>$leaveType</td><td>$startDate</td><td>$endDate</td></tr>";
+            // Count leave types
+            if ($leaveType == 'OD') {
+                $odCount++;
+            } elseif ($leaveType == 'CL') {
+                $clCount++;
+            } elseif ($leaveType == 'ML') {
+                $mlCount++;
+            }
         }
 
+        echo "<tr><td>$name</td><td>$id</td><td>$odCount</td><td>$clCount</td><td>$mlCount</td><td>" . ($odCount + $clCount + $mlCount) . "</td></tr>";
         echo "</tbody>";
         echo "</table>";
     } else {
