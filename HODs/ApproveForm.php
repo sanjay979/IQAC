@@ -28,13 +28,14 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 
                 // Retrieve all rows from the faculty1 table where hod=1 and hod=3
                   $id = $_SESSION['s_id'];
-                $sql = "SELECT department FROM faculty_details where s_id='$id'";
+                $sql = "SELECT department,shift FROM faculty_details where s_id='$id'";
                 $result = $conn->query($sql);
  
                 $row = $result->fetch_assoc();
-                $value = $row['department'];
+                $dept = $row['department'];
+                $shift = $row['shift'];
 
-                $sql = "SELECT * FROM faculty1 WHERE department='$value' and hod=3";
+                $sql = "SELECT * FROM faculty1 WHERE department='$dept' and hod=3 and shift='$shift'";
                 $result = mysqli_query($conn, $sql);
 
                 // Generate the HTML table
@@ -46,6 +47,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
                 $html .= '<th>Leave Type</th>';
+                $html .= '<th>Shift</th>';
                 $html .= '<th>Start Date</th>';
                 $html .= '<th>End Date</th>';
                 $html .= '<th>No of Days</th>';
@@ -66,6 +68,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
                     $html .= '<td>' . $row['LType'] . '</td>';
+                    $html .= '<td>' . $row['shift'] . '</td>';
                     $html .= '<td>' . $row['start'] . '</td>';
                     $html .= '<td>' . $row['end'] . '</td>';
                     $html .= '<td>' . $row['ndays'] . '</td>';
