@@ -67,7 +67,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                                 if ($field_name === 'file') {
                                     if ($row['file']) {
-                                        echo '<td><a href="' . $row['file'] . '">View File</a></td>';
+                                        echo '<td><a href="' . $row['file'] . '" target="_blank">View File</a></td>';
                                     } else {
                                         echo '<td>No File</td>';
                                     }
