@@ -42,6 +42,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                     $name = $row['name'];
                                     $dep = $row['department'];
                                     $dob = $row['dob'];
+                                    $shift=$row['shift'];
                                     echo  $name;
                                 } ?></td>
                         </tr>
@@ -56,6 +57,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                         <tr>
                             <td class="bold">Date of Birth</td>
                             <td><?php echo $dob; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bold">Shift</td>
+                            <td><?php echo $shift; ?></td>
                         </tr>
                         <tr>
                             <td class="bold">Experience</td>

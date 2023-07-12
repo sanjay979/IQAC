@@ -174,6 +174,7 @@ if ($_SESSION['s_id']) {
             $name = $row['name'];
             $id = $row['s_id'];
             $department = $row['department'];
+            $shift = $row['shift'];
 
             // Other fields to be fetched from the faculty_details table
 
@@ -227,6 +228,11 @@ if ($_SESSION['s_id']) {
                                         <option>CL</option>
                                         <option>ML</option>
                                     </select>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Shift</label>
+                                    <input type="text" name="shift" value="<?php echo $shift; ?>" readonly>
                                 </div>
 
                                 <div class="input-field">
@@ -287,8 +293,8 @@ if ($_SESSION['s_id']) {
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
-                $sql = "INSERT INTO faculty1 (Name, id, department, LType, start, end, ndays, reason, file)
-                        VALUES ('$name', '$id', '$department', '$leaveType', '$startDate', '$endDate', '$numDays', '$reason', '$file_path')";
+                $sql = "INSERT INTO faculty1 (Name, id, department, LType,shift, start, end, ndays, reason, file)
+                        VALUES ('$name', '$id', '$department', '$leaveType','$shift', '$startDate', '$endDate', '$numDays', '$reason', '$file_path')";
 
                 if ($conn->query($sql) === TRUE) {
                     $successMessage = "Leave application submitted successfully.";

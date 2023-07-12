@@ -39,6 +39,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
                 $html .= '<th>Leave Type</th>';
+                $html .= '<th>Shift</th>';
                 $html .= '<th>Start Date</th>';
                 $html .= '<th>End Date</th>';
                 $html .= '<th>No of Days</th>';
@@ -59,6 +60,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
                     $html .= '<td>' . $row['LType'] . '</td>';
+                    $html .= '<td>' . $row['shift'] . '</td>';
                     $html .= '<td>' . $row['start'] . '</td>';
                     $html .= '<td>' . $row['end'] . '</td>';
                     $html .= '<td>' . $row['ndays'] . '</td>';
