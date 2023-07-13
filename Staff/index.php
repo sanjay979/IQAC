@@ -114,7 +114,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 
                 if ($result2->num_rows > 0 && $row2['next_form'] == 1) {
-                    $app = $row2['application_id'];
+                    //$app = $row2['application_id'];
                 ?>
 
                     <div class="new-card-block">
@@ -122,7 +122,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             <div>
                                 <h1>Post Leave Updation</h1>
                                 <span>Kindly update the od completion document</span>
-                                <span><?php echo $app; ?></span>
+                                <!--span>< ?php echo $app; ?></span-->
                             </div>
                             <div>
                                 <a href="postleave.php" class="button">Open Form</a>
