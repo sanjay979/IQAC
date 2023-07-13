@@ -108,11 +108,13 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 //statements for next_form for od
 
-                $sql2 = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND next_form=1";
+                $sql2 = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND (LType ='OD' OR LType = 'ML') AND next_form=1";
                 $result2 = $conn->query($sql2);
                 $row2 = mysqli_fetch_assoc($result2);
 
+                
                 if ($result2->num_rows > 0 && $row2['next_form'] == 1) {
+                    $app = $row2['application_id'];
                 ?>
 
                     <div class="new-card-block">
@@ -120,6 +122,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             <div>
                                 <h1>Post Leave Updation</h1>
                                 <span>Kindly update the od completion document</span>
+                                <span><?php echo $app; ?></span>
                             </div>
                             <div>
                                 <a href="postleave.php" class="button">Open Form</a>

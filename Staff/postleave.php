@@ -188,9 +188,6 @@ if ($_SESSION['s_id']) {
         ?>
         <main>
             <div class="form_center">
-                <?php 
-                echo $_POST['id'];
-                ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                 <h1>Post Leave Form</h1>
                     <div class="form first">
@@ -269,7 +266,7 @@ if ($_SESSION['s_id']) {
                                 
                                 <div class="input-field">
                                     <label>Assessment</label>
-                                    <input type="text" name="assessment" placeholder="Description" required>
+                                    <input type="text" name="assesment" placeholder="Description" required>
                                 </div>
 
                                 <div class="input-field">
@@ -303,14 +300,17 @@ if ($_SESSION['s_id']) {
             // $hod = 3;
             // $aqict = 3;
             // $principal = 3;
+            $application_id=$_POST['application_id'];
+            $assesment = $_POST['assesment'];
 
-            $target_directory = "../assets" . "/assets";
+
+            $target_directory = "../assets" . "/postAssets";
             $file_name = $_FILES['file']['name'];
             $file_path = $target_directory . $file_name;
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
-                $sql = "INSERT INTO leave_details (Application Id,Name, id, department,Assessment,file)
+                $sql = "INSERT INTO leave_details (application_id,name, id, department,assessment,file)
                         VALUES ('$application_id','$name', '$id', '$department','$assesment','$file_path')";
 
                 if ($conn->query($sql) === TRUE) {
