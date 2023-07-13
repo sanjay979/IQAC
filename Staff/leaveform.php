@@ -236,15 +236,21 @@ if ($_SESSION['s_id']) {
                                 </div>
 
                                 <div class="input-field">
-                                    <label>From date</label>
-                                    <input type="date" name="start" placeholder="from" required>
+                                    <label for="startDate">From date</label>
+                                    <input type="date" name="start" id="start" placeholder="from" required>
                                 </div>
 
                                 <div class="input-field">
-                                    <label>To date</label>
-                                    <input type="date" name="end" placeholder="to" required>
+                                    <label for="endDate">To date</label>
+                                    <input type="date" name="end" id="end" placeholder="to" required>
                                 </div>
-
+                                <script>
+                                        const startDateInput = document.getElementById("start");
+                                        const endDateInput = document.getElementById("end");
+                                        startDateInput.addEventListener("input", function() {
+                                        endDateInput.min = this.value;
+                                        });
+                                </script>
                                 <div class="input-field">
                                     <label>No of Days</label>
                                     <input type="number" name="days" placeholder="Enter number of days" readonly>
@@ -290,7 +296,6 @@ if ($_SESSION['s_id']) {
             $target_directory = "../assets" . "/assets";
             $file_name = $_FILES['file']['name'];
             $file_path = $target_directory . $file_name;
-
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
                 $sql = "INSERT INTO faculty1 (Name, id, department, LType,shift, start, end, ndays, reason, file)
