@@ -128,7 +128,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'admin') {
                 }
 
                 // Retrieve all rows from the faculty1 table where hod=1 and aqict=3
-                $query = "SELECT * FROM faculty1 WHERE hod = 1 AND aqict = 3";
+                $query = "SELECT * FROM faculty1 WHERE hod = 3 or aqict = 3 or principal = 3";
                 $result = mysqli_query($con, $query);
 
                 // Generate the HTML table
