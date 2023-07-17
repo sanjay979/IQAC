@@ -42,6 +42,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                                     $name = $row['name'];
                                     $dep = $row['department'];
                                     $dob = $row['dob'];
+                                    $shit = $row['shit'];
                                     echo  $name;
                                 } ?></td>
                         </tr>
@@ -61,6 +62,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                             <td class="bold">Experience</td>
                             <td><?php $exp = '32 years';
                                 echo $exp ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bold">Shit</td>
+                            <td><?php echo $shit; ?></td>
                         </tr>
                     </table>
                 </div>
