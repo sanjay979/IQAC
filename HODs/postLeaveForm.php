@@ -1,5 +1,4 @@
 <?php
-include "../database/Databasedemo.php";
 
 //table begins
 ?>
@@ -21,7 +20,7 @@ include "../database/Databasedemo.php";
 
       //to retrieve all rows from the leave_details table which are unapproved
 
-      $post_query = "SELECT * FROM leave_details where shift = $shift AND hod=1 AND iqac=3";
+      $post_query = "SELECT * FROM leave_details where department = '$dept' AND shift = $shift AND hod=3";
       $post_result = mysqli_query($conn, $post_query);
 
       $sN = 1; // Initialize the serial number

@@ -26,10 +26,16 @@
             <ul>
                 <li><a href="index.php" class="<?= $page == 'index.php' ? 'active' : '' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
                 <li><a href="StaffLogin.php" class="<?= $page == 'StaffLogin.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>add staff</span> </a></li>
-                
-                <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave requests</span></a></li>
-                <li><a href="ApproveForm2.php" class="<?= $page == 'ApproveForm2.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave</span></a></li>
-                
+
+                <li><a href="ApproveForm2.php" class="<?= $page == 'ApproveForm2.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave Requests</span></a></li>
+
+                <li><a class="dropdown-btn"><span class="fa fa-backward"></span> &nbsp;<span>Leave Requests<i class="fa fa-caret-down"></i></span> </a>
+                    <ul class="dropdown-content">
+                        <a href="ApproveFormS1.php" class="<?= $page == 'ApproveFormS1.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Shift I</span> </a>
+                        <a href="ApproveFormS2.php" class="<?= $page == 'ApproveFormS2.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Shift II</span></a>
+                    </ul>
+                </li>
+
                 <li><a href="WaitingForms.php" class="<?= $page == 'WaitingForms.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Waiting Forms</span></a></li>
                 <li><a href="history.php" class="<?= $page == 'history.php' ? 'active' : '' ?>"><span class="fa fa-clock"></span> <span>history</span></a></li>
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>

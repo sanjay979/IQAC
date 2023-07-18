@@ -6,7 +6,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
 <html>
 <head>
     <title>IQAC Approve</title>
-    <link rel="stylesheet" type="text/css" href="ApproveForm2.css">
+    <link rel="stylesheet" type="text/css" href="ApproveFormS2.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function openTab(tabName) {
@@ -40,6 +40,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 <button id="page1-button" class="tab-button active" onclick="openTab('page1')">Pre Leave</button>
                 <button id="page2-button" class="tab-button" onclick="openTab('page2')">Post Leave</button>
             </div>
+
+            <?php $shift =2; ?>
 
             <div id="page1" class="tab-content" style="display: block;">
                 <?php include "preLeaveForm.php"?>
