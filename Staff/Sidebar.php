@@ -21,7 +21,7 @@
     <?php $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1) ?>
     <div class="sidebar">
         <div class="sidebar-head">
-            <h2><span></span></h2>
+            <h2><span><img src="../assets/sjclogo.jpg" height="90px" width="70px" ></span></h2>
         </div>
         <div class="sidebar-menu">
 

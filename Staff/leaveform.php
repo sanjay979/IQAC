@@ -238,8 +238,8 @@ if ($_SESSION['s_id']) {
                                     </div>
 
                                     <div class="input-field">
-                                        <label for="startDate">From date</label>
-                                        <input type="date" name="start" id="start" placeholder="from" required>
+                                        <label for="start">From date</label>
+                                        <input type="date" name="start" id="start" min="" placeholder="from" required>
                                     </div>
 
                                     <div class="input-field">
@@ -251,7 +251,17 @@ if ($_SESSION['s_id']) {
                                         const endDateInput = document.getElementById("end");
                                         startDateInput.addEventListener("input", function() {
                                             endDateInput.min = this.value;
-                                        });
+                                            
+
+
+                                          
+                                        }); 
+                                            var today = new Date();
+                                            var yyyy = today.getFullYear();
+                                            var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                            var dd = String(today.getDate()).padStart(2, '0');
+                                            var minDate = yyyy + '-' + mm + '-' + dd;
+                                            document.getElementById('start').setAttribute('min', minDate);
                                     </script>
                                     <div class="input-field">
                                         <label>No of Days</label>
@@ -291,10 +301,7 @@ if ($_SESSION['s_id']) {
                 $endDate = $_POST['end'];
                 $numDays = $_POST['days'];
                 $reason = $_POST['reason'];
-                $hod = 3;
-                $aqict = 3;
-                $principal = 3;
-
+        
                 $target_directory = "../assets" . "/assets";
                 $file_name = $_FILES['file']['name'];
                 $file_path = $target_directory . $file_name;
