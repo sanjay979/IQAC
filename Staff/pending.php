@@ -28,7 +28,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 // Fetch the data from the database
                 $id = $_SESSION['s_id'];
-                $sql = "SELECT Name, id, LType, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)";
+                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)";
                 $result = mysqli_query($conn, $sql);
 
                 // Display the form data in a table format
@@ -54,6 +54,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             $form_fields = [
                                 'id' => ['label' => 'ID'],
                                 'LType' => ['label' => 'Leave-Type'],
+                                'shift' => ['label' => 'Shift'],
                                 'start' => ['label' => 'Date'],
                                 'ndays' => ['label' => 'No of Days'],
                                 'reason' => ['label' => 'Reason'],

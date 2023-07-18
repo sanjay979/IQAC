@@ -40,6 +40,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     $iqac = $row['aqict'];
                     $principal = $row['principal'];
                     $lType = $row['LType'];
+                    $shift = $row['shift'];
                     $start = $row['start'];
                     $end = $row['end'];
                     $ndays = $row['ndays'];
@@ -63,6 +64,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     echo '<div class="card-content">';
                     echo '<span class="label">Leave Type : </span>';
                     echo '<span class="value">' . $lType . '</span><br>';
+                    echo '<span class="label">shift : </span>';
+                    echo '<span class="value">' . $shift . '</span><br>';
                     echo '<span class="label">Start Date : </span>';
                     echo '<span class="value">' . $start . '</span><br>';
                     echo '<span class="label">End Date : </span>';

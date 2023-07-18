@@ -29,7 +29,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $id = $_SESSION['s_id'];
 
 
-                $sql = "SELECT * FROM faculty1 WHERE (principal=1 and id='$id') or hod=0 or aqict=0 or principal=0";
+                $sql = "SELECT * FROM faculty1 WHERE id='$id' and (principal=1 or hod=0 or aqict=0 or principal=0)";
                 $result = mysqli_query($conn, $sql);
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
@@ -40,6 +40,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
                 $html .= '<th>Leave Type</th>';
+                $html .= '<th>shift</th>';
                 $html .= '<th>Start Date</th>';
                 $html .= '<th>End Date</th>';
                 $html .= '<th>No of Days</th>';
@@ -59,6 +60,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
                     $html .= '<td>' . $row['LType'] . '</td>';
+                    $html .= '<td>' . $row['shift'] . '</td>';
                     $html .= '<td>' . $row['start'] . '</td>';
                     $html .= '<td>' . $row['end'] . '</td>';
                     $html .= '<td>' . $row['ndays'] . '</td>';
