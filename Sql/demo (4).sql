@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2023 at 06:47 PM
+-- Generation Time: Jul 18, 2023 at 07:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -54,22 +54,23 @@ CREATE TABLE `faculty1` (
 --
 
 INSERT INTO `faculty1` (`application_id`, `name`, `id`, `department`, `LType`, `shift`, `start`, `end`, `ndays`, `reason`, `hod`, `H_feedback`, `aqict`, `IC_Feedback`, `principal`, `Pn_feedback`, `file`, `next_form`, `RegDate`) VALUES
-(1, 'dpj', '01fcs101', 'computer science', 'CL', 1, '2023-06-21', '2023-06-22', 2, 'testing', 1, '', 1, 'dpj cl', 3, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-20 15:50:39'),
-(2, 'dpj', '01fcs101', 'computer science', 'ML', 1, '2023-06-21', '2023-06-22', 2, 'fever', 1, '', 1, 'hiii', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-20 16:00:54'),
-(3, 'dpj', '01fcs101', 'computer science', 'ML', 1, '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, 'dpj ml', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-21 02:57:40'),
-(5, 'dpj', '01fcs101', 'computer science', 'CL', 1, '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, 'this is a demo text how are you', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 15:11:10'),
-(6, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-06-19', '2023-06-20', 2, 'no', 1, '', 0, '1234555555', 3, '', '../assets/assetsTECHX INVITATION.pdf', 3, '2023-06-22 15:26:51'),
-(8, 'John', '01fbt102', 'botany', 'CL', 1, '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 1, '', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 16:54:02'),
-(9, 'John', '01fbt102', 'botany', 'CL', 1, '2023-06-29', '2023-06-30', 2, 'go to kodaikanal', 1, '', 1, 'Thanni', 3, '', '../assets/assetsSheep.pdf', 1, '2023-06-29 15:34:22'),
-(10, 'John', '01fbt102', 'botany', 'OD', 1, '2023-06-29', '2023-07-01', 3, 'testing', 3, '', 3, '', 3, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-30 07:22:27'),
-(11, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-06-30', '2023-07-07', 8, 'testing', 1, '', 3, 'demo 2', 3, '', '../assets/assetscash receipt.pdf', 1, '2023-06-30 10:12:59'),
-(12, 'Charles', '01fcs111', 'computer science', 'CL', 1, '2023-06-30', '2023-07-04', 5, 'fgf', 1, '', 3, 'demo 3', 3, '', '../assets/assetsVisit 01 Document.pdf', 3, '2023-06-30 10:21:09'),
-(13, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-07-03', '2023-07-05', 3, 'nothing', 1, '', 1, '10', 3, '', '../assets/assetsSheep.pdf', 1, '2023-07-03 16:32:11'),
-(14, 'John', '01fbt102', 'botany', 'OD', 1, '2023-07-10', '2023-07-11', 2, 'casual', 1, '', 3, 'testing', 3, '', '../assets/assetsFcFIoCaJ-6342.pdf', 1, '2023-07-11 06:18:00'),
-(15, 'John', '01fbt102', 'botany', 'ML', 1, '2023-07-10', '2023-07-19', 10, 'function', 1, '', 1, '', 3, '', '../assets/assetsUnit-2 _functions.pdf', 1, '2023-07-11 06:50:26'),
-(16, 'John', '01fbt102', 'botany', 'OD', 1, '2023-07-11', '2023-07-20', 10, 'important works', 1, '', 1, '1234', 3, '', '../assets/assetsFcFIoCaJ-6342.pdf', 1, '2023-07-11 07:09:30'),
-(18, 'Antony John Prabu', '02fcs202', 'Computer Science', '', 2, '2023-07-12', '2023-07-13', 2, 'lecture', 0, '', 3, '', 3, '', '../assets/assetsAdobe Scan Nov 27, 2020.pdf', 3, '2023-07-12 21:32:06'),
-(19, 'Antony John Prabu', '02fcs202', 'Computer Science', 'OD', 2, '2023-07-12', '2023-07-27', 16, 'personal', 1, '', 3, 'the according', 3, '', '../assets/assetsAdobe Scan Nov 27, 2020.pdf', 3, '2023-07-12 21:36:07');
+(1, 'dpj', '01fcs101', 'computer science', 'CL', 1, '2023-06-21', '2023-06-22', 2, 'testing', 1, '', 3, '', 3, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-20 15:50:39'),
+(2, 'dpj', '01fcs101', 'computer science', 'ML', 1, '2023-06-21', '2023-06-22', 2, 'fever', 1, '', 3, '', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-20 16:00:54'),
+(3, 'dpj', '01fcs101', 'computer science', 'ML', 1, '2023-06-22', '2023-06-23', 2, 'fever', 1, '', 3, 'this is the testing for sno updation and the row removal of preleave', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-21 02:57:40'),
+(5, 'dpj', '01fcs101', 'computer science', 'CL', 1, '2023-06-22', '2023-06-23', 2, 'fever', 0, '', 3, 'chk', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 15:11:10'),
+(6, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-06-19', '2023-06-20', 2, 'no', 0, '', 3, 'chk2', 3, '', '../assets/assetsTECHX INVITATION.pdf', 3, '2023-06-22 15:26:51'),
+(8, 'John', '01fbt102', 'botany', 'CL', 1, '2023-06-22', '2023-06-23', 2, 'fever', 0, '', 3, 'chk3', 3, '', '../assets/assetsSheep.pdf', 3, '2023-06-22 16:54:02'),
+(9, 'John', '01fbt102', 'botany', 'CL', 1, '2023-06-29', '2023-06-30', 2, 'go to kodaikanal', 1, '', 3, '', 3, '', '../assets/assetsSheep.pdf', 1, '2023-06-29 15:34:22'),
+(10, 'John', '01fbt102', 'botany', 'OD', 1, '2023-06-29', '2023-07-01', 3, 'testing', 0, '', 3, '', 3, '', '../assets/assetsBDU Convocation Application Form (1).pdf', 3, '2023-06-30 07:22:27'),
+(11, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-06-30', '2023-07-07', 8, 'testing', 3, '', 3, '', 3, '', '../assets/assetscash receipt.pdf', 1, '2023-06-30 10:12:59'),
+(12, 'Charles', '01fcs111', 'computer science', 'CL', 1, '2023-06-30', '2023-07-04', 5, 'fgf', 0, '', 3, '', 3, '', '../assets/assetsVisit 01 Document.pdf', 3, '2023-06-30 10:21:09'),
+(13, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-07-03', '2023-07-05', 3, 'nothing', 0, '', 3, '', 3, '', '../assets/assetsSheep.pdf', 1, '2023-07-03 16:32:11'),
+(14, 'John', '01fbt102', 'botany', 'OD', 1, '2023-07-10', '2023-07-11', 2, 'casual', 0, '', 3, '', 3, '', '../assets/assetsFcFIoCaJ-6342.pdf', 1, '2023-07-11 06:18:00'),
+(15, 'John', '01fbt102', 'botany', 'ML', 1, '2023-07-10', '2023-07-19', 10, 'function', 0, '', 3, '', 3, '', '../assets/assetsUnit-2 _functions.pdf', 1, '2023-07-11 06:50:26'),
+(16, 'John', '01fbt102', 'botany', 'OD', 1, '2023-07-11', '2023-07-20', 10, 'important works', 0, '', 3, '', 3, '', '../assets/assetsFcFIoCaJ-6342.pdf', 1, '2023-07-11 07:09:30'),
+(19, 'Antony John Prabu', '02fcs202', 'Computer Science', 'OD', 2, '2023-07-12', '2023-07-27', 16, 'personal', 3, '', 3, '', 3, '', '../assets/assetsAdobe Scan Nov 27, 2020.pdf', 3, '2023-07-12 21:36:07'),
+(20, 'dpj', '01fcs101', 'computer science', 'OD', 1, '2023-07-19', '2023-07-19', 1, 'boring', 0, '', 3, '', 3, '', '../assets/assetsGetting started with OneDrive.pdf', 3, '2023-07-18 16:39:00'),
+(23, 'dpj', '01fcs101', 'computer science', 'ML', 1, '2023-07-18', '2023-07-19', 2, 'johnson shift 1', 1, 'approved testing', 1, 'approval testing', 3, '', '../assets/assetsGetting started with OneDrive.pdf', 3, '2023-07-18 16:44:51');
 
 -- --------------------------------------------------------
 
@@ -109,6 +110,7 @@ CREATE TABLE `leave_details` (
   `application_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `id` varchar(30) NOT NULL,
+  `shift` int(11) NOT NULL,
   `department` varchar(30) NOT NULL,
   `assessment` varchar(250) NOT NULL,
   `file` varchar(250) NOT NULL,
@@ -122,10 +124,13 @@ CREATE TABLE `leave_details` (
 -- Dumping data for table `leave_details`
 --
 
-INSERT INTO `leave_details` (`application_id`, `name`, `id`, `department`, `assessment`, `file`, `hod`, `H_feedback`, `iqac`, `IC_Feedback`) VALUES
-(5, 'ravindran', '01fcs110', 'computer science', 'zcxzcx', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 0, 'according to the pythagorean theorem'),
-(6, 'John', '01fbt102', 'botany', 'test', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 1, 'dskjf jasj fdsjfd fd djfjkdfjkjdsfkjfdj sdjdkfj'),
-(15, 'IQAC', '01fqc101', 'chemistry', 'this is a test description', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 1, 'this isa demo');
+INSERT INTO `leave_details` (`application_id`, `name`, `id`, `shift`, `department`, `assessment`, `file`, `hod`, `H_feedback`, `iqac`, `IC_Feedback`) VALUES
+(5, 'ravindran', '01fcs110', 1, 'computer science', 'zcxzcx', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 3, 'this is to test the comment updation and the sno updation on approval'),
+(6, 'John', '01fbt102', 1, 'botany', 'test', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 0, ''),
+(12, 'John', '01fbt102', 1, 'botany', 'a', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 0, ''),
+(21, 'Antony John Prabu', '02fcs202', 2, 'Computer Science', 'testing over over', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 1, 'approved'),
+(22, 'Antony John Prabu', '02fcs202', 2, 'Computer Science', 'asdfghjkl', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 3, ''),
+(25, 'John', '01fbt102', 1, 'botany', '12345', '../assets/postAssetsGetting started with OneDrive.pdf', 1, '', 1, 'approved success fully');
 
 -- --------------------------------------------------------
 
@@ -185,13 +190,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `faculty1`
 --
 ALTER TABLE `faculty1`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `leave_details`
 --
 ALTER TABLE `leave_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
