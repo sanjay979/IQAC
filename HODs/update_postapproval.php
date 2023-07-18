@@ -1,8 +1,9 @@
 <?php
 include "../database/Databasedemo.php";
 
-if (isset($_POST['leave_id']) && isset($_POST['status'])) {
-    $leaveID = $_POST['leave_id'];
+
+if (isset($_POST['leav_id']) && isset($_POST['status'])) {
+    $leaveID = $_POST['leav_id'];
     $status = $_POST['status'];
     $comments = isset($_POST['comments']) ? $_POST['comments'] : '';
 
@@ -16,8 +17,10 @@ if (isset($_POST['leave_id']) && isset($_POST['status'])) {
         $comments = mysqli_real_escape_string($conn, $comments);
     }
 
-    // Update the hod and IC_feedback columns in the faculty1 table
-    $query = "UPDATE faculty1 SET hod = $status, H_Feedback = '$comments' WHERE application_id = $leaveID";  
+    // Update the aqict and IC_feedback columns in the faculty1 table
+    $query = "UPDATE leave_details SET hod = $status, IC_Feedback = '$comments' WHERE application_id = $leaveID";  
+
+    // In the above query comments are enclosed with single quotes bcoz it holds a string value whereas status has numeric value so no quotes
 
     // Execute the query
     $result = mysqli_query($conn, $query);

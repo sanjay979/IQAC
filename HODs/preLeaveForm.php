@@ -1,7 +1,6 @@
                 <?php
-                include "../database/Databasedemo.php";
-                // Retrieve all rows from the faculty1 table where hod=1 and aqict=3
-                $query = "SELECT * FROM faculty1 WHERE shift = $shift AND hod = 1 AND aqict = 3";
+            
+            $query = "SELECT * FROM faculty1 WHERE department='$dept' AND shift = $shift AND hod = 3";
                 $result = mysqli_query($conn, $query);
 
                 // Generate the HTML table

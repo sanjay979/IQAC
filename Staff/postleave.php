@@ -174,6 +174,7 @@ if ($_SESSION['s_id']) {
             $name = $row['name'];
             $id = $row['s_id'];
             $department = $row['department'];
+            $shift = $row['shift'];
             
 
             // Other fields to be fetched from the faculty_details table
@@ -208,11 +209,14 @@ if ($_SESSION['s_id']) {
                                     <input type="text" name="id" value="<?php echo $id; ?>" readonly>
                                 </div>
 
-                                
+                                <div class="input-field">
+                                    <label>Shift</label>
+                                    <input type="text" name="id" value="<?php echo $shift; ?>" readonly>
+                                </div>
 
                                 <!-- <div class="input-field">
                                     <label>Application Id</label>
-                                    <input type="text" name="application_id" value="<?php echo $application_id; ?>" readonly>
+                                    <input type="text" name="application_id" value="<?php //echo $application_id; ?>" readonly>
                                 </div> -->
 
                                 <div class="input-field">
@@ -310,8 +314,8 @@ if ($_SESSION['s_id']) {
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
                 // Insert form data into the database
-                $sql = "INSERT INTO leave_details (application_id,name, id, department,assessment,file)
-                        VALUES ('$application_id','$name', '$id', '$department','$assesment','$file_path')";
+                $sql = "INSERT INTO leave_details (application_id,name, id, shift, department,assessment,file)
+                        VALUES ('$application_id','$name', '$id','$shift', '$department','$assesment','$file_path')";
 
                 if ($conn->query($sql) === TRUE) {
                     $successMessage = "certificate upload successfully.";

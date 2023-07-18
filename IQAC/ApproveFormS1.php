@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HOD Approve</title>
-    <link rel="stylesheet" type="text/css" href="ApproveForm.css">
+    <title>IQAC Approve</title>
+    <link rel="stylesheet" type="text/css" href="ApproveFormS1.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function openTab(tabName) {
@@ -30,24 +30,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
     </script>
 </head>
 <body>
-    <?php include "Hodsidebar.php"?>
+    <?php include "sidebar.php"?>
     <div class="main-content">
     <?php include "header.php"?>
-    <?php
-    include "../database/Databasedemo.php";
-    // Retrieve all rows from the faculty1 table where hod=1 and hod=3
-                  $id = $_SESSION['s_id'];
-                $sql = "SELECT department,shift FROM faculty_details where s_id='$id'";
-                $result = $conn->query($sql);
- 
-                $row = $result->fetch_assoc();
-                $dept = $row['department'];
-                $shift = $row['shift'];
-
-               
-
-                
-?>
+    
     
         <main style="padding-top: 0;">
             <div class="tab-container">
