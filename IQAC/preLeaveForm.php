@@ -1,13 +1,8 @@
                 <?php
-                $con = mysqli_connect("localhost", "root", "", "demo");
-                if (mysqli_connect_errno()) {
-                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                    exit();
-                }
-
+                include "../database/Databasedemo.php";
                 // Retrieve all rows from the faculty1 table where hod=1 and aqict=3
                 $query = "SELECT * FROM faculty1 WHERE hod = 1 AND aqict = 3";
-                $result = mysqli_query($con, $query);
+                $result = mysqli_query($conn, $query);
 
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
@@ -35,7 +30,7 @@
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $html .= '<tr id="row_' . $row['application_id'] . '">';
-                    $html .= '<td>' . $serialNumber . '</td>'; // Add the serial number column
+                    $html .= '<td class="serial_no">' . $serialNumber . '</td>'; // Add the serial number column
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
                     $html .= '<td>' . $row['LType'] . '</td>';
@@ -57,7 +52,7 @@
                     $html .= '</td>';
 
                     $html .= '<td>';
-                    $html .= '<input type="text" name="comments[' . $row['application_id'] . ']" placeholder="Enter comments">';
+                    $html .= '<textarea name="comments[' . $row['application_id'] . ']" rows="2" class="custom-textarea" placeholder="Enter comments"></textarea>';
                     $html .= '</td>';
 
                     $html .= '<td class="button-cell">';
@@ -89,7 +84,7 @@
                 <script>
                     function updateApprovalStatus(leaveID, status) {
 
-                        var comments = $("input[name='comments[" + leaveID + "]']").val(); // Get the comments for the specific row
+                        var comments = $("textarea[name='comments[" + leaveID + "]']").val(); // Get the comments for the specific row
 
                         $.ajax({
                             type: 'POST',
@@ -115,10 +110,11 @@
                     }
 
                     function updateSerialNumbers() {
-                        var rows = $('table tbody tr'); // Get all table rows
+                        //alert("updateSerialNumbers() called");
+                        var rows = $('.table tbody tr'); // Get all table rows
 
                         rows.each(function(index) {
-                            $(this).find('td:first-child').text(index + 1); // Update the serial number column
+                            $(this).find('.serial_no').text(index + 1); // Update the serial number column
                         });
                     }
                 </script>

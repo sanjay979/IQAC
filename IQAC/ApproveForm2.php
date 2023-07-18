@@ -33,6 +33,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
     <?php include "sidebar.php"?>
     <div class="main-content">
     <?php include "header.php"?>
+    
+    
         <main style="padding-top: 0;">
             <div class="tab-container">
                 <button id="page1-button" class="tab-button active" onclick="openTab('page1')">Pre Leave</button>
