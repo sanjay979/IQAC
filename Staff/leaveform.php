@@ -251,17 +251,17 @@ if ($_SESSION['s_id']) {
                                         const endDateInput = document.getElementById("end");
                                         startDateInput.addEventListener("input", function() {
                                             endDateInput.min = this.value;
-                                            
 
 
-                                          
-                                        }); 
-                                            var today = new Date();
-                                            var yyyy = today.getFullYear();
-                                            var mm = String(today.getMonth() + 1).padStart(2, '0');
-                                            var dd = String(today.getDate()).padStart(2, '0');
-                                            var minDate = yyyy + '-' + mm + '-' + dd;
-                                            document.getElementById('start').setAttribute('min', minDate);
+
+
+                                        });
+                                        var today = new Date();
+                                        var yyyy = today.getFullYear();
+                                        var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                        var dd = String(today.getDate()).padStart(2, '0');
+                                        var minDate = yyyy + '-' + mm + '-' + dd;
+                                        document.getElementById('start').setAttribute('min', minDate);
                                     </script>
                                     <div class="input-field">
                                         <label>No of Days</label>
@@ -275,7 +275,7 @@ if ($_SESSION['s_id']) {
 
                                     <div class="input-field">
                                         <label>Upload</label>
-                                        <input type="file" name="file" accept="application/pdf">
+                                        <input type="file" name="file" accept="application/pdf" style="border: none;">
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +301,7 @@ if ($_SESSION['s_id']) {
                 $endDate = $_POST['end'];
                 $numDays = $_POST['days'];
                 $reason = $_POST['reason'];
-        
+
                 $target_directory = "../assets" . "/assets";
                 $file_name = $_FILES['file']['name'];
                 $file_path = $target_directory . $file_name;
