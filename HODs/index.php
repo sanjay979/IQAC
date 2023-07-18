@@ -15,7 +15,12 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
         <title>HODs page</title>
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+    <!--font2 -->
+    <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
@@ -30,8 +35,34 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                             <span class="las la-bars"></span>
                         </label> Dashboard
                     </div>
-
+                    
                 </h2>
+                <div class="notify">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge"><?php echo "5"; ?></span>
+                    <div class="notification-list">
+                   <!-- Notification list items -->
+                   <ul>
+                     <li>Notification 1</li>
+                     <li>Notification 2</li>
+                     <li>Notification 3</li>
+                     <!-- Add more notification items as needed -->
+                   </ul>
+                   <script>
+                    var notificationIcon = document.querySelector('.notify');
+var notificationList = document.querySelector('.notification-list');
+
+// Toggle the visibility of the notification list when the icon is clicked
+notificationIcon.addEventListener('click', function() {
+  if (notificationList.style.display === 'none') {
+    notificationList.style.display = 'block';
+  } else {
+    notificationList.style.display = 'none';
+  }
+});
+                   </script>
+  </div>
+                </div>
                 <div class="user-wrapper">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
                     <div>
