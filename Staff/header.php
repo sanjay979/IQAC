@@ -15,7 +15,7 @@
             <div class="header-list">
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
-                </label> Dashboard
+                </label>SJC Staff
             </div>
 
         </h2>

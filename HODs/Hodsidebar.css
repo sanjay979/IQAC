@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200&display=swap');
 
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 :root{
     --main-color:#05b6fa;
@@ -15,10 +16,31 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Roboto Slab', serif;
 }
+
+
+
+
+/* Style the dropdown menu */
+.sidebar ul li .dropdown-content {
+    opacity: 0;
+    padding-left: 10px;
+    transition: max-height 0.3s ease-out, opacity 1s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* Show dropdown menu on hover */
+.sidebar ul li:hover .dropdown-content {
+    opacity: 1;
+    max-height: 200px;
+}
+
+
+
 .sidebar{
-    width: 345px;
+    width: 220px;
     position: fixed;
     left: 0;
     top: 0;
@@ -49,7 +71,7 @@
 }
 .main-content{
     transition: margin-left 300ms;
-    margin-left: 345px;
+    margin-left: 220px;
 }
 #nav-toggle:checked + .sidebar .sidebar-head h2,
 #nav-toggle:checked + .sidebar li a 
@@ -58,7 +80,7 @@
 }
 #nav-toggle:checked + .sidebar li a span{
     padding-left: 2rem;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
 }
 #nav-toggle:checked + .sidebar li a span:last-child
 {
@@ -99,29 +121,29 @@
     border-radius: 30px 0 0 30px;
 }
 .sidebar-menu a:hover{
-    background: #89d7f6;
+    background: #a2e2fb;
     border-radius: 30px 0 0 30px;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 .sidebar-menu a span:first-child{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     padding-right: 1rem;
 }
 .main-content{
-    margin-left: 345px;
+    margin-left: 220px;
 
 }
 header{
     background: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 0.8rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,.3);
     position: fixed;
-    left: 345px;
-    width: calc(100% - 345px);
+    left: 220px;
+    width: calc(100% - 220px);
     top: 0;
     z-index: 100;
     transition: left 300ms;
@@ -207,7 +229,7 @@ main{
         display: none;
     }
     .sidebar{
-        width: 345px;
+        width: 250px;
     }
    .sidebar li a
 {
@@ -229,14 +251,37 @@ main{
         grid-template-columns: repeat(1,1fr);
     }
     .sidebar{
-        width: 200px;
+       width: 0;
+    }
+    #nav-toggle:checked + .sidebar{
+        width: 250px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background:var(--main-color);
+        z-index: 100;
+        transition: width 300ms;
     }
     .main-content header{
-        width: calc(100% - 200px);
-        left: 200px;
+        width: 100%;
+        left: 0;
     }
+    
     .main-content {
-        margin-left: 200px;
+        margin-left: 0;
+    }
+    #nav-toggle:checked ~ .main-content{
+        margin-left: 0;
+    }
+    #nav-toggle:checked ~ .main-content header{
+        left: 0;
+        width: 100%;
+    }
+    #nav-toggle:checked + .sidebar li a span:last-child
+    {
+    display: inline;
+    font-size: 1rem;
     }
     
 }
