@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
@@ -67,6 +66,72 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
             .text-right {
                 text-align: right !important;
             }
+
+            /* Additional CSS for filter box */
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .col-form-label {
+                padding-top: 8px;
+                padding-right: 16px;
+                text-align: right;
+            }
+
+            .form-control {
+                display: block;
+                width: 100%;
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                border-radius: 0.25rem;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            }
+
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+            /* Additional CSS for table design */
+            .data_table {
+                background-color: #ffffff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            th {
+                background-color: #f7f7f7;
+                font-weight: bold;
+            }
+
+            td {
+                background-color: #fff;
+            }
+
+            tr:nth-child(even) td {
+                background-color: #f2f2f2;
+            }
+
+            /* Additional CSS for filter options */
+            #fetchval, #leavetype {
+                width: 100%;
+                padding: 5px;
+            }
+
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
         }
     </style>
 </head>
@@ -76,7 +141,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
     <div class="main-content">
         <?php include 'header.php' ?>
         <main>
-        <div class="filter-box">
+            <div class="filter-box">
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group row">
@@ -131,6 +196,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
 
                     </tbody>
                 </table>
+                <div class="alert alert-info" role="alert" id="empty-message" style="display: none;">
+                    Sorry! No records found.
+                </div>
             </div>
 
             <script type="text/javascript">
