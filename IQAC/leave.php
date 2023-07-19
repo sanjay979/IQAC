@@ -1,24 +1,19 @@
+
 <?php
 $con = mysqli_connect("localhost", "root", "", "demo");
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
 }
-?>
-
-
-<?php
-// Include the database connection file
-//include("config.php");
 
 // Check if the request parameter is set
-// Check if the request parameter and search parameter are set
 if (isset($_POST['request']) && isset($_POST['search'])) {
     $filter = $_POST['request'];
     $search = $_POST['search'];
+    $leaveType = isset($_POST['leavetype']) ? $_POST['leavetype'] : 'all'; // Default to 'all'
 
     // Perform the data filtering based on the selected filter and search value
-    $filteredData = filterData($filter, $search);
+    $filteredData = filterData($filter, $search, $leaveType);
 
     // Generate the HTML for the filtered data
     $html = generateHTML($filteredData);
@@ -28,26 +23,26 @@ if (isset($_POST['request']) && isset($_POST['search'])) {
 }
 
 // Function to filter the data based on the selected filter and search value
-function filterData($filter, $search)
+function filterData($filter, $search, $leaveType)
 {
     global $con; // Use the global connection variable
 
     // Perform the data filtering based on the selected filter and search value
     $query = "";
 
-    // Example: Filtering based on the last 24 hours and search by Staff ID
     if ($filter === 'hours') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY AND id LIKE '%$search%'";
-    }
-
-    // Example: Filtering based on the last 1 week and search by Staff ID
-    if ($filter === 'week') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK AND id LIKE '%$search%'";
-    }
-
-    // Example: Filtering based on the last 1 month and search by Staff ID
-    if ($filter === 'month') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%'";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+    } elseif ($filter === 'week') {
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+    } elseif ($filter === 'month') {
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+    } else {
+        // If filter is 'all' or an unknown value, include Leave Type in the query
+        if ($leaveType === 'all') {
+            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%'";
+        } else {
+            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND LType = '$leaveType' AND id LIKE '%$search%'";
+        }
     }
 
     // Execute the query
@@ -63,7 +58,11 @@ function filterData($filter, $search)
     return $filteredData;
 }
 
+// Rest of the code remains the same as before
 // Function to generate HTML for the filtered data
+// ... (your existing function generateHTML() implementation)
+
+
 // Function to generate HTML for the filtered data
 function generateHTML($filteredData)
 {
@@ -79,10 +78,6 @@ function generateHTML($filteredData)
         $html .= '<th>Staff Name</th>';
         $html .= '<th>Staff ID</th>';
         $html .= '<th>Leave Type</th>';
-       // $html .= '<th>Start Date</th>';
-       // $html .= '<th>End Date</th>';
-       // $html .= '<th>No of Days</th>';
-       // $html .= '<th>Reason</th>';
         $html .= '<th>Applied On</th>';
         $html .= '<th>Status</th>';
         $html .= '</tr>';
@@ -97,10 +92,6 @@ function generateHTML($filteredData)
             $html .= '<td>' . $row['name'] . '</td>';
             $html .= '<td>' . $row['id'] . '</td>';
             $html .= '<td>' . $row['LType'] . '</td>';
-            //$html .= '<td>' . $row['start'] . '</td>';
-           // $html .= '<td>' . $row['end'] . '</td>';
-           // $html .= '<td>' . $row['ndays'] . '</td>';
-           // $html .= '<td>' . $row['reason'] . '</td>';
             $html .= '<td>' . $row['RegDate'] . '</td>';
 
             $status = '';
@@ -133,4 +124,4 @@ function generateHTML($filteredData)
 
     return $html;
 }
-
+?>
