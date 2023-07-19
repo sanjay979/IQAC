@@ -42,7 +42,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                                     $name = $row['name'];
                                     $dep = $row['department'];
                                     $dob = $row['dob'];
-                                    $shit = $row['shit'];
+                                    $shit = $row['shift'];
                                     echo  $name;
                                 } ?></td>
                         </tr>
