@@ -28,19 +28,26 @@
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: none;
+    border-radius: 15px;
   }
   
   .notification-list ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
   }
   
   .notification-list ul li {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    
+    
   }
-  
+  .notification-list ul li a{
+    font-size: 1rem;
+    color: #585656;
+  }
   .notification-list ul li:last-child {
     border-bottom: none;
   }

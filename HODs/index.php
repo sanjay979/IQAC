@@ -38,15 +38,37 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                     
                 </h2>
                 <div class="notify">
+                    <?php
+                    
+                    include '../database/Databasedemo.php';
+                    $id = $_SESSION['s_id'];
+                     $notify = "SELECT department,shift FROM faculty_details where s_id='$id'";
+                     $result2 = mysqli_query($conn,$notify);
+                    if($result2->num_rows > 0){
+                        $row = $result2->fetch_assoc();
+                        $dept=$row['department'];
+                        $shift=$row['shift'];
+                    }
+                    $st="select count(*) AS count from faculty1 where department='$dept' and shift='$shift' and hod=3";
+                    $result1=mysqli_query($conn,$st);
+                    if($result1){ 
+                        $row1=mysqli_fetch_assoc($result1);
+                        $count=$row1['count'];
+                    }
+
+                    ?>
                     <i class="fa fa-bell"></i>
-                    <span class="badge"><?php echo "5"; ?></span>
+                    <span class="badge"><?php echo $count; ?></span>
                     <div class="notification-list">
                    <!-- Notification list items -->
-                   <ul>
-                     <li>Notification 1</li>
-                     <li>Notification 2</li>
-                     <li>Notification 3</li>
-                     <!-- Add more notification items as needed -->
+                   
+                   <ul><?php
+                   $name="select name from faculty1 where department='$dept' and shift='$shift' and hod=3";
+                   $namelist=mysqli_query($conn,$name);
+                   if($row3=mysqli_fetch_assoc($namelist)){
+                    echo '<li ><a href="ApproveForm.php">'. $row3['name'] .'</a></li>';
+                   }
+                   ?>
                    </ul>
                    <script>
                     var notificationIcon = document.querySelector('.notify');
