@@ -30,6 +30,53 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                     </div>
 
                 </h2>
+                <div class="notify">
+                    <?php
+                    
+                    include '../database/Databasedemo.php';
+                    $id = $_SESSION['s_id'];
+                 
+                    $st="select count(*) AS count from faculty1 where shift=1 and hod=1 and aqict=3";
+                    $st1="select count(*) AS count from leave_details where shift=2 and hod=1 and iqac=3";
+                    $result1=mysqli_query($conn,$st);
+                    $result2=mysqli_query($conn,$st1);
+                    if($result1){ 
+                        $row1=mysqli_fetch_assoc($result1);
+                        $count=$row1['count'];
+                    }
+                    if($result2){ 
+                        $row2=mysqli_fetch_assoc($result2);
+                        $count1=$row2['count'];
+                    }
+
+                    ?>
+                    <i class="fa fa-bell"></i>
+                    <span class="badge"><?php echo $count+$count1; ?></span>
+                    <div class="notification-list">
+                   <!-- Notification list items -->
+                   
+                   <ul><?php
+                  
+                    echo '<li ><a href="ApproveFormS1.php">Shift-I leave request:'. $count .'</a></li>';
+                    echo '<li ><a href="ApproveFormS2.php">Shift-II leave request:'. $count1 .'</a></li>';
+                   
+                   ?>
+                   </ul>
+                   <script>
+                    var notificationIcon = document.querySelector('.notify');
+var notificationList = document.querySelector('.notification-list');
+
+// Toggle the visibility of the notification list when the icon is clicked
+notificationIcon.addEventListener('click', function() {
+  if (notificationList.style.display === 'none') {
+    notificationList.style.display = 'block';
+  } else {
+    notificationList.style.display = 'none';
+  }
+});
+                   </script>
+  </div>
+                </div>
                 <div class="user-wrapper">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
                     <div>

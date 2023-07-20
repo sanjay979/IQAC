@@ -50,24 +50,29 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                         $shift=$row['shift'];
                     }
                     $st="select count(*) AS count from faculty1 where department='$dept' and shift='$shift' and hod=3";
+                    $st1="select count(*) AS count from leave_details where department='$dept' and shift='$shift' and hod=3";
                     $result1=mysqli_query($conn,$st);
+                    $result2=mysqli_query($conn,$st1);
                     if($result1){ 
                         $row1=mysqli_fetch_assoc($result1);
                         $count=$row1['count'];
                     }
+                    if($result2){ 
+                        $row2=mysqli_fetch_assoc($result2);
+                        $count1=$row2['count'];
+                    }
 
                     ?>
                     <i class="fa fa-bell"></i>
-                    <span class="badge"><?php echo $count; ?></span>
+                    <span class="badge"><?php echo $count+$count1; ?></span>
                     <div class="notification-list">
                    <!-- Notification list items -->
                    
                    <ul><?php
-                   $name="select name from faculty1 where department='$dept' and shift='$shift' and hod=3";
-                   $namelist=mysqli_query($conn,$name);
-                   if($row3=mysqli_fetch_assoc($namelist)){
-                    echo '<li ><a href="ApproveForm.php">'. $row3['name'] .'</a></li>';
-                   }
+                  
+                    echo '<li ><a href="ApproveForm.php">Pre-leave request:'. $count .'</a></li>';
+                    echo '<li ><a href="ApproveForm.php">post-leave request:'. $count1 .'</a></li>';
+                   
                    ?>
                    </ul>
                    <script>
