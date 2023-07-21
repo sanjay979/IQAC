@@ -21,7 +21,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
         <div class="main-content">
             <?php include "header.php"; ?>
             <main>
-            <h2>Pre-leave History</h2>
+                <h2>Post leave History</h2>
                 <?php include("..//database/Databasedemo.php");
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
@@ -30,7 +30,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $id = $_SESSION['s_id'];
 
 
-                $sql = "SELECT * FROM faculty1 WHERE id='$id' and (principal=1 or hod=0 or aqict=0 or principal=0)";
+                $sql = "SELECT * FROM leave_details where id='$id' and hod=0 or iqac=0 or iqac=1";
                 $result = mysqli_query($conn, $sql);
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
@@ -40,12 +40,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $html .= '<th>S.N</th>';
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
-                $html .= '<th>Leave Type</th>';
                 $html .= '<th>shift</th>';
-                $html .= '<th>Start Date</th>';
-                $html .= '<th>End Date</th>';
-                $html .= '<th>No of Days</th>';
-                $html .= '<th>Reason</th>';
                 $html .= '<th>Document</th>';
                 $html .= '<th>Status</th>';
 
@@ -60,14 +55,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     $html .= '<td>' . $serialNumber . '</td>'; // Add the serial number column
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
-                    $html .= '<td>' . $row['LType'] . '</td>';
                     $html .= '<td>' . $row['shift'] . '</td>';
-                    $html .= '<td>' . $row['start'] . '</td>';
-                    $html .= '<td>' . $row['end'] . '</td>';
-                    $html .= '<td>' . $row['ndays'] . '</td>';
-
-                    $html .= '<td>' . $row['reason'] . '</td>';
-
                     $html .= '<td>';
 
                     if (!empty($row['file'])) {
@@ -77,14 +65,12 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     }
                     $html .= '</td>';
                     $html .= '<td>';
-                    if($row['principal']==1){
+                    if($row['iqac']==1){
                     $html .= '<p class="completed">completed</p>';
                     }elseif ($row['hod']==0) {
                         $html .= '<p class="rejected" >Rejected by HOD</p>';
-                    }elseif ($row['aqict']==0) {
+                    }elseif ($row['iqac']==0) {
                         $html .= '<p class="rejected" >Rejected by IQAC</p>';
-                    }elseif ($row['principal']==0) {
-                        $html .= '<p class="rejected" >Rejected by Principal</p>';
                     }else{
                         $html .= '<p>Rejected</p>';
                     }
