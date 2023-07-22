@@ -25,7 +25,103 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Departments wise leave</h3>
+                <!-- </div>
+                
+                <div class="card-header"> -->
+                    <h3>Shift - I</h3>
                 </div>
+
+                <div class="card-body">
+                    <?php
+                    echo "<table width='100%'>";
+                    echo "<thead><tr><td>Department</td><td>OD</td><td>CL</td><td>ML</td><td>Total</td></tr></thead>";
+                    echo "<tbody>";
+
+                    $leaveCounts = array();
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $department = $row['department'];
+                        $leaveType = $row['LType'];
+                        $staffCount = $row['staffCount'];
+
+                        if (!isset($leaveCounts[$department])) {
+                            $leaveCounts[$department] = array('OD' => 0, 'CL' => 0, 'ML' => 0);
+                        }
+
+                        $leaveCounts[$department][$leaveType] = $staffCount;
+                    }
+
+                    foreach ($leaveCounts as $department => $counts) {
+                        $odCount = isset($counts['OD']) ? $counts['OD'] : 0;
+                        $clCount = isset($counts['CL']) ? $counts['CL'] : 0;
+                        $mlCount = isset($counts['ML']) ? $counts['ML'] : 0;
+                        $total = $odCount + $clCount + $mlCount;
+
+                        // Add a link to the department page with department name as a parameter
+                        echo "<tr><td><a href='department.php?dept=$department'>$department</a></td><td>$odCount</td><td>$clCount</td><td>$mlCount</td><td>$total</td></tr>";
+                    }
+
+                    echo "</tbody>";
+                    echo "</table>";
+                    ?>
+
+                </div>
+            </div>
+        </div>
+        <div class="staffs">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Today Leave</h3>
+                </div>
+                <div class="card-body">
+                    <div class="staff">
+                        <?php
+                        // Get today's date
+                        $today = date("Y-m-d");
+
+                        // Query to retrieve faculties with today's date in their leave range
+                        $todayLeaveQuery = "SELECT department,
+                            SUM(CASE WHEN LType = 'OD' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS odCount,
+                            SUM(CASE WHEN LType = 'CL' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS clCount,
+                            SUM(CASE WHEN LType = 'ML' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS mlCount
+                            FROM faculty1
+                            WHERE principal = 1
+                            GROUP BY department";
+                        $todayLeaveResult = mysqli_query($conn, $todayLeaveQuery);
+
+                        echo "<table width='100%'>";
+                        echo "<thead><tr><td>Department</td><td>OD</td><td>CL</td><td>ML</td><td>Total</td></tr></thead>";
+                        echo "<tbody>";
+
+                        while ($row = mysqli_fetch_assoc($todayLeaveResult)) {
+                            $department = $row['department'];
+                            $odCount = $row['odCount'];
+                            $clCount = $row['clCount'];
+                            $mlCount = $row['mlCount'];
+                            $total = $odCount + $clCount + $mlCount;
+
+                            echo "<tr><td>$department</td><td>$odCount</td><td>$clCount</td><td>$mlCount</td><td>$total</td></tr>";
+                        }
+
+                        echo "</tbody>";
+                        echo "</table>";
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="recent-grid">
+        <div class="leaves">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Departments wise leave</h3>
+                <!-- </div>
+                
+                <div class="card-header"> -->
+                    <h3>Shift - II</h3>
+                </div>
+
                 <div class="card-body">
                     <?php
                     echo "<table width='100%'>";

@@ -97,33 +97,39 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 </div>
             </header>
             <main>
-                <?php
-                $sql1 = "SELECT sum(ndays) AS ml from faculty1 where principal=1 and LType='ML'";
-                $sql2 = "SELECT sum(ndays) AS od from faculty1 where principal=1 and LType='OD'";
-                $sql3 = "SELECT sum(ndays) AS cl from faculty1 where principal=1 and LType='CL'";
+            <?php
+                $sql1 = "SELECT COUNT(*) AS mlCount FROM faculty1 WHERE principal = 1 AND LType = 'ML'";
+                $sql2 = "SELECT COUNT(*) AS odCount FROM faculty1 WHERE principal = 1 AND LType = 'OD'";
+                $sql3 = "SELECT COUNT(*) AS clCount FROM faculty1 WHERE principal = 1 AND LType = 'CL'";
                 $result1 = mysqli_query($conn, $sql1);
                 $result2 = mysqli_query($conn, $sql2);
                 $result3 = mysqli_query($conn, $sql3);
 
+                $mlCount = 0;
+                $odCount = 0;
+                $clCount = 0;
 
+                if ($result1) {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    $mlCount = $row1['mlCount'];
+                }
+
+                if ($result2) {
+                    $row2 = mysqli_fetch_assoc($result2);
+                    $odCount = $row2['odCount'];
+                }
+
+                if ($result3) {
+                    $row3 = mysqli_fetch_assoc($result3);
+                    $clCount = $row3['clCount'];
+                }
                 ?>
+
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1><?php
-                                if ($result1) {
-                                    $row = mysqli_fetch_assoc($result1);
-
-
-                                    $ml = $row['ml'];
-                                    if ($ml == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $ml;
-                                    }
-                                }
-                                ?></h1>
-                            <span>No of days ML</span>
+                            <h1><?php echo $mlCount; ?></h1>
+                            <span>No of ML</span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
@@ -131,18 +137,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php
-                                if ($result2) {
-                                    $row = mysqli_fetch_assoc($result3);
-                                    $cl = $row['cl'];
-                                    if ($cl == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $cl;
-                                    }
-                                }
-                                ?></h1>
-                            <span>No of days CL</span>
+                            <h1><?php echo $clCount; ?></h1>
+                            <span>No of CL</span>
                         </div>
                         <div>
                             <span class="las la-shopping-bag"></span>
@@ -150,17 +146,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php
-                                if ($result3) {
-                                    $row = mysqli_fetch_assoc($result2);
-                                    $od = $row['od'];
-                                    if ($od == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $od;
-                                    }
-                                } ?></h1>
-                            <span>No of days OD</span>
+                            <h1><?php echo $odCount; ?></h1>
+                            <span>No of OD</span>
                         </div>
                         <div>
                             <span class="las la-hospital"></span>
