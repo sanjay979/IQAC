@@ -191,7 +191,7 @@ if ($_SESSION['s_id']) {
             <main>
                 <div class="form_center">
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="leavesubmission.php" method="POST" enctype="multipart/form-data">
                         <h1>Leave Form</h1>
                         <div class="form first">
                             <div class="details personal">
@@ -226,9 +226,9 @@ if ($_SESSION['s_id']) {
                                         <label>Leave type</label>
                                         <select name="Ltype" required>
                                             <option disabled selected>--Select--</option>
-                                            <option>OD</option>
-                                            <option>CL</option>
-                                            <option>ML</option>
+                                            <option value="OD">OD</option>
+                                            <option value="CL">CL</option>
+                                            <option value="ML">ML</option>
                                         </select>
                                     </div>
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
-    ?>
+?>
     <!DOCTYPE html>
     <html>
 
@@ -28,7 +28,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 // Fetch the data from the database
                 $id = $_SESSION['s_id'];
-                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)";
+                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)ORDER BY application_id DESC";
                 $result = mysqli_query($conn, $sql);
 
                 // Display the form data in a table format
@@ -47,7 +47,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             $approvalStatus[] = 'Pending';
                         }
                     }
-                    ?>
+                ?>
                     <div class="form-container">
                         <table>
                             <?php
@@ -89,12 +89,12 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 echo '<tr>';
                                 echo '<td><label>' . $official . '</label></td>';
                                 echo '<td colspan="3"><span class="approval-status ' . strtolower($status) . '">' . $status . '</span><br>
-                                '.$row[$official_fb[$index]].'
+                                ' . $row[$official_fb[$index]] . '
                                 </td>';
                                 echo '</tr>';
                             }
 
-                            
+
                             ?>
                         </table>
                     </div>
