@@ -25,6 +25,14 @@ if (isset($_POST['submit'])) {
             $_SESSION['position'] = $position;
 
             header("location:..\Principal\index.php");
+
+        } elseif ($position == 'deputy_prin') {
+            //elseif block to direct to principal page if the user is principal 
+            $_SESSION['s_id'] = $username;
+            $_SESSION['position'] = $position;
+
+            header("location:..\Deputy_Principal\index.php");
+            
         } elseif ($position == 'iqac') {
             $_SESSION['s_id'] = $username;
             $_SESSION['position'] = $position;
