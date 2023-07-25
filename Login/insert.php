@@ -5,10 +5,12 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $st = mysqli_query($con, "select * from login where s_id='$username' and password='$password' ");
-
+    $st1 = mysqli_query($con, "select * from faculty_details where s_id='$username'");
+       
     if ($st->num_rows == 1) {
         $rows = mysqli_fetch_assoc($st);
-        $position = $rows['position'];
+        $rows1 = mysqli_fetch_assoc($st1);
+        $position = $rows1['position'];
 
         if ($position == 'staff') {
             $_SESSION['s_id'] = $username;
