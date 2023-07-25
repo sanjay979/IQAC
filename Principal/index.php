@@ -29,6 +29,42 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
                     </div>
 
                 </h2>
+                <div class="notify">
+                    <?php
+                    
+                    include '../database/Databasedemo.php';
+                    $st="select count(*) AS count from faculty1 where  principal=3 and aqict=1";
+                    $result1=mysqli_query($conn,$st);
+                    if($result1){ 
+                        $row1=mysqli_fetch_assoc($result1);
+                        $count=$row1['count'];
+                    }
+                    ?>
+                    <i class="fa fa-bell"></i>
+                    <span class="badge"><?php echo $count; ?></span>
+                    <div class="notification-list">
+                 
+                   <ul><?php
+                  
+                    echo '<li ><a href="ApproveForm.php">Total Leave Request:'. $count .'</a></li>';
+                    
+                   ?>
+                   </ul>
+                   <script>
+                    var notificationIcon = document.querySelector('.notify');
+                    var notificationList = document.querySelector('.notification-list');
+
+// Toggle the visibility of the notification list when the icon is clicked
+notificationIcon.addEventListener('click', function() {
+  if (notificationList.style.display === 'none') {
+    notificationList.style.display = 'block';
+  } else {
+    notificationList.style.display = 'none';
+  }
+});
+                   </script>
+  </div>
+                </div>
                 <div class="user-wrapper">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMi1noTDjkelW0kvsZO5CgEaBM5GHrNkF9ix7Knt9Ztw&s" alt="" width="30px" height="30px">
                     <div>
@@ -44,6 +80,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
                                 echo  $value;
                             }
                             ?></h4>
+              
                         <small>Principal</small>
                     </div>
                 </div>

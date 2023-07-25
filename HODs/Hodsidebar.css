@@ -18,7 +18,36 @@
     text-decoration: none;
     font-family: 'Roboto Slab', serif;
 }
+.deactive{
+    background-color: #fa2327;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    transition: 1s;
+}
+.deactive:hover{
+    background-color: #f28492;
+    color: black;
 
+}
+.ative{
+    background-color: #019012;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    transition: 1s;
+}
+.ative:hover{
+    background-color: #a8faa5;
+    color: black;
+
+}
 
 .notification-list {
     position: absolute;

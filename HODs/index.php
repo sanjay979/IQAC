@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
+if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod_dep' || $_SESSION['aposition'] == 'active')) {
 
 ?>
 
@@ -188,6 +188,6 @@ notificationIcon.addEventListener('click', function() {
     </html>
 <?php
 } else {
-    header("location:../Login/home.php");
+   header("location:../Login/home.php");
 }
 ?>
