@@ -25,12 +25,28 @@
         <div class="sidebar-menu">
             <ul>
                 <li><a href="index.php" class="<?= $page == 'index.php' ? 'active' : '' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
-                <li><a href="profile.php" class="<?= $page == 'profile.php' ? 'active' : '' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>
-                <li><a href="leaveform.php" class="<?= $page == 'leaveform.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a></li>
+                <?php
+                $aposition=$_SESSION['aposition'];
+                if($aposition=='Active'){
+                }else{
+                    echo '<li><a href="profile.php" class="<?= $page == \'profile.php\' ? \'active\' : \'\' ?>"><span class="las la-user"></span><span>Profile</span> </a></li>';
+                    echo '<li><a href="leaveform.php" class="<?= $page == \'leaveform.php\' ? \'active\' : \'\' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a></li>';}
+                ?> 
                 <li><a href="ApproveForm.php" class="<?= $page == 'ApproveForm.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave Requests</span></a></li>
-                <li><a href="pending.php" class="<?= $page == 'pending.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>
+                <?php
+                $aposition=$_SESSION['aposition'];
+                if($aposition=='Active'){
+                }else{
+                    echo '<li><a href="pending.php" class="<?= $page == \'pending.php\' ? \'active\' : \'\' ?>"><span class="las la-receipt"></span> <span>Pending</span></a></li>';}
+                ?> 
+                
                 <li><a href="WaitingForms.php" class="<?= $page == 'WaitingForms.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Waiting</span></a></li>
-                <li><a href="ChangeHod.php" class="<?= $page == 'ChangeHod.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>ChangeHod</span></a></li>
+                <?php
+                $aposition=$_SESSION['aposition'];
+                if($aposition=='Active'){
+                }else{
+                    echo '<li><a href="ChangeHod.php" class="<?= $page == \'ChangeHod.php\' ? \'active\' : \'\' ?>"><span class="las la-receipt"></span> <span>ChangeHod</span></a></li>';}
+                ?> 
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
 
             </ul>

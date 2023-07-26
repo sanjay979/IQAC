@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
+if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'] == 'hod_dep')) {
 ?>
 <!DOCTYPE html>
 <html>

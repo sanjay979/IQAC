@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
         } elseif ($position == 'hod') {
             $_SESSION['s_id'] = $username;
             $_SESSION['position'] = $position;
+            $_SESSION['aposition'] = 'Deactive';
 
             header("location:..\HODs\index.php");
         } 
