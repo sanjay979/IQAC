@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $id = $_POST['id'];
     $department = $_POST['department'];
+    $shift=$_POST['shift'];
     $leaveType = $_POST['Ltype'];
     $startDate = $_POST['start'];
     $endDate = $_POST['end'];
