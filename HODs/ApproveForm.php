@@ -54,7 +54,7 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
                 <button id="page1-button" class="tab-button active" onclick="openTab('page1')">Pre Leave</button>
                 <button id="page2-button" class="tab-button" onclick="openTab('page2')">Post Leave</button>
             </div>
-            <?php $shift=1; ?>
+            <?php // $shift=1; ?>
             <div id="page1" class="tab-content" style="display: block;">
                 <?php include "preLeaveForm.php"?>
             </div>
