@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['s_id'] && $_SESSION['position'] == 'admin') {
+if ($_SESSION['s_id']) {
 ?>
   <!DOCTYPE html>
   <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -106,19 +106,154 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'admin') {
           <div class="container px-6 mx-auto grid">
             <!-- search code starts  -->
             <div class="flex justify-center flex-1 lg:mr-32" style="margin:3%">
-              <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-                <div class="absolute inset-y-0 flex items-center pl-2">
-                  <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                  </svg>
+              <div class="filter-box">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6">
+                    <div class="form-group row">
+                      <label for="fetchval" class="col-sm-4 col-form-label">Sort by:</label>
+                      <div class="col-sm-8">
+                        <select name="fetchval" id="fetchval" class="form-control">
+                          <option value="all">All</option>
+                          <option value="hours" selected>Last 24 hours</option>
+                          <option value="week">Last 1 week</option>
+                          <option value="month">Last 1 month</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                    <div class="form-group row">
+                      <label for="leavetype" class="col-sm-4 col-form-label">Leave Type:</label>
+                      <div class="col-sm-8">
+                        <select name="leavetype" id="leavetype" class="form-control">
+                          <option value="all">All</option>
+                          <option value="cl" class="leave-type-options active">CL</option>
+                          <option value="ml" class="leave-type-options active">ML</option>
+                          <option value="od" class="leave-type-options active">OD</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 text-md-right mt-3 mt-md-0">
+                    <div class="form-group row">
+                      <label for="search-input" class="col-sm-4 col-form-label d-block d-md-inline">Staff ID:</label>
+                      <div class="col-sm-8">
+                        <input type="text" id="search-input" placeholder="Search Staff ID..." class="form-control">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for projects" aria-label="Search" />
               </div>
+
             </div>
 
             <div class="main-content">
 
               <main>
+                <!DOCTYPE html>
+                <html>
+
+                <head>
+
+                  <style>
+                    /* CSS for the table */
+                    body {
+                      font-family: Arial, sans-serif;
+                      background-color: #f0f0f0;
+                      margin: 0;
+                      padding: 0;
+                    }
+
+                    h2 {
+                      text-align: center;
+                      margin-top: 30px;
+                    }
+
+                    table {
+                      width: 100%;
+                      border-collapse: collapse;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                      background-color: #fff;
+                      margin: 20px auto;
+                    }
+
+                    th,
+                    td {
+                      border: 1px solid #e0e0e0;
+                      padding: 10px;
+                      text-align: left;
+                    }
+
+                    th {
+                      background-color: #f5f5f5;
+                      font-weight: bold;
+                      color: #444;
+                    }
+
+                    tr:nth-child(even) {
+                      background-color: #fafafa;
+                    }
+
+                    tr:hover {
+                      background-color: #f0f0f0;
+                    }
+
+                    .approval-btn {
+                      padding: 8px 12px;
+                      border: none;
+                      cursor: pointer;
+                      border-radius: 4px;
+                      font-weight: bold;
+                      text-transform: uppercase;
+                      letter-spacing: 1px;
+                    }
+
+                    .accept-btn {
+                      background-color: #4CAF50;
+                      color: #fff;
+                    }
+
+                    .reject-btn {
+                      background-color: #f44336;
+                      color: #fff;
+                    }
+                  </style>
+                </head>
+
+                <body>
+                  <h2>Leave Approval Table</h2>
+                  <table>
+                    <tr>
+                      <th>S.N</th>
+                      <th>Staff Name</th>
+                      <th>Staff ID</th>
+                      <th>Leave Type</th>
+                      <th>Date</th>
+                      <th>Reason</th>
+                      <th>Documents</th>
+                      <th>Comments</th>
+                      <th>Approval</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>John Doe</td>
+                      <td>12345</td>
+                      <td>Sick Leave</td>
+                      <td>2023-07-26</td>
+                      <td>Not feeling well</td>
+                      <td><a href="#">Document Link</a></td>
+                      <td>Feel better soon!</td>
+                      <td>
+                        <button class="approval-btn accept-btn">Accept</button>
+                        <button class="approval-btn reject-btn">Reject</button>
+                      </td>
+                    </tr>
+                    <!-- Add more rows here as needed -->
+                  </table>
+                </body>
+
+                </html>
+
 
 
               </main>
