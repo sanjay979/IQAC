@@ -1,9 +1,5 @@
 <?php
 include("..//database/Databasedemo.php");
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    exit();
-}
 
 if (isset($_POST['leave_id']) && isset($_POST['status'])) {
     $leaveID = $_POST['leave_id'];
@@ -17,11 +13,11 @@ if (isset($_POST['leave_id']) && isset($_POST['status'])) {
         $comments = ''; // Set comment as empty string
     } else {
         // Sanitize the comments value to prevent SQL injection
-        $comments = mysqli_real_escape_string($con, $comments);
+        $comments = mysqli_real_escape_string($conn, $comments);
     }
 
     // Update the principal and IC_feedback columns in the faculty1 table
-    $query = "UPDATE faculty1 SET principal = $status, Pn_Feedback = '$comments',next_form=1 WHERE application_id = $leaveID";  
+    $query = "UPDATE faculty1 SET principal = $status, Pn_Feedback = '$comments' WHERE application_id = $leaveID";  
 
     // Execute the query
     $result = mysqli_query($conn, $query);
