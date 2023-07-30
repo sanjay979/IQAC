@@ -18,7 +18,7 @@ if (isset($_POST['leav_id']) && isset($_POST['status'])) {
     }
 
     // Update the aqict and IC_feedback columns in the faculty1 table
-    $query = "UPDATE leave_details SET hod = $status, IC_Feedback = '$comments' WHERE application_id = $leaveID";  
+    $query = "UPDATE leave_details SET hod = $status, H_Feedback = '$comments' WHERE application_id = $leaveID";  
 
     // In the above query comments are enclosed with single quotes bcoz it holds a string value whereas status has numeric value so no quotes
 

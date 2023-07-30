@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod_dep' || $_SESSION['aposition'] == 'active')) {
+if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'] == 'hod_dep')) {
 
 ?>
 

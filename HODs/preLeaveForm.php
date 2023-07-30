@@ -8,7 +8,7 @@
                 $html .= '<table class="table table-striped table-bordered">';
                 $html .= '<thead class="thead-dark">';
                 $html .= '<tr>';
-                $html .= '<th>S.N</th>';
+                $html .= '<th>S.N'.$dept.' '.$shift.'</th>';
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
                 $html .= '<th>Leave Type</th>';
