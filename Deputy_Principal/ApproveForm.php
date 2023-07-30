@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
+if ($_SESSION['s_id'] && $_SESSION['position'] == 'deputy_prin') {
 ?>
     <!DOCTYPE html>
     <html>
@@ -27,7 +27,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
                 }
 
                 // Retrieve all rows from the faculty1 table where hod=1 and principal=3
-                $query = "SELECT * FROM faculty1 WHERE hod = 1 and aqict=1 and principal = 3";
+                $query = "SELECT * FROM faculty1 WHERE hod = 1 and aqict=1 and principal = 3 and shift=2";
                 $result = mysqli_query($conn, $query);
 
                 // Generate the HTML table

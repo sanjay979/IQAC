@@ -35,7 +35,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
             <main style="padding-top: 0;">
                 <?php
 
-                $query = "SELECT * FROM faculty1 WHERE shift = $shift AND (hod = 1 AND aqict = 1 AND principal = 3)";
+                // Retrieve all rows from the faculty1 table where hod=1 and principal=3
+                $query = "SELECT * FROM faculty1 WHERE hod = 1 and aqict=1 and principal = 3 and shift=1";
                 $result = mysqli_query($conn, $query);
 
                 // Generate the HTML table

@@ -74,7 +74,7 @@
     $department = $_GET['dept'];
 
     // Query to retrieve the staff who have taken leaves in the selected department
-    $staffLeaveQuery = "SELECT * FROM faculty1 WHERE department = '$department' AND principal = 1";
+    $staffLeaveQuery = "SELECT * FROM faculty1 WHERE department = '$department' AND principal = 1 and shift=2";
     $staffLeaveResult = mysqli_query($conn, $staffLeaveQuery);
 
     echo "<h2>Leaves in $department Department</h2>";
