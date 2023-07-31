@@ -119,7 +119,6 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
                 <script>
                     function updateApprovalStatus(leaveID, status) {
 
-                        alert("function called");
 
                         var comments = $("textarea[name='comments[" + leaveID + "]']").val(); // Get the comments for the specific row
 
