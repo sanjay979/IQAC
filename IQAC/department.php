@@ -48,6 +48,10 @@
             table {
                 font-size: 14px;
             }
+
+            h2 {
+                font-size: 18px;
+            }
         }
 
         @media screen and (max-width: 400px) {
@@ -56,7 +60,7 @@
             }
 
             h2 {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     </style>
@@ -72,12 +76,13 @@
 
     // Retrieve the department from the URL parameter
     $department = $_GET['dept'];
+    $shift = $_GET['shift'];
 
-    // Query to retrieve the staff who have taken leaves in the selected department
-    $staffLeaveQuery = "SELECT * FROM faculty1 WHERE department = '$department' AND principal = 1";
+    // Query to retrieve the staff who have taken leaves in the selected department and shift
+    $staffLeaveQuery = "SELECT * FROM faculty1 WHERE department = '$department' AND principal = 1 AND shift = $shift";
     $staffLeaveResult = mysqli_query($conn, $staffLeaveQuery);
 
-    echo "<h2>Leaves in $department Department</h2>";
+    echo "<h2>Leaves in $department Department - Shift $shift</h2>";
 
     if (mysqli_num_rows($staffLeaveResult) > 0) {
         $odCount = 0;
@@ -107,7 +112,7 @@
         echo "</tbody>";
         echo "</table>";
     } else {
-        echo "<p>No leaves found in $department Department.</p>";
+        echo "<p>No leaves found in $department Department - Shift $shift.</p>";
     }
 
     mysqli_close($conn);
