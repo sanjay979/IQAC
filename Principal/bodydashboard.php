@@ -16,7 +16,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT department, LType, COUNT(*) AS staffCount FROM faculty1 WHERE principal=1 GROUP BY department, LType";
+    $sql = "SELECT department, LType, COUNT(*) AS staffCount FROM faculty1 WHERE principal=1 and shift=1 GROUP BY department, LType";
     $result = mysqli_query($conn, $sql);
 
     ?>
