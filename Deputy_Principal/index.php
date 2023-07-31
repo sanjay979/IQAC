@@ -50,9 +50,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'deputy_prin') {
             </header>
             <main>
                 <?php
-                $sql1 = "SELECT COUNT(*) AS mlCount FROM faculty1 WHERE principal = 1 AND LType = 'ML'";
-                $sql2 = "SELECT COUNT(*) AS odCount FROM faculty1 WHERE principal = 1 AND LType = 'OD'";
-                $sql3 = "SELECT COUNT(*) AS clCount FROM faculty1 WHERE principal = 1 AND LType = 'CL'";
+                $sql1 = "SELECT COUNT(*) AS mlCount FROM faculty1 WHERE principal = 1 AND LType = 'ML' and shift=2";
+                $sql2 = "SELECT COUNT(*) AS odCount FROM faculty1 WHERE principal = 1 AND LType = 'OD' and shift=2";
+                $sql3 = "SELECT COUNT(*) AS clCount FROM faculty1 WHERE principal = 1 AND LType = 'CL' and shift=2";
                 $result1 = mysqli_query($conn, $sql1);
                 $result2 = mysqli_query($conn, $sql2);
                 $result3 = mysqli_query($conn, $sql3);

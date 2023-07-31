@@ -80,6 +80,7 @@
                             SUM(CASE WHEN LType = 'ML' AND '$today' BETWEEN start AND end THEN 1 ELSE 0 END) AS mlCount
                             FROM faculty1
                             WHERE principal = 1
+                            and shift=1
                             GROUP BY department";
                         $todayLeaveResult = mysqli_query($conn, $todayLeaveQuery);
 
