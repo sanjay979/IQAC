@@ -37,8 +37,11 @@
         </li>
         <li><a class="dropdown-btn"><span class="fa fa-forward"></span> &nbsp;<span>Post-Leave <i class="fa fa-caret-down"></i></span> </a>
           <ul class="dropdown-content">
+            
+          <a href="apply.php" class="<?= $page == 'apply.php' ? 'active' : '' ?>"><span class="fa fa-history"></span><span>To Apply</span></a>
             <a href="postleave.php" class="<?= $page == 'postleave.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
             <a href="post_pending.php" class="<?= $page == 'post_pending.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
+            
             <a href="rejected.php" class="<?= $page == 'rejected.php' ? 'active' : '' ?>"><span class="fa fa-history"></span><span>History</span></a>
           </ul>
         </li>
