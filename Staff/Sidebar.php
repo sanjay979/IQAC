@@ -42,7 +42,7 @@
             <a href="postleave.php" class="<?= $page == 'postleave.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>
             <a href="post_pending.php" class="<?= $page == 'post_pending.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>
             
-            <a href="rejected.php" class="<?= $page == 'rejected.php' ? 'active' : '' ?>"><span class="fa fa-history"></span><span>History</span></a>
+            <a href="history.php" class="<?= $page == 'history.php' ? 'active' : '' ?>"><span class="fa fa-history"></span><span>History</span></a>
           </ul>
         </li>
         <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>

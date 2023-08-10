@@ -30,7 +30,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $id = $_SESSION['s_id'];
 
 
-                $sql = "SELECT * FROM leave_details where id='$id' and hod=0 or iqac=0 or iqac=1";
+                $sql = "SELECT * FROM leave_details where id='$id' and (hod=0 or iqac=0 or iqac=1)";
                 $result = mysqli_query($conn, $sql);
                 // Generate the HTML table
                 $html = '<div class="table-responsive">';
