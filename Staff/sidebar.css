@@ -103,19 +103,23 @@
 .sidebar-menu{
     margin-top: 1rem;
 }
-.sidebar-menu li{
+/* Reduce the space between the elements in the sidebar menu */
+.sidebar-menu li {
     width: 100%;
-    margin-top: 1.7rem;
+    margin-top: 1rem; /* Adjust the top margin */
+    margin-bottom: 0.5rem; /* Add a bottom margin */
     padding-left: 1rem;
 }
-.sidebar-menu a{
+
+.sidebar-menu a {
     padding-left: 1rem;
     display: block;
     color: #fff;
     font-size: 1.1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.7rem; /* Adjust the top padding */
+    padding-bottom: 0.7rem; /* Adjust the bottom padding */
 }
+
 .sidebar-menu a.active{
     background: #fff;
     padding-top: 1rem;
