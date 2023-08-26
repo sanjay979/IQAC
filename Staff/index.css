@@ -129,3 +129,17 @@
 .declined {
     color: red;
 }
+
+/*css for the view status button on two or more pending forms*/
+
+.status-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* css for the strong tag in leave form view status*/
+strong.blue-text {
+    color: powderblue;
+}
