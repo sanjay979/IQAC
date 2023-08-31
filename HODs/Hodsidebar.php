@@ -35,7 +35,7 @@
                     echo '<ul class="dropdown-content">';
                     echo '<a href="leaveform.php" class="<?= $page == \'leaveform.php\' ? \'active\' : \'\' ?>"><span class="las la-clipboard-list"></span><span>Apply Leave</span> </a>';
                     echo '<a href="pending.php" class="<?= $page == \'pending.php\' ? \'active\' : \'\' ?>"><span class="las la-receipt"></span> <span>Pending</span></a>';
-                    echo '<a href="accepted.php" class="<?= $page == \'accepted.php\' ? \'active\' : \'\' ?>"><span class="fa fa-history"></span><span>History</span></a>';
+                    echo '<a href="Prehistory.php" class="<?= $page == \'Prehistory.php\' ? \'active\' : \'\' ?>"><span class="fa fa-history"></span><span>History</span></a>';
                     echo '</ul>';
                     echo '</li>';
                     echo '<li><a class="dropdown-btn"><span class="fa fa-forward"></span> &nbsp;<span>Post-Leave <i class="fa fa-caret-down"></i></span> </a>';

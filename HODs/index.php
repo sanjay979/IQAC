@@ -121,24 +121,25 @@ notificationIcon.addEventListener('click', function() {
 
 
                 ?>
-               <div class="cards">
+                <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result1){
-                                $row = mysqli_fetch_assoc($result1);
-  
-                                
-                                $ml = $row['ml'];
-                                if($ml==0){
-                                    echo '0';
-                                }else{
-                                    echo $ml;
-                                
+                            <?php
+                                if ($result1) {
+                                    $row = mysqli_fetch_assoc($result1);
+                                    $ml = $row['ml'];
                                 }
+                                ?></h3>
+                            <span>No of days ML <?php echo "<b>";
+                             if($ml==0){
+                                echo 0;
+                             }else{
+                                echo $ml;
                             }
-                             ?></h1>
-                            <span>No of days ML</span>
+                             echo "</b>";?></span><br>
+                            <span>No of days ML available <?php echo "<b>";
+                             echo 20-$ml;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
@@ -146,18 +147,22 @@ notificationIcon.addEventListener('click', function() {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result2){
-                                $row = mysqli_fetch_assoc($result3);
-                                $cl = $row['cl'];
-                                if($cl==0){
-                                    echo '0';
-                                }else{
-                                    echo $cl;
+                            <?php
+                                if ($result2) {
+                                    $row = mysqli_fetch_assoc($result3);
+                                    $cl = $row['cl'];
                                 }
+                                ?>
+                           <span>No of days CL <?php echo "<b>";
+                              if($cl==0){
+                                echo 0;
+                             }else{
+                                echo $cl;
                             }
-                             ?></h1>
-                            <span>No of days CL</span>
+                             echo "</b>";?></span><br>
+                            <span>No of days CL available <?php echo "<b>";
+                             echo 20-$cl;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-shopping-bag"></span>
@@ -165,16 +170,21 @@ notificationIcon.addEventListener('click', function() {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php 
-                            if($result3){
-                                $row = mysqli_fetch_assoc($result2);
-                                $od = $row['od'];
-                                if($od==0){
-                                    echo '0';
-                                }else{
-                                    echo $od;
-                                }}?></h1>
-                            <span>No of days OD</span>
+                            <?php
+                                if ($result3) {
+                                    $row = mysqli_fetch_assoc($result2);
+                                    $od = $row['od'];
+                                } ?>
+                            <span>No of days OD <?php echo "<b>";
+                              if($od==0){
+                                echo 0;
+                             }else{
+                                echo $od;
+                            }
+                             echo "</b>";?></span><br>
+                            <span>No of days OD available <?php echo "<b>";
+                             echo 20-$od;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-hospital"></span>
