@@ -8,7 +8,7 @@
                 $html .= '<table class="table table-striped table-bordered">';
                 $html .= '<thead class="thead-dark">';
                 $html .= '<tr>';
-                $html .= '<th>S.N</th>';
+                //$html .= '<th>S.N</th>';
                 $html .= '<th>Staff Name</th>';
                 $html .= '<th>Staff ID</th>';
                 $html .= '<th>Leave Type</th>';
@@ -17,6 +17,8 @@
                 //$html .= '<th>End Date</th>';
                 //$html .= '<th>No of Days</th>';
                 $html .= '<th>Reason</th>';
+                $html .= '<th>Days Left</th>';
+                
                 $html .= '<th>Documents</th>';
                 $html .= '<th>Comments</th>';
 
@@ -29,16 +31,36 @@
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $html .= '<tr id="row_' . $row['application_id'] . '">';
-                    $html .= '<td class="serial_no">' . $serialNumber . '</td>'; // Add the serial number column
+                    //$html .= '<td class="serial_no">' . $serialNumber . '</td>'; // Add the serial number column
                     $html .= '<td>' . $row['name'] . '</td>';
                     $html .= '<td>' . $row['id'] . '</td>';
                     $html .= '<td>' . $row['LType'] . '</td>';
                     //$html .= '<td>' . $row['shift'] . '</td>';
-                    $html .= '<td>' . $row['start'] . ' to ' . $row['end'] . '</td>';;
+                    $html .= '<td>' . $row['start'] . ' to ' . $row['end'] . '</td>';
                     //$html .= '<td>' . $row['end'] . '</td>';
                     //$html .= '<td>' . $row['ndays'] . '</td>';
 
                     $html .= '<td>' . $row['reason'] . '</td>';
+
+                    $lType=$row['LType'];
+
+                    $countQuery='SELECT COUNT(*) AS LCount from faculty1 where id="'.$row['id'].'" AND LType="'.$row['LType'].'" AND principal=1';
+                    $countResult=mysqli_query($conn,$countQuery);
+                    if($countResult){
+                        $count= mysqli_fetch_assoc($countResult)['LCount'];
+                    }
+                    else{
+                        $count=0;
+                    }
+
+                    $limitQuery='SELECT '.$row['LType'].' FROM l_details';
+                    $limitResult= mysqli_query($conn,$limitQuery);
+
+                    $limit= mysqli_fetch_assoc($limitResult)[$lType];
+
+                    $daysLeft=$limit-$count;
+
+                    $html .='<td>'.$daysLeft.'</td>';
 
                     $html .= '<td>';
 

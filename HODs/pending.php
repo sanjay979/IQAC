@@ -7,7 +7,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 
     <head>
         <title>Pending Application</title>
-        <link rel="stylesheet" href="pending2.css">
+        <link rel="stylesheet" href="pending.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
@@ -38,9 +38,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                 // Display the form data in a table format
                 while ($row = mysqli_fetch_assoc($result)) {
                     $approvalStatus = array();
-                    $officials = array('HOD', 'IQAC', 'PRINCIPAL');
-                    $officialKeys = array('hod', 'aqict', 'principal');
-                    $official_fb = array('H_feedback', 'IC_Feedback', 'Pn_feedback');
+                    $officials = array( 'IQAC', 'PRINCIPAL');
+                    $officialKeys = array( 'aqict', 'principal');
+                    $official_fb = array( 'IC_Feedback', 'Pn_feedback');
 
                     foreach ($officialKeys as $key) {
                         if ($row[$key] == 1) {
