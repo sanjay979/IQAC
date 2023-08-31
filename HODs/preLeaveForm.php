@@ -62,8 +62,6 @@
 
                     $html .='<td>'.$daysLeft.'</td>';
 
-                   
-
                     $html .= '<td>';
 
                     if (!empty($row['file'])) {

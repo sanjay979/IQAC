@@ -18,6 +18,8 @@
                 //$html .= '<th>End Date</th>';
                 //$html .= '<th>No of Days</th>';
                 $html .= '<th>Reason</th>';
+                $html .= '<th>Days Left</th>';
+
                 $html .= '<th>Documents</th>';
                 $html .= '<th>Comments</th>';
 
@@ -40,6 +42,27 @@
                     //$html .= '<td>' . $row['ndays'] . '</td>';
 
                     $html .= '<td>' . $row['reason'] . '</td>';
+
+                    $lType=$row['LType'];
+
+                    $countQuery='SELECT COUNT(*) AS LCount from faculty1 where id="'.$row['id'].'" AND LType="'.$row['LType'].'" AND principal=1';
+                    $countResult=mysqli_query($conn,$countQuery);
+                    if($countResult){
+                        $count= mysqli_fetch_assoc($countResult)['LCount'];
+                    }
+                    else{
+                        $count=0;
+                    }
+
+                    $limitQuery='SELECT '.$row['LType'].' FROM l_details';
+                    $limitResult= mysqli_query($conn,$limitQuery);
+
+                    $limit= mysqli_fetch_assoc($limitResult)[$lType];
+
+                    $daysLeft=$limit-$count;
+
+                    $html .='<td>'.$daysLeft.'</td>';
+
 
                     $html .= '<td>';
 
