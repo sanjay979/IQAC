@@ -1,160 +1,135 @@
 .container {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 20px;
-    box-sizing: border-box;
+  margin: 60px auto 0;
+  max-width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  background-color: #fcfeff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #05b6fa;
+}
+
+.form-container label {
+  display: inline-block;
+  width: 110px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: brown;
+}
+
+.sp {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
   }
-  
-  .form-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  fieldset {
-    border: none; /* Remove the fieldset border */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-  }
-  
+
   .form-container label {
-    display: inline-block;
-    width: 110px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: brown;
-}
-  
-.box-container {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-
-}
-  
-  .sp {
-    font-family: Arial, sans-serif;
-    /* Set the font family */
-    font-size: 14px;
-    /* Set the font size */
-    /*display: inline-block;
-    background-color: #FFFF00;*/
-    color:black;
-    font-weight: bold;
-  }
-
-  .form-heading {
-    text-align: center;
-  }
- 
-  hr{
-    margin-bottom: 7px;
-  }
-
-  @media screen and (max-width: 600px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .form-container label {
-      width: 100%; /* Make the labels full width on smaller screens */
-      text-align: left;
-      margin-bottom: 5px; /* Add spacing between label and value */
-    }
-  }
-  
-
-  
-
-
-  /*css for the progress bar*/
-  .containerB{
-    width:100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.progressbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
     width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
 }
 
-.progressbar li{   /* css for listed item in class progressbar*/
-    
-    list-style-type: none;
-    float: left; 
-    width: 33.33%;
-    position: relative;
-    text-align: center;
+.approval-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-.progressbar li::before{   /* css for circle*/      
-    content: '!';
-    width:30px;
-    height:30px;
-    line-height: 30px;
-    border: 1px solid #ddd;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    background-color: white;
+.approved {
+  background-color: green;
+  color: white;
 }
 
-
-.progressbar li:after{ /*css for the connecting line */
-    content: '';
-    position: absolute;
-    width: 100%;    /*the horizontal length of the line*/
-    height: 1px;
-    background-color: #ddd;
-    top:15px;
-    left: -50% ;
-    z-index: -1;
+.declined {
+  background-color: red;
+  color: white;
 }
 
-.progressbar li:first-child:after{ /*css to have no line b4 the hod circle*/
-    content:none;
-    left:0;
+.pending {
+  background-color: grey;
+  color: white;
 }
 
-.progressbar li.pending{
-    color: #ddd;
-}
+/* Add your existing CSS rules here */
 
-.progressbar li.Approved{ /*csss for text with in and below the circle */
-    color:green;
-}
-.progressbar li.Approved:before{   /*css for the circle color*/
-    border-color: green;
-}
-.progressbar li.Approved + li:after{  /* css for the connecting line of active  circle*/
+.green-button {
     background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.green-button:hover {
+    background-color: darkgreen;
 }
 
 
-.progressbar li.Declined{ /*csss for text with in and below the circle */
-    color:red;
-}
-.progressbar li.Declined:before{   /*css for the circle color*/
-    border-color: red;
+/*css for no forms in apply.php*/
+
+.no-forms-message {
+  text-align: center;
+  padding: 20px;
 }
 
-.step-symbol {
-    font-size: 12px; /* Adjust the font size as desired */
-    display: block;
-    margin-top: 5px; /* Adjust the spacing as desired */
-    color: #999; /* Set the color for the step symbols */
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
+
+.no-forms-message p {
+  font-size: 18px;
+  color: grey;
+}
+
+/*css for the last column of apply.php last column and upload animation*/
+    .form-container td:last-child {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+/*css for success message*/
+    .success-message {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+  }
+  
+/*css for the file upload*/

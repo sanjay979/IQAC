@@ -49,7 +49,11 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 }
                                 ?></h3>
                             <span>No of days ML <?php echo "<b>";
-                             echo $ml;
+                              if($ml==0){
+                                echo 0;
+                             }else{
+                                echo $ml;
+                            }
                              echo "</b>";?></span><br>
                             <span>No of days ML available <?php echo "<b>";
                              echo 20-$ml;
@@ -68,7 +72,11 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 }
                                 ?>
                            <span>No of days CL <?php echo "<b>";
-                             echo $cl;
+                              if($cl==0){
+                                echo 0;
+                             }else{
+                                echo $cl;
+                            }
                              echo "</b>";?></span><br>
                             <span>No of days CL available <?php echo "<b>";
                              echo 20-$cl;
@@ -86,7 +94,11 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                     $od = $row['od'];
                                 } ?>
                             <span>No of days OD <?php echo "<b>";
-                             echo $od;
+                             if($od==0){
+                                echo 0;
+                             }else{
+                                echo $od;
+                            }
                              echo "</b>";?></span><br>
                             <span>No of days OD available <?php echo "<b>";
                              echo 20-$od;
