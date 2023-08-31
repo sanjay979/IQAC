@@ -7,7 +7,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 
     <head>
         <title>Pending Application</title>
-        <link rel="stylesheet" href="pending2.css">
+        <link rel="stylesheet" href="pending.css">
         <link rel="stylesheet" type="text/css" href="sidebar.css">
     </head>
 
