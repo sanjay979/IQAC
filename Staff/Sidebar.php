@@ -23,6 +23,7 @@
     <div class="sidebar-head">
       <h2><span><img src="../assets/About_logo-removebg-preview.png" height="100px" width="120px" ;></span></h2>
     </div>
+    <br><br>
     <div class="sidebar-menu">
 
       <ul>
