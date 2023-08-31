@@ -23,7 +23,7 @@
 .sidebar-head img {
     /* Make sure the image doesn't exceed the width of the sidebar */
     margin-left: -20px;
-    margin-top: -6px;
+    margin-top: -14px;
 }
 
 /* Rest of your existing styles */
