@@ -33,8 +33,12 @@
         $post_html .= '<td>' . $post_row['id'] . '</td>';
         //$post_html .= '<td>' . $post_row['LType'] . '</td>';
         //$post_html .= '<td>' . $post_row['start'] . ' to ' . $post_row['end'] . '</td>';
-        $post_html .= '<td>' . $post_row['assessment'] . '</td>';
+        $query_Reason="Select reason from faculty1 where application_id=".$post_row['application_id'];
+        $reason=mysqli_query($conn, $query_Reason);
+        $reason_row=mysqli_fetch_assoc($reason);
 
+        $post_html .= '<td>' . $reason_row['reason']. '</td>';
+        
         $post_html .= '<td>';
         if (!empty($post_row['file'])) {
           $post_html .= '<a href="' . $post_row['file'] . '" target="_post_blank">View File</a>';
