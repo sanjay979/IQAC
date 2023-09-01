@@ -139,30 +139,12 @@ notificationIcon.addEventListener('click', function() {
                 }
                 ?>
 
-                <div class="cards">
+                
+<div class="cards">
                     <div class="card-single">
                         <div>
                             <h1><?php echo $mlCount; ?></h1>
                             <span>No of ML</span>
-                <div class="cards">
-                    <div class="card-single">
-                        <div>
-                            <?php
-                                if ($result1) {
-                                    $row = mysqli_fetch_assoc($result1);
-                                    $ml = $row['ml'];
-                                }
-                                ?></h3>
-                            <span>No of days ML <?php echo "<b>";
-                             if($ml==0){
-                                echo 0;
-                             }else{
-                                echo $ml;
-                            }
-                             echo "</b>";?></span><br>
-                            <span>No of days ML available <?php echo "<b>";
-                             echo 20-$ml;
-                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
