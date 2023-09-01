@@ -42,20 +42,22 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <h1><?php
+                            <?php
                                 if ($result1) {
                                     $row = mysqli_fetch_assoc($result1);
-
-
                                     $ml = $row['ml'];
-                                    if ($ml == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $ml;
-                                    }
                                 }
-                                ?></h1>
-                            <span>No of days ML</span>
+                                ?></h3>
+                            <span>No of days ML <?php echo "<b>";
+                              if($ml==0){
+                                echo 0;
+                             }else{
+                                echo $ml;
+                            }
+                             echo "</b>";?></span><br>
+                            <span>No of days ML available <?php echo "<b>";
+                             echo 20-$ml;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-users"></span>
@@ -63,18 +65,22 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php
+                            <?php
                                 if ($result2) {
                                     $row = mysqli_fetch_assoc($result3);
                                     $cl = $row['cl'];
-                                    if ($cl == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $cl;
-                                    }
                                 }
-                                ?></h1>
-                            <span>No of days CL</span>
+                                ?>
+                           <span>No of days CL <?php echo "<b>";
+                              if($cl==0){
+                                echo 0;
+                             }else{
+                                echo $cl;
+                            }
+                             echo "</b>";?></span><br>
+                            <span>No of days CL available <?php echo "<b>";
+                             echo 20-$cl;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-shopping-bag"></span>
@@ -82,17 +88,21 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php
+                            <?php
                                 if ($result3) {
                                     $row = mysqli_fetch_assoc($result2);
                                     $od = $row['od'];
-                                    if ($od == 0) {
-                                        echo '0';
-                                    } else {
-                                        echo $od;
-                                    }
-                                } ?></h1>
-                            <span>No of days OD</span>
+                                } ?>
+                            <span>No of days OD <?php echo "<b>";
+                             if($od==0){
+                                echo 0;
+                             }else{
+                                echo $od;
+                            }
+                             echo "</b>";?></span><br>
+                            <span>No of days OD available <?php echo "<b>";
+                             echo 20-$od;
+                             echo "</b>";?></span>
                         </div>
                         <div>
                             <span class="las la-hospital"></span>
@@ -102,17 +112,17 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 <?php
 
-                $sql = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3 )";
+                $sql = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND (hod <>0 AND aqict<>0 AND principal = 3 )";
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_assoc($result);
 
                 //statements for next_form for od
 
-                $sql2 = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND next_form=3";
+                $sql2 = "SELECT * FROM faculty1 WHERE id = '" . $id . "' AND principal=1 AND next_form=3 ";
                 $result2 = $conn->query($sql2);
                 $row2 = mysqli_fetch_assoc($result2);
 
-                
+
                 if ($result2->num_rows > 0) {
                     //$app = $row2['application_id'];
                 ?>
@@ -125,7 +135,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 <!--span>< ?php echo $app; ?></span-->
                             </div>
                             <div>
-                                <a href="postleave.php" class="button">Open Form</a>
+                                <a href="apply.php" class="button">Open Form</a>
                             </div>
                         </div>
                     </div>
@@ -133,29 +143,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 <?php
                 }
-                //if block to display the post form updation redirecting
-                /*
-                if (($result->num_rows == 0)) {
 
-                ?>
-                    <div class="new-card-block">
-                        <div class="new-card">
-                            <div>
-                                <h1>Leave Form</h1>
-                                <span>Do you want to Apply Leave</span>
-                            </div>
-                            <div>
-                                <a href="leaveform.php" class="button">Apply Leave</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php 
-                }
-                */
-                //else block for displaying the status bar and the redirection to pending page 
-                // else {
-
-                   if($result->num_rows != 0){
+                if ($result->num_rows != 0) {
                     //echo "varata mamea";
                     //$row = mysqli_fetch_assoc($result);
                 ?>
@@ -164,8 +153,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                         <div class="new-card">
                             <div>
                                 <h1>Leave Status</h1>
-                                <span>The leave Form has been submitted</span>
-                                <a href="pending.php" class="button button-small">View Status</a>
+
+                                <?php if ($result->num_rows == 1) { ?>
+                                    <span>The leave Form has been submitted</span>
+                                    <a href="pending.php" class="button button-small">View Status</a>
                             </div>
 
                             <div class="containerB">
@@ -182,29 +173,31 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                                 </ul>
                             </div>
-
-
-
+                        <?php } else { ?>
+                            <span><?php echo "Your <strong>".$result->num_rows; ?></strong> forms are pending</span>
                         </div>
-
-                    </div>
-
-                <?php
-                }
-                ?>
-                <div class="new-card-block">
-                    <div class="new-card">
-                        <div>
-                            <h1>Leave Form</h1>
-                            <span>Do you want to Apply Leave</span>
+                        <div class="status-button-container">
+                            <a href="pending.php" class="button button-small">View Status</a>
+                            <?php } ?>
                         </div>
-                        <div>
-                            <a href="leaveform.php" class="button">Apply Leave</a>
-                        </div>
-                    </div>
-                </div>
-            </main>
         </div>
+
+    <?php
+                }
+    ?>
+    <div class="new-card-block">
+        <div class="new-card">
+            <div>
+                <h1>Leave Form</h1>
+                <span>Do you want to Apply Leave</span>
+            </div>
+            <div>
+                <a href="leaveform.php" class="button">Apply Leave</a>
+            </div>
+        </div>
+    </div>
+    </main>
+    </div>
     </body>
 
     </html>

@@ -28,9 +28,13 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 // Fetch the data from the database
                 $id = $_SESSION['s_id'];
-                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 WHERE id = '" . $id . "' AND (hod = FALSE OR aqict = FALSE OR principal = FALSE OR hod = 3 OR aqict = 3 OR principal = 3)ORDER BY application_id DESC";
+                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 
+                WHERE id = '" . $id . "' AND (hod <>0 and aqict <>0 and principal = 3)ORDER BY application_id DESC";
                 $result = mysqli_query($conn, $sql);
 
+                $numRows= mysqli_num_rows($result);
+
+                if($numRows>0){
                 // Display the form data in a table format
                 while ($row = mysqli_fetch_assoc($result)) {
                     $approvalStatus = array();
@@ -101,6 +105,13 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
 
                 <?php
                 }
+            }else {
+                // No waiting forms message with additional content
+                echo '<div class="no-forms-message">';
+                echo '<span class="icon">&#128712;</span>';
+                echo '<p>No pending leave submissions.</p>';
+                echo '</div>';
+            }
 
                 // Close the database connection
                 mysqli_close($conn);

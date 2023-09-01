@@ -158,3 +158,20 @@
     margin-top: 5px; /* Adjust the spacing as desired */
     color: #999; /* Set the color for the step symbols */
 }
+
+/*css for no forms */
+
+.no-forms-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.no-forms-message p {
+  font-size: 18px;
+  color: grey;
+}

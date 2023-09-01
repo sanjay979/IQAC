@@ -20,7 +20,7 @@
     <div class="sidebar">
         <?php $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1) ?>
         <div class="sidebar-head">
-            <h2><span><img src="../assets/About_logo-removebg-preview.png" height="100px" width="120px" style="margin-top: -10px; margin-left: -5px;"></span></h2>
+            <h2><span><img src="../assets/About_logo-removebg-preview.png" height="100px" width="120px"></span></h2>
         </div>
         <div class="sidebar-menu">
             <ul>
