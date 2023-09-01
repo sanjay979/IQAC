@@ -6,9 +6,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
     <html>
 
     <head>
-        <title>Pending Application</title>
-        <link rel="stylesheet" href="pending.css">
-        <link rel="stylesheet" type="text/css" href="sidebar.css">
+        <title>Post Pending Application</title>
+        <link rel="stylesheet" href="apply.css">
+        <link rel="stylesheet" type="text/css" href="Hodsidebar.css">
     </head>
 
     <body>
@@ -28,19 +28,18 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 
                 // Fetch the data from the database
                 $id = $_SESSION['s_id'];
-                $sql = "SELECT Name, id, LType, shift, ndays, start, end, file, reason, H_feedback, IC_Feedback, Pn_feedback, hod, aqict, principal FROM faculty1 
-                WHERE id = '" . $id . "' AND (hod <>0 and aqict <>0 and principal = 3)ORDER BY application_id DESC";
+                $sql = "SELECT * FROM leave_details WHERE id = '" . $id . "' AND (hod >0 and iqac = 3 )ORDER BY application_id DESC";
                 $result = mysqli_query($conn, $sql);
 
-                $numRows= mysqli_num_rows($result);
 
-                if($numRows>0){
+                $numRows = mysqli_num_rows($result);
+                if ($numRows > 0) {
                 // Display the form data in a table format
                 while ($row = mysqli_fetch_assoc($result)) {
                     $approvalStatus = array();
-                    $officials = array( 'IQAC', 'PRINCIPAL');
-                    $officialKeys = array( 'aqict', 'principal');
-                    $official_fb = array( 'IC_Feedback', 'Pn_feedback');
+                    $officials = array('IQAC');
+                    $officialKeys = array('iqac');
+                    $official_fb = array('IC_Feedback');
 
                     foreach ($officialKeys as $key) {
                         if ($row[$key] == 1) {
@@ -56,12 +55,14 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
                         <table>
                             <?php
                             $form_fields = [
-                                'id' => ['label' => 'ID'],
-                                'LType' => ['label' => 'Leave-Type'],
+                                //'fieldname' => ['labelName' => 'field_data['labelName']']  (pattern)
+                                
+                                'application_id' => ['label' => 'application_id'],
+                                //'LType' => ['label' => 'Leave-Type'],
                                 'shift' => ['label' => 'Shift'],
-                                'start' => ['label' => 'Date'],
-                                'ndays' => ['label' => 'No of Days'],
-                                'reason' => ['label' => 'Reason'],
+                                //'start' => ['label' => 'Date'],
+                                //'ndays' => ['label' => 'No of Days'],
+                                //'reason' => ['label' => 'Reason'],
                                 'file' => ['label' => 'File'],
                             ];
 
@@ -105,11 +106,12 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'hod') {
 
                 <?php
                 }
-            }else {
+            }
+            else {
                 // No waiting forms message with additional content
                 echo '<div class="no-forms-message">';
                 echo '<span class="icon">&#128712;</span>';
-                echo '<p>No pending leave submissions.</p>';
+                echo '<p>No pending post leave Submissions.</p>';
                 echo '</div>';
             }
 

@@ -36,24 +36,25 @@ include "../database/Databasedemo.php";
         //$post_html .= '<td>' . $post_row['start'] . ' to ' . $post_row['end'] . '</td>';
         $post_html .= '<td>' . $post_row['assessment'] . '</td>';
 
-        $lType = $row['LType'];
+        $lType=$row['LType'];
 
-        $countQuery = 'SELECT COUNT(*) AS LCount from faculty1 where id="' . $row['id'] . '" AND LType="' . $row['LType'] . '" AND principal=1';
-        $countResult = mysqli_query($conn, $countQuery);
-        if ($countResult) {
-          $count = mysqli_fetch_assoc($countResult)['LCount'];
-        } else {
-          $count = 0;
-        }
+                    $countQuery='SELECT COUNT(*) AS LCount from faculty1 where id="'.$row['id'].'" AND LType="'.$row['LType'].'" AND principal=1';
+                    $countResult=mysqli_query($conn,$countQuery);
+                    if($countResult){
+                        $count= mysqli_fetch_assoc($countResult)['LCount'];
+                    }
+                    else{
+                        $count=0;
+                    }
 
-        $limitQuery = 'SELECT ' . $row['LType'] . ' FROM l_details';
-        $limitResult = mysqli_query($conn, $limitQuery);
+                    $limitQuery='SELECT '.$row['LType'].' FROM l_details';
+                    $limitResult= mysqli_query($conn,$limitQuery);
 
-        $limit = mysqli_fetch_assoc($limitResult)[$lType];
+                    $limit= mysqli_fetch_assoc($limitResult)[$lType];
 
-        $daysLeft = $limit - $count;
+                    $daysLeft=$limit-$count;
 
-        $post_html .= '<td>' . $daysLeft . '</td>';
+                    $post_html .='<td>'.$daysLeft.'</td>';
 
 
         $post_html .= '<td>';
@@ -118,12 +119,13 @@ include "../database/Databasedemo.php";
     });
   }
 
-  function updateSNo() {
+  function updateSNo(){
     //alert("sno updation method called");
     var postRows = $('.postTable tbody tr');
 
-    postRows.each(function(index) {
-      $(this).find('.s_no').text(index + 1);
+    postRows.each(function(index){
+      $(this).find('.s_no').text(index+1);
     });
   }
+
 </script>
