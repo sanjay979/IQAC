@@ -1,0 +1,35 @@
+.recent-grid{
+margin-top: 3.5rem;
+display: grid;
+grid-gap: 2rem;
+grid-template-columns: 60% auto;
+}
+.card{
+    background: #fff;
+    border-radius: 5px;
+}
+.card-header,.card-body{
+    padding: 1rem;
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #cdcccc;
+}
+table{
+    border-collapse: collapse;
+}
+thead tr{
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    
+}
+thead td{
+    font-weight: 700;
+}
+td{
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    color: #0e0e0e;
+}

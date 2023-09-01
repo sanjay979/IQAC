@@ -1,4 +1,3 @@
-
 <?php
 $con = mysqli_connect("localhost", "root", "", "demo");
 if (mysqli_connect_errno()) {
@@ -31,17 +30,17 @@ function filterData($filter, $search, $leaveType)
     $query = "";
 
     if ($filter === 'hours') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 DAY AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all') AND (hod = 1 OR aqict = 1 OR principal = 1)";
     } elseif ($filter === 'week') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 WEEK AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all') AND (hod = 1 OR aqict = 1 OR principal = 1)";
     } elseif ($filter === 'month') {
-        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all')";
+        $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%' AND (LType = '$leaveType' OR '$leaveType' = 'all') AND (hod = 1 OR aqict = 1 OR principal = 1)";
     } else {
         // If filter is 'all' or an unknown value, include Leave Type in the query
         if ($leaveType === 'all') {
-            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%'";
+            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND id LIKE '%$search%' AND (hod = 1 OR aqict = 1 OR principal = 1)";
         } else {
-            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND LType = '$leaveType' AND id LIKE '%$search%'";
+            $query = "SELECT * FROM faculty1 WHERE DATE(RegDate) >= DATE(NOW()) - INTERVAL 1 MONTH AND LType = '$leaveType' AND id LIKE '%$search%' AND (hod = 1 OR aqict = 1 OR principal = 1)";
         }
     }
 
@@ -105,8 +104,6 @@ function generateHTML($filteredData)
                 $status = 'Approved';
             } elseif ($hodStatus == 0 || $aqictStatus == 0 || $principalStatus == 0) {
                 $status = 'Declined';
-            } else {
-                $status = 'Pending';
             }
 
             $html .= '<td>' . $status . '</td>';
