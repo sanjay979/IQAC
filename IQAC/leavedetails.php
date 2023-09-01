@@ -54,7 +54,7 @@ $od=$row['OD'];
         <option>2027-2028</option>
         <option>2028-2029</option>
     </select></td>
-    <td><input type="submit" value="update" name="yearvalue"></form></td>
+    <td><input type="submit" class="btn btn-secondary"  value="update" name="yearvalue"></form></td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -63,7 +63,7 @@ $od=$row['OD'];
       <td><form method="post">
         <input type="number" name="cl1">
         </td>
-      <td><input type="submit" value="update" name="cl">
+      <td><input type="submit" class="btn btn-secondary"  value="update" name="cl">
       </form></td>
     </tr>
     <tr>
@@ -73,7 +73,7 @@ $od=$row['OD'];
       <td><form method="post">
         <input type="number" name="medical">
         </td>
-      <td><input type="submit" value="update" name="ml">
+      <td><input type="submit" class="btn btn-secondary"  value="update" name="ml">
       </form></td>
     </tr>
     <tr>
@@ -84,7 +84,7 @@ $od=$row['OD'];
       <td><form method="post">
         <input type="number" name="od1">
         </td>
-      <td><input type="submit" value="update" name="od">
+      <td><input type="submit" class="btn btn-secondary"  value="update" name="od">
       </form></td>
     </tr>
 
