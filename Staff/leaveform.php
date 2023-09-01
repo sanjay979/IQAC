@@ -211,15 +211,7 @@ if ($_SESSION['s_id']) {
                                     <div class="input-field">
                                         <label>Department</label>
                                         <input type="text" name="department" value="<?php echo $department; ?>" readonly>
-                                        <?php /*
-                                    <select name="department" required>
-                                        <option disabled selected>Select Department</option>
-                                        <option>Computer Science</option>
-                                        <option>Physics</option>
-                                        <option>Chemistry</option>
-                                        <option>Botany</option>
-                                    </select>
-                                    */ ?>
+                                        
                                     </div>
 
                                     <div class="input-field">
@@ -252,9 +244,6 @@ if ($_SESSION['s_id']) {
                                         startDateInput.addEventListener("input", function() {
                                             endDateInput.min = this.value;
 
-
-
-
                                         });
                                         var today = new Date();
                                         var yyyy = today.getFullYear();
@@ -265,7 +254,7 @@ if ($_SESSION['s_id']) {
                                     </script>
                                     <div class="input-field">
                                         <label>No of Days</label>
-                                        <input type="number" name="days" placeholder="Enter number of days" readonly>
+                                        <input type="number" name="days" placeholder="Enter number of days" >
                                     </div>
 
                                     <div class="input-field">
@@ -344,24 +333,7 @@ if ($_SESSION['s_id']) {
     </body>
 
     </html>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const startDateInput = document.querySelector('input[name="start"]');
-            const endDateInput = document.querySelector('input[name="end"]');
-            const daysInput = document.querySelector('input[name="days"]');
-
-            startDateInput.addEventListener("change", updateDays);
-            endDateInput.addEventListener("change", updateDays);
-
-            function updateDays() {
-                const startDate = new Date(startDateInput.value);
-                const endDate = new Date(endDateInput.value);
-                const timeDiff = endDate.getTime() - startDate.getTime();
-                const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
-                daysInput.value = numDays;
-            }
-        });
-    </script>
+    
 <?php
 } else {
     header("location:../Login/home.php");
