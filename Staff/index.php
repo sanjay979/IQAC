@@ -36,8 +36,13 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $result1 = mysqli_query($conn, $sql1);
                 $result2 = mysqli_query($conn, $sql2);
                 $result3 = mysqli_query($conn, $sql3);
-
-
+                $details="select * from l_details";
+                $result4=mysqli_query($conn,$details);
+                $row4=mysqli_fetch_assoc($result4);
+                
+                $available_cl=$row4['CL'];
+                $available_ml=$row4['ML'];
+                $available_od=$row4['OD'];
                 ?>
                 <div class="cards">
                     <div class="card-single">
@@ -56,7 +61,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             }
                              echo "</b>";?></span><br>
                             <span>No of days ML available <?php echo "<b>";
-                             echo 20-$ml;
+                             echo $available_ml-$ml;
                              echo "</b>";?></span>
                         </div>
                         <div>
@@ -79,7 +84,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             }
                              echo "</b>";?></span><br>
                             <span>No of days CL available <?php echo "<b>";
-                             echo 20-$cl;
+                             echo $available_cl-$cl;
                              echo "</b>";?></span>
                         </div>
                         <div>
@@ -101,7 +106,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                             }
                              echo "</b>";?></span><br>
                             <span>No of days OD available <?php echo "<b>";
-                             echo 20-$od;
+                             echo $available_od-$od;
                              echo "</b>";?></span>
                         </div>
                         <div>

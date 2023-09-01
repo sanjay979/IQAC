@@ -33,7 +33,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'principal') {
                     <?php
                     
                     include '../database/Databasedemo.php';
-                    $st="select count(*) AS count from faculty1 where  principal=3 and aqict=1";
+                    $st="select count(*) AS count from faculty1 where principal=3 and aqict=1 and shift=1";
                     $result1=mysqli_query($conn,$st);
                     if($result1){ 
                         $row1=mysqli_fetch_assoc($result1);
