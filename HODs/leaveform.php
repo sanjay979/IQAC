@@ -162,10 +162,7 @@ if ($_SESSION['s_id']) {
         <div class="main-content">
             <?php include "header.php"; ?>
             <?php
-            include("..//database/Databasedemo.php");
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+           include '../database/Databasedemo.php';
 
             $id = $_SESSION['s_id'];
             $query = "SELECT * FROM faculty_details WHERE s_id = '$id'";
@@ -211,15 +208,7 @@ if ($_SESSION['s_id']) {
                                     <div class="input-field">
                                         <label>Department</label>
                                         <input type="text" name="department" value="<?php echo $department; ?>" readonly>
-                                        <?php /*
-                                    <select name="department" required>
-                                        <option disabled selected>Select Department</option>
-                                        <option>Computer Science</option>
-                                        <option>Physics</option>
-                                        <option>Chemistry</option>
-                                        <option>Botany</option>
-                                    </select>
-                                    */ ?>
+                                      
                                     </div>
 
                                     <div class="input-field">
@@ -289,40 +278,7 @@ if ($_SESSION['s_id']) {
                 </div>
             </main>
 
-            <?php
-            if (isset($_POST['submit'])) {
-                include("..//database/Databasedemo.php");
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $leaveType = $_POST['Ltype'];
-                $startDate = $_POST['start'];
-                $endDate = $_POST['end'];
-                $numDays = $_POST['days'];
-                $reason = $_POST['reason'];
-                $hod = 1;
-
-                $target_directory = "../assets" . "/assets";
-                $file_name = $_FILES['file']['name'];
-                $file_path = $target_directory . $file_name;
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
-                    // Insert form data into the database
-                    $sql = "INSERT INTO faculty1 (Name, id, department, LType,shift, start, end, ndays, reason, file,hod)
-                        VALUES ('$name', '$id', '$department', '$leaveType','$shift', '$startDate', '$endDate', '$numDays', '$reason', '$file_path','$hod')";
-
-                    if ($conn->query($sql) === TRUE) {
-                        $successMessage = "Leave application submitted successfully.";
-                    } else {
-                        $errorMessage = "Error: " . $sql . "<br>" . $conn->error;
-                    }
-                } else {
-                    $errorMessage = "Error uploading file.";
-                }
-
-                $conn->close();
-            }
-            ?>
+        
 
             <?php if (isset($successMessage)) : ?>
                 <div class="success-message"><?php echo $successMessage; ?></div>

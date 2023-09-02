@@ -10,16 +10,8 @@ if (isset($_POST['submit'])) {
     $endDate = $_POST['end'];
     $numDays = $_POST['days'];
     $reason = $_POST['reason'];
+    $hod=1;
 
-
-    // echo $name . "<br>";
-    // echo $id . "<br>";
-    // echo $department . "<br>";
-    // echo $leaveType . "<br>";
-    // echo $startDate . "<br>";
-    // echo $endDate . "<br>";
-    // echo $numDays . "<br>";
-    // echo $reason . "<br>";
     $sql="select * from l_details";
     $result=mysqli_query($conn,$sql);
     $row=mysqli_fetch_assoc($result);
@@ -29,8 +21,8 @@ if (isset($_POST['submit'])) {
     $file_path = $target_directory . $file_name;
     if (move_uploaded_file($_FILES['file']['tmp_name'], $file_path)) {
         // Insert form data into the database
-        $sql = "INSERT INTO faculty1 (Name, id, department, LType,shift, start, end, ndays, reason, file,a_year)
-                        VALUES ('$name', '$id', '$department', '$leaveType','$shift', '$startDate', '$endDate', '$numDays', '$reason', '$file_path','$year')";
+        $sql = "INSERT INTO faculty1 (Name, id, department, LType,shift, start, end, ndays,hod, reason, file,a_year)
+                        VALUES ('$name', '$id', '$department', '$leaveType','$shift', '$startDate', '$endDate', '$numDays','$hod', '$reason', '$file_path','$year')";
 
         if ($conn->query($sql) === TRUE) {
             $successMessage = "Leave application submitted successfully.";
