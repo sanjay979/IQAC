@@ -38,6 +38,7 @@
 
                 <li><a href="WaitingForms.php" class="<?= $page == 'WaitingForms.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Waiting Forms</span></a></li>
                 <li><a href="history.php" class="<?= $page == 'history.php' ? 'active' : '' ?>"><span class="fa fa-clock"></span> <span>history</span></a></li>
+                <li><a href="rgpage.php" class="<?= $page == 'rgpage.php' ? 'active' : '' ?>"><span class="fa fa-clock"></span> <span>Report</span></a></li>
                 <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
             </ul>
         </div>
