@@ -162,7 +162,7 @@ if ($_SESSION['s_id']) {
         <div class="main-content">
             <?php include "header.php"; ?>
             <?php
-           include '../database/Databasedemo.php';
+            include '../database/Databasedemo.php';
 
             $id = $_SESSION['s_id'];
             $query = "SELECT * FROM faculty_details WHERE s_id = '$id'";
@@ -188,7 +188,7 @@ if ($_SESSION['s_id']) {
             <main>
                 <div class="form_center">
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="leavesubmission.php" method="POST" enctype="multipart/form-data">
                         <h1>Leave Form</h1>
                         <div class="form first">
                             <div class="details personal">
@@ -208,16 +208,16 @@ if ($_SESSION['s_id']) {
                                     <div class="input-field">
                                         <label>Department</label>
                                         <input type="text" name="department" value="<?php echo $department; ?>" readonly>
-                                      
+                                        
                                     </div>
 
                                     <div class="input-field">
                                         <label>Leave type</label>
                                         <select name="Ltype" required>
                                             <option disabled selected>--Select--</option>
-                                            <option>OD</option>
-                                            <option>CL</option>
-                                            <option>ML</option>
+                                            <option value="OD">OD</option>
+                                            <option value="CL">CL</option>
+                                            <option value="ML">ML</option>
                                         </select>
                                     </div>
 
@@ -241,9 +241,6 @@ if ($_SESSION['s_id']) {
                                         startDateInput.addEventListener("input", function() {
                                             endDateInput.min = this.value;
 
-
-
-
                                         });
                                         var today = new Date();
                                         var yyyy = today.getFullYear();
@@ -254,7 +251,7 @@ if ($_SESSION['s_id']) {
                                     </script>
                                     <div class="input-field">
                                         <label>No of Days</label>
-                                        <input type="number" name="days" placeholder="Enter number of days" readonly>
+                                        <input type="number" name="days" placeholder="Enter number of days" >
                                     </div>
 
                                     <div class="input-field">
@@ -278,7 +275,6 @@ if ($_SESSION['s_id']) {
                 </div>
             </main>
 
-        
 
             <?php if (isset($successMessage)) : ?>
                 <div class="success-message"><?php echo $successMessage; ?></div>
@@ -301,24 +297,7 @@ if ($_SESSION['s_id']) {
     </body>
 
     </html>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const startDateInput = document.querySelector('input[name="start"]');
-            const endDateInput = document.querySelector('input[name="end"]');
-            const daysInput = document.querySelector('input[name="days"]');
-
-            startDateInput.addEventListener("change", updateDays);
-            endDateInput.addEventListener("change", updateDays);
-
-            function updateDays() {
-                const startDate = new Date(startDateInput.value);
-                const endDate = new Date(endDateInput.value);
-                const timeDiff = endDate.getTime() - startDate.getTime();
-                const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
-                daysInput.value = numDays;
-            }
-        });
-    </script>
+    
 <?php
 } else {
     header("location:../Login/home.php");
