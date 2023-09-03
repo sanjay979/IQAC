@@ -17,6 +17,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
         <link rel="stylesheet" type="text/css" href="index.css">
 
         <link rel="stylesheet" type="text/css" href="sidebar.css">
+
     </head>
 
     <body>
@@ -36,82 +37,76 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $result1 = mysqli_query($conn, $sql1);
                 $result2 = mysqli_query($conn, $sql2);
                 $result3 = mysqli_query($conn, $sql3);
-                $details="select * from l_details";
-                $result4=mysqli_query($conn,$details);
-                $row4=mysqli_fetch_assoc($result4);
-                
-                $available_cl=$row4['CL'];
-                $available_ml=$row4['ML'];
-                $available_od=$row4['OD'];
+                $details = "select * from l_details";
+                $result4 = mysqli_query($conn, $details);
+                $row4 = mysqli_fetch_assoc($result4);
+
+                $available_cl = $row4['CL'];
+                $available_ml = $row4['ML'];
+                $available_od = $row4['OD'];
                 ?>
                 <div class="cards">
                     <div class="card-single">
                         <div>
                             <?php
-                                if ($result1) {
-                                    $row = mysqli_fetch_assoc($result1);
-                                    $ml = $row['ml'];
-                                }
-                                ?></h3>
-                            <span>No of days ML <?php echo "<b>";
-                              if($ml==0){
-                                echo 0;
-                             }else{
-                                echo $ml;
+                            if ($result1) {
+                                $row = mysqli_fetch_assoc($result1);
+                                $ml = $row['ml'];
                             }
-                             echo "</b>";?></span><br>
-                            <span>No of days ML available <?php echo "<b>";
-                             echo $available_ml-$ml;
-                             echo "</b>";?></span>
+                            ?></h3>
+                            <span>ML taken: <?php echo "<b>";
+                                            if ($ml == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $ml;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>ML available: <?php echo "<b>";
+                                                echo $available_ml - $ml;
+                                                echo "</b>"; ?></span>
                         </div>
-                        <div>
-                            <span class="las la-users"></span>
-                        </div>
+
                     </div>
                     <div class="card-single">
                         <div>
                             <?php
-                                if ($result2) {
-                                    $row = mysqli_fetch_assoc($result3);
-                                    $cl = $row['cl'];
-                                }
-                                ?>
-                           <span>No of days CL <?php echo "<b>";
-                              if($cl==0){
-                                echo 0;
-                             }else{
-                                echo $cl;
+                            if ($result2) {
+                                $row = mysqli_fetch_assoc($result3);
+                                $cl = $row['cl'];
                             }
-                             echo "</b>";?></span><br>
-                            <span>No of days CL available <?php echo "<b>";
-                             echo $available_cl-$cl;
-                             echo "</b>";?></span>
+                            ?>
+                            <span>CL taken: <?php echo "<b>";
+                                            if ($cl == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $cl;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>CL available: <?php echo "<b>";
+                                                echo $available_cl - $cl;
+                                                echo "</b>"; ?></span>
                         </div>
-                        <div>
-                            <span class="las la-shopping-bag"></span>
-                        </div>
+
                     </div>
                     <div class="card-single">
                         <div>
                             <?php
-                                if ($result3) {
-                                    $row = mysqli_fetch_assoc($result2);
-                                    $od = $row['od'];
-                                } ?>
-                            <span>No of days OD <?php echo "<b>";
-                             if($od==0){
-                                echo 0;
-                             }else{
-                                echo $od;
-                            }
-                             echo "</b>";?></span><br>
-                            <span>No of days OD available <?php echo "<b>";
-                             echo $available_od-$od;
-                             echo "</b>";?></span>
+                            if ($result3) {
+                                $row = mysqli_fetch_assoc($result2);
+                                $od = $row['od'];
+                            } ?>
+                            <span>OD taken: <?php echo "<b>";
+                                            if ($od == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $od;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>OD available: <?php echo "<b>";
+                                                echo $available_od - $od;
+                                                echo "</b>"; ?></span>
                         </div>
-                        <div>
-                            <span class="las la-hospital"></span>
-                        </div>
+
                     </div>
                 </div>
 
@@ -179,30 +174,30 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                                 </ul>
                             </div>
                         <?php } else { ?>
-                            <span><?php echo "Your <strong>".$result->num_rows; ?></strong> forms are pending</span>
+                            <span><?php echo "Your <strong>" . $result->num_rows; ?></strong> forms are pending</span>
                         </div>
                         <div class="status-button-container">
                             <a href="pending.php" class="button button-small">View Status</a>
-                            <?php } ?>
+                        <?php } ?>
                         </div>
-        </div>
+                    </div>
 
-    <?php
+                <?php
                 }
-    ?>
-    <div class="new-card-block">
-        <div class="new-card">
-            <div>
-                <h1>Leave Form</h1>
-                <span>Do you want to Apply Leave</span>
-            </div>
-            <div>
-                <a href="leaveform.php" class="button">Apply Leave</a>
-            </div>
+                ?>
+                <div class="new-card-block">
+                    <div class="new-card">
+                        <div>
+                            <h1>Leave Form</h1>
+                            <span>Do you want to Apply Leave</span>
+                        </div>
+                        <div>
+                            <a href="leaveform.php" class="button">Apply Leave</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-    </div>
-    </main>
-    </div>
     </body>
 
     </html>

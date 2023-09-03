@@ -20,10 +20,16 @@
   <input type="checkbox" id="nav-toggle">
   <?php $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1) ?>
   <div class="sidebar">
-    <div class="sidebar-head">
-      <h2><span><img src="../assets/About_logo-removebg-preview.png" height="100px" width="120px" ;></span></h2>
+    <div id="page">
+      <div id="container">
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="h3"><span><img src="../assets/About_logo-removebg-preview.png" height="110px" width="130px" ;></span> </div>
+      </div>
     </div>
-    <br><br>
+    <br>
     <div class="sidebar-menu">
 
       <ul>
