@@ -63,6 +63,7 @@ function filterData($filter, $search, $leaveType)
 
 
 // Function to generate HTML for the filtered data
+// Function to generate HTML for the filtered data
 function generateHTML($filteredData)
 {
     // Generate the HTML based on the filtered data
@@ -102,8 +103,10 @@ function generateHTML($filteredData)
 
             if ($hodStatus == 1 && $aqictStatus == 1 && $principalStatus == 1) {
                 $status = 'Approved';
-            } elseif ($hodStatus == 0 || $aqictStatus == 0 || $principalStatus == 0) {
-                $status = 'Declined';
+            // } elseif ($hodStatus == 0 || $aqictStatus == 0 || $principalStatus == 0) {
+            //     $status = 'Declined';
+            } else {
+                $status = 'Declined'; // Added for pending requests
             }
 
             $html .= '<td>' . $status . '</td>';
@@ -121,4 +124,5 @@ function generateHTML($filteredData)
 
     return $html;
 }
+
 ?>
