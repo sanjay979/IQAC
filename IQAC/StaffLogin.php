@@ -47,6 +47,23 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                             <input type="date" name="dob" placeholder="DOB" required>
                         </div>
                         <div class="input-field">
+                            <label>Shift</label>
+                            <select name="shift" required>
+                                <option disabled selected>Select shift</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>position</label>
+                            <select name="position" required>
+                                <option disabled selected>Select Position</option>
+                                <option>staff</option>
+                                <option>hod</option>
+                                <option>iqac</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
                             <label>Password</label>
                             <input type="password" name="password" placeholder="Password" required>
                         </div>
@@ -59,29 +76,28 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
             </main>
             <?php
             if (isset($_POST['submit'])) {
-                include("..//database/Databasedemo.php");
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include '../database/Databasedemo.php';
 
                 $name = $_POST['name'];
                 $id = $_POST['id'];
                 $department = $_POST['department'];
                 $dob = $_POST['dob'];
+                $shift = $_POST['shift'];
+                $position = $_POST['position'];
                 $password = $_POST['password'];
 
 
 
                 // Insert form data into the database
-                $sql = "INSERT INTO faculty_details (name, s_id,department,dob)
-                    VALUES ('$name', '$id','$department','$dob')";
+                $sql = "INSERT INTO faculty_details (name, s_id,department,dob,shift,position)
+                    VALUES ('$name', '$id','$department','$dob','$shift','$position')";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "application submitted successfully.";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
-                $login = "INSERT INTO staff_login (s_id,password)
+                $login = "INSERT INTO login (s_id,password)
                     VALUES ('$id','$password')";
 
                 if ($conn->query($login) === TRUE) {
