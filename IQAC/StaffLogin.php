@@ -40,6 +40,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                                 <option>Physics</option>
                                 <option>Chemistry</option>
                                 <option>botany</option>
+                                <option>English</option>
+                                <option>Data science</option>
+                                
                             </select>
                         </div>
                         <div class="input-field">
