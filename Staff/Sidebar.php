@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!--font2 -->
   <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="sidebar.css">
@@ -51,7 +52,9 @@
             <a href="history.php" class="<?= $page == 'history.php' ? 'active' : '' ?>"><span class="fa fa-history"></span><span>History</span></a>
           </ul>
         </li>
-        <li><a href="../Login/logout.php" class=""><span class="las la-igloo"></span> <span>Logout</span></a></li>
+        <li><a href="../Login/logout.php" class=""><span class="material-symbols-outlined">
+              logout
+            </span> <span>Logout</span></a></li>
       </ul>
     </div>
   </div>
