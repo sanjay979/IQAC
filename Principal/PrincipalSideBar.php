@@ -13,6 +13,7 @@
     <!--font2 -->
     <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="PrincipalSideBar.css">
+    <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
 </head>
 
 <body>

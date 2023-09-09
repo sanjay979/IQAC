@@ -16,6 +16,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
         <link rel="stylesheet" type="text/css" href="sidebar.css">
+        <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
 
     <body>
 
@@ -97,7 +98,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 </div>
             </header>
             <main>
-            <?php
+                <?php
                 $sql1 = "SELECT COUNT(*) AS mlCount FROM faculty1 WHERE principal = 1 AND LType = 'ML'";
                 $sql2 = "SELECT COUNT(*) AS odCount FROM faculty1 WHERE principal = 1 AND LType = 'OD'";
                 $sql3 = "SELECT COUNT(*) AS clCount FROM faculty1 WHERE principal = 1 AND LType = 'CL'";
