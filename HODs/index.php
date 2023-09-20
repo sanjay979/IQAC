@@ -22,6 +22,7 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
         <!--font2 -->
         <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="Hodsidebar.php">
     </head>
 
     <body>
