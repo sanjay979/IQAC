@@ -19,6 +19,8 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <!--font2 -->
         <script src="https://kit.fontawesome.com/668b4cc612.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
@@ -147,6 +149,9 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
                             <span>ML available <?php echo "<b>";
                                                 echo $available_ml - $ml;
                                                 echo "</b>"; ?></span>
+                            <div style="margin-left: 220px; margin-top: -50px;">
+                                <span class="material-symbols-outlined" style="font-size: 36px;">medical_services</span>
+                            </div>
                         </div>
 
                     </div>
@@ -168,6 +173,11 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
                             <span>CL available <?php echo "<b>";
                                                 echo $available_cl - $cl;
                                                 echo "</b>"; ?></span>
+                            <div style="margin-left: 220px; margin-top: -50px;">
+                                <span class="material-symbols-outlined" style="font-size: 36px;">
+                                    edit_calendar
+                                </span>
+                            </div>
                         </div>
 
                     </div>
@@ -188,6 +198,11 @@ if ($_SESSION['s_id'] && ($_SESSION['position'] == 'hod' || $_SESSION['position'
                             <span>OD available <?php echo "<b>";
                                                 echo $available_od - $od;
                                                 echo "</b>"; ?></span>
+                            <div style="margin-left: 220px; margin-top: -50px;">
+                                <span class="material-symbols-outlined" style="font-size: 36px;">
+                                    calendar_month
+                                </span>
+                            </div>
                         </div>
 
                     </div>
