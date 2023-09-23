@@ -20,6 +20,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
         <link rel="stylesheet" type="text/css" href="sidebar.css">
         <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
 
+    </head>
+
     <body>
 
         <?php include 'sideBar.php'; ?>
@@ -101,62 +103,97 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
             </header>
             <main>
                 <?php
-                $sql1 = "SELECT COUNT(*) AS mlCount FROM faculty1 WHERE principal = 1 AND LType = 'ML'";
-                $sql2 = "SELECT COUNT(*) AS odCount FROM faculty1 WHERE principal = 1 AND LType = 'OD'";
-                $sql3 = "SELECT COUNT(*) AS clCount FROM faculty1 WHERE principal = 1 AND LType = 'CL'";
+                $id = $_SESSION['s_id'];
+                $sql1 = "SELECT sum(ndays) AS ml from faculty1 where principal=1 and LType='ML' and id='$id'";
+                $sql2 = "SELECT sum(ndays) AS od from faculty1 where principal=1 and LType='OD' and id='$id'";
+                $sql3 = "SELECT sum(ndays) AS cl from faculty1 where principal=1 and LType='CL' and id='$id'";
                 $result1 = mysqli_query($conn, $sql1);
                 $result2 = mysqli_query($conn, $sql2);
                 $result3 = mysqli_query($conn, $sql3);
+                $details = "select * from l_details";
+                $result4 = mysqli_query($conn, $details);
+                $row4 = mysqli_fetch_assoc($result4);
 
-                $mlCount = 0;
-                $odCount = 0;
-                $clCount = 0;
-
-                if ($result1) {
-                    $row1 = mysqli_fetch_assoc($result1);
-                    $mlCount = $row1['mlCount'];
-                }
-
-                if ($result2) {
-                    $row2 = mysqli_fetch_assoc($result2);
-                    $odCount = $row2['odCount'];
-                }
-
-                if ($result3) {
-                    $row3 = mysqli_fetch_assoc($result3);
-                    $clCount = $row3['clCount'];
-                }
+                $available_cl = $row4['CL'];
+                $available_ml = $row4['ML'];
+                $available_od = $row4['OD'];
                 ?>
-
                 <div class="cards">
                     <div class="card-single">
                         <div>
-                            <span>Ml taken:</span>
-                            <h1><?php echo $mlCount; ?></h1>
-                            <span>No of ML</span>
+                            <?php
+                            if ($result1) {
+                                $row = mysqli_fetch_assoc($result1);
+                                $ml = $row['ml'];
+                            }
+                            ?></h3>
+                            <span>ML taken: <?php echo "<b>";
+                                            if ($ml == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $ml;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>ML available: <?php echo "<b>";
+                                                echo $available_ml - $ml;
+                                                echo "</b>"; ?></span>
                             <div style="margin-left: 220px; margin-top: -50px;">
                                 <span class="material-symbols-outlined" style="font-size: 36px;">medical_services</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="card-single">
+                        <div>
+                            <?php
+                            if ($result2) {
+                                $row = mysqli_fetch_assoc($result3);
+                                $cl = $row['cl'];
+                            }
+                            ?>
+                            <span>CL taken: <?php echo "<b>";
+                                            if ($cl == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $cl;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>CL available: <?php echo "<b>";
+                                                echo $available_cl - $cl;
+                                                echo "</b>"; ?></span>
+                            <div style="margin-left: 220px; margin-top: -50px;">
+                                <span class="material-symbols-outlined" style="font-size: 36px;">
+                                    edit_calendar
+                                </span>
                             </div>
                         </div>
 
                     </div>
                     <div class="card-single">
                         <div>
-                            <h1><?php echo $clCount; ?></h1>
-                            <span>No of CL</span>
+                            <?php
+                            if ($result3) {
+                                $row = mysqli_fetch_assoc($result2);
+                                $od = $row['od'];
+                            } ?>
+                            <span>OD taken: <?php echo "<b>";
+                                            if ($od == 0) {
+                                                echo 0;
+                                            } else {
+                                                echo $od;
+                                            }
+                                            echo "</b>"; ?></span><br>
+                            <span>OD available: <?php echo "<b>";
+                                                echo $available_od - $od;
+                                                echo "</b>"; ?></span>
+                            <div style="margin-left: 220px; margin-top: -50px;">
+                                <span class="material-symbols-outlined" style="font-size: 36px;">
+                                    calendar_month
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="las la-shopping-bag"></span>
-                        </div>
-                    </div>
-                    <div class="card-single">
-                        <div>
-                            <h1><?php echo $odCount; ?></h1>
-                            <span>No of OD</span>
-                        </div>
-                        <div>
-                            <span class="las la-hospital"></span>
-                        </div>
+
                     </div>
                 </div>
                 <?php include 'bodydashboard.php'; ?>
