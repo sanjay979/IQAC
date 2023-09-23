@@ -46,83 +46,77 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'staff') {
                 $available_ml = $row4['ML'];
                 $available_od = $row4['OD'];
                 ?>
-                <div class="cards">
+                    <div class="cards">
                     <div class="card-single">
                         <div>
-                            <?php
+                        <?php
                             if ($result1) {
                                 $row = mysqli_fetch_assoc($result1);
                                 $ml = $row['ml'];
                             }
-                            ?></h3>
-                            <span>ML taken: <?php echo "<b>";
+                            ?>
+                             <span>ML taken: <?php echo "<b>";
                                             if ($ml == 0) {
                                                 echo 0;
                                             } else {
                                                 echo $ml;
                                             }
                                             echo "</b>"; ?></span><br>
-                            <span>ML available: <?php echo "<b>";
+                            <span>ML available <?php echo "<b>";
                                                 echo $available_ml - $ml;
                                                 echo "</b>"; ?></span>
-                            <div style="margin-left: 220px; margin-top: -50px;">
-                                <span class="material-symbols-outlined" style="font-size: 36px;">medical_services</span>
-                            </div>
-
                         </div>
-
+                        <div>
+                            <span class="las la-users"></span>
+                        </div>
                     </div>
                     <div class="card-single">
                         <div>
-                            <?php
-                            if ($result2) {
+                        <?php
+                            if ($result1) {
                                 $row = mysqli_fetch_assoc($result3);
                                 $cl = $row['cl'];
                             }
                             ?>
-                            <span>CL taken: <?php echo "<b>";
+                             <span>CL taken: <?php echo "<b>";
                                             if ($cl == 0) {
                                                 echo 0;
                                             } else {
                                                 echo $cl;
                                             }
                                             echo "</b>"; ?></span><br>
-                            <span>CL available: <?php echo "<b>";
+                            <span>CL available <?php echo "<b>";
                                                 echo $available_cl - $cl;
                                                 echo "</b>"; ?></span>
-                            <div style="margin-left: 220px; margin-top: -50px;">
-                                <span class="material-symbols-outlined" style="font-size: 36px;">
-                                    edit_calendar
-                                </span>
-                            </div>
                         </div>
-
+                        <div>
+                            <span class="las la-users"></span>
+                        </div>
                     </div>
                     <div class="card-single">
-                        <div>
-                            <?php
-                            if ($result3) {
+                        <div> 
+                        <?php
+                            if ($result1) {
                                 $row = mysqli_fetch_assoc($result2);
                                 $od = $row['od'];
-                            } ?>
-                            <span>OD taken: <?php echo "<b>";
+                            }
+                            ?>
+                             <span>OD taken: <?php echo "<b>";
                                             if ($od == 0) {
                                                 echo 0;
                                             } else {
                                                 echo $od;
                                             }
                                             echo "</b>"; ?></span><br>
-                            <span>OD available: <?php echo "<b>";
+                            <span>OD available <?php echo "<b>";
                                                 echo $available_od - $od;
                                                 echo "</b>"; ?></span>
-                            <div style="margin-left: 220px; margin-top: -50px;">
-                                <span class="material-symbols-outlined" style="font-size: 36px;">
-                                    calendar_month
-                                </span>
-                            </div>
                         </div>
-
+                        <div>
+                            <span class="las la-users"></span>
+                        </div>
                     </div>
+                    
                 </div>
 
                 <?php

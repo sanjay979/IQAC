@@ -10,11 +10,7 @@
     --difrent:#b5afaf;
     
 }
-#page {
-    display: flex;
-    justify-content: center;
-    
-  }
+
   
   #container {
     display: flex;
@@ -27,78 +23,6 @@
     color: white;
   }
   
-  #ring {
-    width: 130px;
-    height: 130px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    position: absolute;
-  }
-  
-  #ring:nth-child(1) {
-    border-bottom: 8px solid rgb(255, 141, 249);
-    animation: rotate1 2s linear infinite;
-  }
-  
-  @keyframes rotate1 {
-    from {
-      transform: rotateX(50deg) rotateZ(110deg);
-    }
-  
-    to {
-      transform: rotateX(50deg) rotateZ(470deg);
-    }
-  }
-  
-  #ring:nth-child(2) {
-    border-bottom: 8px solid rgb(255,65,106);
-    animation: rotate2 2s linear infinite;
-  }
-  
-  @keyframes rotate2 {
-    from {
-      transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);
-    }
-  
-    to {
-      transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);
-    }
-  }
-  
-  #ring:nth-child(3) {
-    border-bottom: 8px solid rgb(0,255,255);
-    animation: rotate3 2s linear infinite;
-  }
-  
-  @keyframes rotate3 {
-    from {
-      transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);
-    }
-  
-    to {
-      transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);
-    }
-  }
-  
-  #ring:nth-child(4) {
-    border-bottom: 8px solid rgb(252, 183, 55);
-    animation: rotate4 2s linear infinite;
-  }
-  
-  @keyframes rotate4 {
-    from {
-      transform: rotateX(70deg) rotateZ(270deg);
-    }
-  
-    to {
-      transform: rotateX(70deg) rotateZ(630deg);
-    }
-  }
-
-
-
-
-
 
 
 
@@ -285,21 +209,20 @@ main{
     min-height: calc(100vh-90px);
 }
 .cards{
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 2rem;
     margin-top: 1rem;
 }
 .card-single{
     display: flex; 
-    width:20%;
     justify-content: space-between;
     background: #fff;
     padding: 2rem;
     border-radius: 5px;
 }
 .card-single div:last-child span{
-    font-size: 1.5rem;
+    font-size: 3rem;
     color: var(--main-color);
 }
 .card-single div:first-child span{
@@ -307,15 +230,15 @@ main{
 }
 .card-single:hover{
     transition: 1s ease;
-    background: #6a9be9;
+    background: #949b9c;
     color: #fff;
     
 }
 .card-single:hover div:first-child span,
 .card-single:hover div:last-child span{
-    color:black;
+    color: #fff;
     transition: 1s;
-    
+
 }
 
 @media only screen and (max-width: 1200px) {
@@ -356,6 +279,9 @@ main{
     }
 }
 @media only screen and (max-width: 450px) {
+    .sidebar-menu a.active{
+        display: none;
+    }
     .cards{
         grid-template-columns: repeat(1,1fr);
     }
@@ -387,10 +313,15 @@ main{
         left: 0;
         width: 100%;
     }
+    .sidebar li{
+        left: -550px;
+
+    }
     #nav-toggle:checked + .sidebar li a span:last-child
     {
     display: inline;
     font-size: 1rem;
     }
+    
     
 }
