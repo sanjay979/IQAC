@@ -42,7 +42,8 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                                 <option>botany</option>
                                 <option>English</option>
                                 <option>Data science</option>
-                                
+                                <option>commerce</option>
+
                             </select>
                         </div>
                         <div class="input-field">
@@ -95,19 +96,26 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 $sql = "INSERT INTO faculty_details (name, s_id,department,dob,shift,position)
                     VALUES ('$name', '$id','$department','$dob','$shift','$position')";
 
-                if ($conn->query($sql) === TRUE) {
-                    echo "application submitted successfully.";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
                 $login = "INSERT INTO login (s_id,password)
-                    VALUES ('$id','$password')";
+                VALUES ('$id','$password')";
 
-                if ($conn->query($login) === TRUE) {
-                    echo "application submitted successfully.";
+                $fac_details = mysqli_query($conn, $sql);
+                $fac_login = mysqli_query($conn, $login);
+                if ($fac_details && $fac_login) {
+                    echo "<script>alert('application submitted successfully.');window.location='./StaffLogin.php';</script>";
                 } else {
-                    echo "Error: " . $login . "<br>" . $conn->error;
+                    echo "<script>alert('not submitted');window.location='./StaffLogin.php';</script>";
                 }
+
+
+                // $login = "INSERT INTO login (s_id,password)
+                //     VALUES ('$id','$password')";
+
+                // if ($conn->query($login) === TRUE) {
+                //     echo "<script>alert('application submitted successfully.');window.location='./StaffLogin.php';</script>";
+                // } else {
+                //     echo "Error: " . $login . "<br>" . $conn->error;
+                // }
 
 
 

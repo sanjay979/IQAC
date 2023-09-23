@@ -131,6 +131,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                 <div class="cards">
                     <div class="card-single">
                         <div>
+                            <span>Ml taken:</span>
                             <h1><?php echo $mlCount; ?></h1>
                             <span>No of ML</span>
                             <div style="margin-left: 220px; margin-top: -50px;">
