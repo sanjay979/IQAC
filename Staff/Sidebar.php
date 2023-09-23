@@ -23,7 +23,10 @@
   <div class="sidebar">
     <div id="page">
       <div id="container">
-       
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
+        <div id="ring"></div>
         <div id="h3"><span><img src="../assets/About_logo-removebg-preview.png" height="110px" width="130px" ;></span> </div>
       </div>
     </div>
