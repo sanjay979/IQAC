@@ -14,7 +14,7 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
         <title>IQAC page</title>
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" type="text/css" href="sidebar.css">
         <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
 
@@ -132,27 +132,32 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                             <h1><?php echo $mlCount; ?></h1>
                             <span>No of ML</span>
                         </div>
-                        <div>
-                            <span class="las la-users"></span>
-                        </div>
+
+                        <span class="material-symbols-outlined" style="font-size: 36px;">
+                            medical_services
+                        </span>
                     </div>
+
+
                     <div class="card-single">
                         <div>
                             <h1><?php echo $clCount; ?></h1>
                             <span>No of CL</span>
                         </div>
-                        <div>
-                            <span class="las la-shopping-bag"></span>
-                        </div>
+                        <span class="material-symbols-outlined" style="font-size: 36px;">
+                            edit_calendar
+                        </span>
+
                     </div>
+
                     <div class="card-single">
                         <div>
                             <h1><?php echo $odCount; ?></h1>
                             <span>No of OD</span>
                         </div>
-                        <div>
-                            <span class="las la-hospital"></span>
-                        </div>
+                        <span class="material-symbols-outlined" style="font-size: 36px;">
+                            calendar_month
+                        </span>
                     </div>
                 </div>
                 <?php include 'bodydashboard.php'; ?>
