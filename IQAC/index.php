@@ -14,8 +14,6 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
         <title>IQAC page</title>
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
 
         <link rel="stylesheet" type="text/css" href="sidebar.css">
         <link rel="stylesheet" type="text/css" href="../Staff/sidebar.css">
@@ -134,11 +132,10 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                             <span>Ml taken:</span>
                             <h1><?php echo $mlCount; ?></h1>
                             <span>No of ML</span>
-                            <div style="margin-left: 220px; margin-top: -50px;">
-                                <span class="material-symbols-outlined" style="font-size: 36px;">medical_services</span>
-                            </div>
                         </div>
-
+                        <div>
+                            <span class="las la-users"></span>
+                        </div>
                     </div>
                     <div class="card-single">
                         <div>
