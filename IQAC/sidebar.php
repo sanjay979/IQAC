@@ -32,6 +32,7 @@
             <ul>
                 <li><a href="index.php" class="<?= $page == 'index.php' ? 'active' : '' ?>"><span class="las la-igloo"></span> <span>Dashboard</span></a></li>
                 <li><a href="StaffLogin.php" class="<?= $page == 'StaffLogin.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>add staff</span> </a></li>
+                <li><a href="Findstaff.php" class="<?= $page == 'Findstaff.php' ? 'active' : '' ?>"><span class="las la-clipboard-list"></span><span>find staff</span> </a></li>
 
                 <li><a href="leavedetails.php" class="<?= $page == 'leavedetails.php' ? 'active' : '' ?>"><span class="las la-receipt"></span> <span>Leave Details</span></a></li>
 
