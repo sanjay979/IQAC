@@ -46,6 +46,9 @@ if ($_SESSION['s_id'] && $_SESSION['position'] == 'iqac') {
                                 <option>Economics</option>
                                 <option>ELECTRONICS</option>
                                 <option>MATHEMATICS</option>
+                                <option>History</option>
+                                <option>Information technology</option>
+                                <option>B.com Honours</option>
 
                             </select>
                         </div>
